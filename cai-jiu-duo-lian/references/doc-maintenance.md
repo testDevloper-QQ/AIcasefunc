@@ -11,6 +11,7 @@
 | `references/output-template.md` | 输出格式、QA 清单变更 |
 | `references/measurement-cn.md` | 中国计量换算规则变更 |
 | `references/getting-started.md` | 安装成功示例、四种场景变更 |
+| `references/capabilities.md` | 能力清单与版本记录变更 |
 | `references/dietary-guidelines-cn.md` | 份量换算依据变更 |
 | `references/scene-router.md` | 场景路由规则变更 |
 | `references/style-guide.md` | 视觉/话术规范变更 |

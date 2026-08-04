@@ -73,7 +73,7 @@
       <h2>
         <img src="icons/sections/ingredients.svg" alt="" class="section-icon" />
         冰箱里有什么？
-        <span class="badge">至少选 1 个</span>
+        <span class="badge">点选或自定义</span>
       </h2>
       <div id="ingredient-groups">
         <div class="ingredient-group">
@@ -125,11 +125,20 @@
           </div>
         </div>
       </div>
-      <div class="custom-ingredient-row">
-        <input type="text" id="custom-ingredient" placeholder="没有想要的？输入食材，如：折耳根、豆花（回车添加）" />
-        <button type="button" class="chip-add" id="add-custom-ingredient">添加</button>
+      <div class="custom-ingredient-panel">
+        <div class="custom-ingredient-head">
+          <img src="icons/sections/ingredients.svg" alt="" class="section-icon" />
+          <div>
+            <strong>自定义食材</strong>
+            <span class="badge optional">示例里没有也能输入</span>
+          </div>
+        </div>
+        <div class="custom-ingredient-row">
+          <input type="text" id="custom-ingredient" placeholder="输入食材，如：折耳根、豆花、折耳根（回车或点添加）" autocomplete="off" />
+          <button type="button" class="chip-add" id="add-custom-ingredient">添加</button>
+        </div>
+        <div class="chips custom-chips" id="custom-ingredient-chips"></div>
       </div>
-      <div class="chips custom-chips" id="custom-ingredient-chips"></div>
       <p class="field-hint">未选场景时默认「快乐餐」；点选「地方味」可匹配家乡菜。份量按《中国居民膳食指南（2022）》核验</p>
       <div id="selection-summary" class="selected-summary">还没选呢～先挑个场景和食材吧</div>
       <div class="error" id="ingredient-error"></div>

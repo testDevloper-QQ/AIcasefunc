@@ -27,6 +27,12 @@ EXAMPLES = [
         "cli": "python scripts/recommend_cli.py -i 鸡蛋,番茄,黄瓜 --pretty",
     },
     {
+        "title": "2b. 自定义食材",
+        "desc": "示例里没有的家乡食材（网页表单独立输入框）",
+        "chat": "有折耳根和豆花，想吃点家乡味",
+        "cli": "python scripts/recommend_cli.py -s regional -c 折耳根,豆花 --pretty",
+    },
+    {
         "title": "3. 指定需求",
         "desc": "指定便当、菜名或用途",
         "chat": "想做一份便当，明天带饭，有鸡胸肉和米饭",

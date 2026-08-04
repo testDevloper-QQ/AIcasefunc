@@ -31,8 +31,10 @@ SHAPES = {
     "zucchini": '<ellipse cx="128" cy="128" rx="40" ry="80" stroke="#4A4035" stroke-width="4" fill="#FFF8E7"/>',
     "kale": '<path d="M128 200 L128 100 M100 130 Q128 70 156 130 M95 155 Q128 95 161 155" stroke="#4A4035" stroke-width="4" fill="none" stroke-linecap="round"/>',
     "oats": '<rect x="80" y="120" width="96" height="60" rx="8" stroke="#4A4035" stroke-width="4" fill="#FFF8E7"/>',
-    "shrimp": '<path d="M80 150 Q128 80 176 150 Q128 120 80 150" stroke="#4A4035" stroke-width="4" fill="#FFF8E7"/>',
+    "shrimp": '<path d="M60 140 Q128 70 196 140 Q128 110 60 140 Z" stroke="#4A4035" stroke-width="5" fill="#FFE8B8"/><path d="M196 140 L220 125 M196 140 L220 155" stroke="#4A4035" stroke-width="4" stroke-linecap="round"/><circle cx="75" cy="132" r="4" fill="#4A4035"/>',
     "turkey": '<ellipse cx="128" cy="145" rx="75" ry="50" stroke="#4A4035" stroke-width="4" fill="#FFF8E7"/><path d="M170 110 L190 90" stroke="#4A4035" stroke-width="4"/>',
+    "greenbean": '<path d="M88 80 Q128 200 168 80" stroke="#4A4035" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M108 90 Q128 190 148 90" stroke="#6B8E23" stroke-width="3" fill="none" opacity="0.5"/><ellipse cx="128" cy="72" rx="12" ry="8" fill="#8BC34A" stroke="#4A4035" stroke-width="2"/>',
+    "eggplant": '<ellipse cx="128" cy="130" rx="42" ry="78" stroke="#4A4035" stroke-width="5" fill="#E1BEE7"/><path d="M128 52 Q118 68 128 72 Q138 68 128 52" stroke="#4A4035" stroke-width="3" fill="#8BC34A"/>',
 }
 
 TEMPLATE = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">

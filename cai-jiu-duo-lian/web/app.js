@@ -78,8 +78,22 @@ function renderStepItem(s, idx) {
   </li>`;
 }
 
+function renderHeroArts(recipe) {
+  const arts = recipe.heroArts && recipe.heroArts.length ? recipe.heroArts : [];
+  const single = recipe.heroImageUrl || recipe.lineArtUrl;
+  const urls = arts.length ? arts : single ? [single] : [];
+  if (!urls.length) {
+    return `<div class="recipe-hero-art-placeholder">手绘出餐示意</div>`;
+  }
+  if (urls.length === 1) {
+    return `<img class="recipe-hero-art" src="${escapeHtml(urls[0])}" alt="${escapeHtml(recipe.name)}" />`;
+  }
+  return `<div class="recipe-hero-art-grid">${urls
+    .map((url) => `<img class="recipe-hero-art-item" src="${escapeHtml(url)}" alt="" />`)
+    .join("")}</div>`;
+}
+
 function renderRecipeCard(recipe, isPrimary) {
-  const heroImg = recipe.heroImageUrl || recipe.lineArtUrl || "/icons/decor/tomato.svg";
   const steps = (recipe.steps || []).map((s, idx) => renderStepItem(s, idx)).join("");
   const servings = recipe.servings ? `${recipe.servings} 人份` : "未指定";
   const timeText = recipe.cookTimeDisplay || recipe.cookTime || "";
@@ -97,11 +111,11 @@ function renderRecipeCard(recipe, isPrimary) {
       <div class="recipe-hero">
         <div class="recipe-hero-copy">
           <p class="recipe-kicker">${isPrimary ? "今日推荐" : "也可以试试"}</p>
-          <h3 class="recipe-title">${escapeHtml(recipe.name)}</h3>
+          <h3 class="recipe-title"><span class="recipe-title-text">${escapeHtml(recipe.name)}</span></h3>
           <div class="recipe-meta-grid">${meta}</div>
         </div>
         <div class="recipe-hero-art-frame">
-          <img class="recipe-hero-art" src="${escapeHtml(heroImg)}" alt="${escapeHtml(recipe.name)}" />
+          ${renderHeroArts(recipe)}
           <span class="hero-caption">手绘出餐示意</span>
         </div>
       </div>

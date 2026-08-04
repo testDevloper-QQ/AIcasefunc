@@ -53,6 +53,8 @@ INGREDIENT_ART: dict[str, str] = {
     "蒜": "garlic", "洋葱": "onion", "核桃": "walnut", "杏仁": "walnut",
     "草莓": "strawberry", "蓝莓": "strawberry", "香蕉": "corn",
     "南瓜": "pumpkin", "西葫芦": "zucchini", "羽衣甘蓝": "kale", "燕麦": "oats",
+    "豆角": "greenbean", "四季豆": "greenbean", "长豆角": "greenbean",
+    "茄子": "eggplant", "大茄子": "eggplant",
 }
 
 STEP_SCENE_RULES: list[tuple[str, str]] = [
@@ -142,19 +144,20 @@ def step_ingredient_arts(step_text: str, ingredients: list[dict], skill_root: Pa
     arts: list[str] = []
     for ing in ingredients:
         name = ing.get("name", "")
-        if name and name in step_text:
+        if not name:
+            continue
+        if name in step_text or any(key in step_text and key in name for key in INGREDIENT_ART):
             url = ingredient_art_url(name, skill_root)
             if url and url not in arts:
                 arts.append(url)
-        else:
-            for key in INGREDIENT_ART:
-                if key in step_text and key in name:
-                    url = ingredient_art_url(name, skill_root)
-                    if url and url not in arts:
-                        arts.append(url)
-                    break
+    if not arts:
+        for key in INGREDIENT_ART:
+            if key in step_text:
+                url = ingredient_art_url(key, skill_root)
+                if url and url not in arts:
+                    arts.append(url)
     if not arts and ingredients:
-        for ing in ingredients[:2]:
+        for ing in ingredients[:3]:
             url = ingredient_art_url(ing.get("name", ""), skill_root)
             if url:
                 arts.append(url)

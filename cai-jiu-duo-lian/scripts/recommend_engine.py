@@ -6,12 +6,14 @@ from typing import Any
 
 import yaml
 
+from home_cooking_fallback import build_fallback_recipe
 from recipe_format import (
     GUIDELINE_REF,
     MAX_COOK_MINUTES,
     enrich_ingredients,
     format_cook_time_cn,
     format_steps,
+    ingredient_art_url,
     is_quick_recipe,
     normalize_ingredients,
     parse_cook_time_minutes,
@@ -19,6 +21,7 @@ from recipe_format import (
 )
 
 SERVINGS_MAP = {"一人食": 1, "二人家庭": 2, "多人家庭": 4}
+DEFAULT_SCENE = "happy"
 
 
 def load_all_recipes(skill_root: Path) -> list[dict[str, Any]]:
@@ -33,50 +36,57 @@ def load_all_recipes(skill_root: Path) -> list[dict[str, Any]]:
     return recipes
 
 
-def _ingredient_match(recipe: dict, user_ingredients: list[str]) -> int:
+def _recipe_haystack(recipe: dict) -> str:
+    return " ".join([
+        recipe.get("name", ""),
+        " ".join(recipe.get("tags", [])),
+        " ".join(i.get("name", "") for i in recipe.get("ingredients", [])),
+    ])
+
+
+def _ingredient_match_count(recipe: dict, user_ingredients: list[str]) -> int:
     if not user_ingredients:
         return 0
-    hay = recipe.get("name", "") + " ".join(
-        i.get("name", "") for i in recipe.get("ingredients", [])
-    ) + " ".join(recipe.get("tags", []))
+    hay = _recipe_haystack(recipe)
     return sum(1 for u in user_ingredients if u and u in hay)
 
 
-DEFAULT_SCENE = "happy"
-
-
-def _custom_ingredient_boost(recipe: dict, custom_ingredients: list[str], scene: str) -> float:
-    if not custom_ingredients:
-        return 0.0
-    hay = recipe.get("name", "") + " ".join(recipe.get("tags", [])) + " ".join(
-        i.get("name", "") for i in recipe.get("ingredients", [])
-    )
-    hits = sum(1 for u in custom_ingredients if u and (u in hay or any(u in tag for tag in recipe.get("tags", []))))
-    if scene == "regional" and "regional" in (recipe.get("scene") or []):
-        return hits * 4
-    return hits * 2
+def _matches_all_user_ingredients(recipe: dict, user_ingredients: list[str]) -> bool:
+    if not user_ingredients:
+        return True
+    return _ingredient_match_count(recipe, user_ingredients) == len(user_ingredients)
 
 
 def score_recipe(
     recipe: dict,
     scene: str | None,
-    ingredients: list[str],
+    user_ingredients: list[str],
     taste: str,
-    custom_ingredients: list[str] | None = None,
 ) -> float:
     score = 0.0
     scenes = recipe.get("scene") or []
     effective = scene or DEFAULT_SCENE
+    match_count = _ingredient_match_count(recipe, user_ingredients)
+
+    if user_ingredients:
+        if match_count == 0:
+            return -100.0
+        score += match_count * 20
+        if _matches_all_user_ingredients(recipe, user_ingredients):
+            score += 25
+
     if effective in scenes:
-        score += 10
+        score += 8
+    elif user_ingredients:
+        score -= 2
     else:
         score -= 3
-    score += _ingredient_match(recipe, ingredients) * 5
-    score += _custom_ingredient_boost(recipe, custom_ingredients or [], effective)
+
     if taste:
-        tags = " ".join(recipe.get("tags", [])) + recipe.get("name", "") + recipe.get("method", "")
-        if any(k in tags for k in taste.replace("，", " ").split()):
+        hay = _recipe_haystack(recipe) + (recipe.get("method") or "")
+        if any(k in hay for k in taste.replace("，", " ").split()):
             score += 3
+
     minutes = parse_cook_time_minutes(recipe.get("cook_time"))
     if minutes <= 30:
         score += 2
@@ -85,14 +95,34 @@ def score_recipe(
     return score
 
 
-def format_recipe(recipe: dict, skill_root: Path, target_servings: int | None) -> dict:
+def _hero_arts(recipe: dict, skill_root: Path, user_ingredients: list[str]) -> list[str]:
+    arts: list[str] = []
+    line_art = (recipe.get("line_art") or "").replace("\\", "/").lstrip("/")
+    if line_art and (skill_root / line_art).exists():
+        arts.append(f"/skill-assets/{line_art}")
+
+    for ing in recipe.get("ingredients") or []:
+        url = ingredient_art_url(ing.get("name", ""), skill_root)
+        if url and url not in arts:
+            arts.append(url)
+
+    for name in user_ingredients:
+        url = ingredient_art_url(name, skill_root)
+        if url and url not in arts:
+            arts.append(url)
+
+    return arts[:4]
+
+
+def format_recipe(
+    recipe: dict,
+    skill_root: Path,
+    target_servings: int | None,
+    user_ingredients: list[str] | None = None,
+) -> dict:
     src = recipe.get("source") or {}
-    line_art = recipe.get("line_art") or ""
-    art_url = ""
-    if line_art:
-        rel = line_art.replace("\\", "/").lstrip("/")
-        if (skill_root / rel).exists():
-            art_url = f"/skill-assets/{rel}"
+    hero_arts = _hero_arts(recipe, skill_root, user_ingredients or [])
+    art_url = hero_arts[0] if hero_arts else ""
 
     ingredients = enrich_ingredients(normalize_ingredients(recipe, target_servings), skill_root)
     steps = format_steps(recipe.get("steps") or [], ingredients, skill_root)
@@ -117,8 +147,12 @@ def format_recipe(recipe: dict, skill_root: Path, target_servings: int | None) -
         },
         "lineArtUrl": art_url,
         "heroImageUrl": art_url,
+        "heroArts": hero_arts,
+        "generated": bool(recipe.get("generated")),
         "disclaimer": "仅供参考，非医疗建议" if "health" in (recipe.get("scene") or []) else None,
     }
+    if formatted["generated"]:
+        formatted["disclaimer"] = "索引未收录该食材组合，以下为 AI 家常菜建议，请按口味调整。"
     qa = validate_home_output(formatted, servings=target_servings or recipe.get("servings") or 1)
     if qa:
         formatted["qualityNotes"] = qa
@@ -127,6 +161,12 @@ def format_recipe(recipe: dict, skill_root: Path, target_servings: int | None) -
 
 def _resolve_scene(scene: str | None) -> str:
     return scene or DEFAULT_SCENE
+
+
+def _filter_by_ingredients(pool: list[dict], user_ingredients: list[str]) -> list[dict]:
+    if not user_ingredients:
+        return pool
+    return [r for r in pool if _matches_all_user_ingredients(r, user_ingredients)]
 
 
 def recommend(
@@ -151,21 +191,27 @@ def recommend(
 
     quick = [r for r in recipes if is_quick_recipe(r)]
     pool = quick if quick else recipes
+    ingredient_pool = _filter_by_ingredients(pool, all_ingredients)
+
+    used_fallback = False
+    if all_ingredients and not ingredient_pool:
+        servings = target or 2
+        ingredient_pool = [
+            build_fallback_recipe(all_ingredients, effective_scene, servings=servings)
+        ]
+        used_fallback = True
 
     ranked = sorted(
-        pool,
-        key=lambda r: score_recipe(r, effective_scene, all_ingredients, combined_taste, custom),
+        ingredient_pool,
+        key=lambda r: score_recipe(r, effective_scene, all_ingredients, combined_taste),
         reverse=True,
     )
-    top = [
-        r for r in ranked
-        if score_recipe(r, effective_scene, all_ingredients, combined_taste, custom) > 0
-    ][:3]
+    top = [r for r in ranked if score_recipe(r, effective_scene, all_ingredients, combined_taste) > 0][:3]
     if not top:
         top = ranked[:3]
 
-    primary = format_recipe(top[0], skill_root, target)
-    alternates = [format_recipe(r, skill_root, target) for r in top[1:3]]
+    primary = format_recipe(top[0], skill_root, target, all_ingredients)
+    alternates = [format_recipe(r, skill_root, target, all_ingredients) for r in top[1:3]]
 
     why_parts = []
     if effective_scene:
@@ -175,16 +221,20 @@ def recommend(
         }
         why_parts.append(f"符合「{scene_labels.get(effective_scene, effective_scene)}」饮食偏好")
     if all_ingredients:
-        why_parts.append(f"尽量用上你选的 {'、'.join(all_ingredients)}")
+        if used_fallback:
+            why_parts.append(
+                f"索引暂无含 {'、'.join(all_ingredients)} 的菜谱，已按中国家常菜生成「{primary['name']}」"
+            )
+        else:
+            why_parts.append(f"食材对应：{'、'.join(all_ingredients)} 均在推荐菜中出现")
     if not scene:
         why_parts.append("未选场景，默认按「快乐餐」推荐")
     why_parts.append(f"烹饪时间均在 {MAX_COOK_MINUTES} 分钟内")
     why_parts.append(f"份量已对标{GUIDELINE_REF}核验")
-    if not why_parts:
-        why_parts.append("根据索引综合匹配")
 
     return {
         "primary": primary,
         "alternates": alternates,
         "why": "，".join(why_parts) + "。",
+        "usedFallback": used_fallback,
     }
