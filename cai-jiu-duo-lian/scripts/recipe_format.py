@@ -43,6 +43,136 @@ STEP_ICON_RULES: list[tuple[str, str]] = [
 
 STEP_ICON_FALLBACK = ["prep", "cut", "mix", "cook", "finish"]
 
+INGREDIENT_ART: dict[str, str] = {
+    "鳄梨": "avocado", "西红柿": "tomato", "番茄": "tomato", "黄瓜": "cucumber",
+    "鸡蛋": "egg", "鸡": "chicken", "火鸡": "turkey", "牛肉": "beef", "猪肉": "pork",
+    "虾": "shrimp", "虾仁": "shrimp", "三文鱼": "salmon", "鱼": "salmon",
+    "菠菜": "spinach", "西兰花": "broccoli", "红薯": "potato", "土豆": "potato",
+    "藜麦": "quinoa", "米饭": "rice", "面": "noodle", "豆腐": "tofu",
+    "蘑菇": "mushroom", "胡萝卜": "carrot", "玉米": "corn", "柠檬": "lemon",
+    "蒜": "garlic", "洋葱": "onion", "核桃": "walnut", "杏仁": "walnut",
+    "草莓": "strawberry", "蓝莓": "strawberry", "香蕉": "corn",
+    "南瓜": "pumpkin", "西葫芦": "zucchini", "羽衣甘蓝": "kale", "燕麦": "oats",
+}
+
+STEP_SCENE_RULES: list[tuple[str, str]] = [
+    (r"烤箱|预热|烘烤|烘焙|烤房", "oven"),
+    (r"炖|煲|煮|锅|小火|大火|出沙", "pot"),
+    (r"炒|煎|煸|锅铲", "wok"),
+    (r"碗|拌|腌|搅拌|沐昔|沙拉", "bowl"),
+    (r"切|片|丝|块|剁|改刀|备料", "board"),
+    (r"装盘|出锅|享用|取食|上桌|完成", "plate"),
+]
+
+STEP_SCENE_FALLBACK = ["board", "bowl", "pot", "wok", "oven", "plate"]
+
+
+def _fahrenheit_to_celsius(f: float) -> int:
+    return round((f - 32) * 5 / 9)
+
+
+def localize_amount(amount: str) -> str:
+    if not amount:
+        return amount
+    text = amount
+    # 盎司 → 克
+    def oz_repl(m: re.Match[str]) -> str:
+        grams = round(float(m.group(1)) * 28.35)
+        return f"约{grams}克"
+    text = re.sub(r"([\d.]+)\s*盎司", oz_repl, text)
+    # cup → 毫升（液体语境）或克
+    def cup_repl(m: re.Match[str]) -> str:
+        val = float(m.group(1))
+        return f"约{round(val * 240)}毫升"
+    text = re.sub(r"([\d.]+)\s*(?:cup|Cup|杯)", cup_repl, text, flags=re.I)
+    return text
+
+
+def localize_text(text: str) -> str:
+    if not text:
+        return text
+    if re.search(r"美国烹饪计量|cups?|cup=|盎司＝", text, re.I):
+        return ""
+    out = text.strip()
+
+    def f_repl(m: re.Match[str]) -> str:
+        c = _fahrenheit_to_celsius(float(m.group(1)))
+        return f"约{c}℃"
+
+    out = re.sub(r"华氏\s*(\d+)\s*度", f_repl, out)
+    out = re.sub(r"(\d+)\s*°?\s*F\b", f_repl, out, flags=re.I)
+    out = re.sub(r"在华氏\s*(\d+)\s*度", lambda m: f"在约{_fahrenheit_to_celsius(float(m.group(1)))}℃", out)
+    out = re.sub(r"([\d.]+)\s*盎司", lambda m: f"约{round(float(m.group(1)) * 28.35)}克", out)
+    out = re.sub(r"([\d.]+)\s*(?:cup|Cup|杯)", lambda m: f"约{round(float(m.group(1)) * 240)}毫升", out, flags=re.I)
+    return out.strip()
+
+
+def format_cook_time_cn(cook_time: str | None) -> str:
+    minutes = parse_cook_time_minutes(cook_time)
+    if minutes == 0:
+        return "免火或即食"
+    return f"{minutes}分钟"
+
+
+def guess_ingredient_art_key(name: str) -> str | None:
+    for key, art in INGREDIENT_ART.items():
+        if key in name:
+            return art
+    return None
+
+
+def ingredient_art_url(name: str, skill_root: Path | None) -> str:
+    art = guess_ingredient_art_key(name)
+    if not art:
+        return ""
+    rel = f"assets/line-art/{art}.svg"
+    if skill_root and not (skill_root / rel).exists():
+        return ""
+    return f"/skill-assets/{rel}" if skill_root else ""
+
+
+def pick_step_scene(step_text: str, index: int) -> str:
+    for pattern, scene in STEP_SCENE_RULES:
+        if re.search(pattern, step_text):
+            return scene
+    return STEP_SCENE_FALLBACK[index % len(STEP_SCENE_FALLBACK)]
+
+
+def step_ingredient_arts(step_text: str, ingredients: list[dict], skill_root: Path | None) -> list[str]:
+    arts: list[str] = []
+    for ing in ingredients:
+        name = ing.get("name", "")
+        if name and name in step_text:
+            url = ingredient_art_url(name, skill_root)
+            if url and url not in arts:
+                arts.append(url)
+        else:
+            for key in INGREDIENT_ART:
+                if key in step_text and key in name:
+                    url = ingredient_art_url(name, skill_root)
+                    if url and url not in arts:
+                        arts.append(url)
+                    break
+    if not arts and ingredients:
+        for ing in ingredients[:2]:
+            url = ingredient_art_url(ing.get("name", ""), skill_root)
+            if url:
+                arts.append(url)
+    return arts[:3]
+
+
+def enrich_ingredients(ingredients: list[dict[str, str]], skill_root: Path | None) -> list[dict[str, str]]:
+    enriched = []
+    for ing in ingredients:
+        name = ing.get("name", "")
+        amount = localize_amount(ing.get("amount", ""))
+        enriched.append({
+            "name": name,
+            "amount": amount,
+            "artUrl": ingredient_art_url(name, skill_root),
+        })
+    return enriched
+
 
 def guideline_grams(category: str, servings: int = 1, *, use: str = "default") -> float:
     spec = DIETARY_PER_MEAL.get(category, DIETARY_PER_MEAL["default"])
@@ -210,6 +340,7 @@ def normalize_ingredients(recipe: dict, target_servings: int | None) -> list[dic
 
         if note and note not in amount:
             amount = f"{amount}{note}"
+        amount = localize_amount(amount)
         normalized.append({"name": name, "amount": amount})
     return normalized
 
@@ -223,14 +354,29 @@ def pick_step_icon(step_text: str, index: int, total: int) -> str:
     return STEP_ICON_FALLBACK[index % len(STEP_ICON_FALLBACK)]
 
 
-def format_steps(steps: list[str]) -> list[dict[str, Any]]:
+def format_steps(
+    steps: list[str],
+    ingredients: list[dict] | None = None,
+    skill_root: Path | None = None,
+) -> list[dict[str, Any]]:
     total = len(steps)
+    ing_list = ingredients or []
     formatted = []
-    for i, text in enumerate(steps):
-        icon = pick_step_icon(text, i, total)
+    step_num = 0
+    for i, raw in enumerate(steps):
+        text = localize_text(raw)
+        if not text:
+            continue
+        step_num += 1
+        scene = pick_step_scene(text, i)
+        arts = step_ingredient_arts(text, ing_list, skill_root)
         formatted.append({
+            "index": step_num,
             "text": text,
-            "icon": f"/icons/steps/{icon}.svg",
+            "icon": f"/icons/steps/{pick_step_icon(text, i, total)}.svg",
+            "scene": scene,
+            "sceneUrl": f"/icons/step-scenes/{scene}.svg",
+            "ingredientArts": arts,
         })
     return formatted
 

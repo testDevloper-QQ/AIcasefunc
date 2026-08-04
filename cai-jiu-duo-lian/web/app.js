@@ -45,44 +45,73 @@ function escapeHtml(text) {
   return d.innerHTML;
 }
 
-function renderRecipeCard(recipe, title, isPrimary) {
-  const ingList = (recipe.ingredients || [])
-    .map((i) => `<li>${escapeHtml(i.name)} ${escapeHtml(i.amount || "")}</li>`)
-    .join("");
-  const steps = (recipe.steps || [])
-    .map((s, idx) => {
-      const text = typeof s === "string" ? s : s.text || "";
-      const icon = typeof s === "object" && s.icon ? s.icon : `/icons/steps/prep.svg`;
-      return `<li class="step-item">
-        <img class="step-icon" src="${escapeHtml(icon)}" alt="" />
-        <span>${escapeHtml(text)}</span>
-      </li>`;
+function renderMetaBadge(icon, label, value) {
+  return `<span class="meta-badge"><img src="${icon}" alt="" class="meta-icon" /><span class="meta-label">${escapeHtml(label)}</span><span class="meta-value">${escapeHtml(value)}</span></span>`;
+}
+
+function renderIngredientGrid(ingredients) {
+  return (ingredients || [])
+    .map((i) => {
+      const art = i.artUrl
+        ? `<img class="ing-art" src="${escapeHtml(i.artUrl)}" alt="" />`
+        : `<span class="ing-art ing-art-fallback"></span>`;
+      return `<div class="ing-tile">${art}<span class="ing-name">${escapeHtml(i.name)}</span><span class="ing-amt">${escapeHtml(i.amount || "")}</span></div>`;
     })
     .join("");
-  const img = recipe.lineArtUrl
-    ? `<img class="recipe-art" src="${escapeHtml(recipe.lineArtUrl)}" alt="" />`
-    : "";
+}
+
+function renderStepItem(s, idx) {
+  const text = typeof s === "string" ? s : s.text || "";
+  const sceneUrl = (typeof s === "object" && s.sceneUrl) || "/icons/step-scenes/bowl.svg";
+  const arts = (typeof s === "object" && s.ingredientArts) || [];
+  const stepNo = (typeof s === "object" && s.index) || idx + 1;
+  const artHtml = arts
+    .map((url) => `<img class="step-ing-art" src="${escapeHtml(url)}" alt="" />`)
+    .join("");
+  return `<li class="step-card">
+    <div class="step-scene-wrap">
+      <img class="step-scene-bg" src="${escapeHtml(sceneUrl)}" alt="" />
+      <div class="step-scene-ingredients">${artHtml}</div>
+      <span class="step-num">${stepNo}</span>
+    </div>
+    <p class="step-text">${escapeHtml(text)}</p>
+  </li>`;
+}
+
+function renderRecipeCard(recipe, isPrimary) {
+  const heroImg = recipe.heroImageUrl || recipe.lineArtUrl || "/icons/decor/tomato.svg";
+  const steps = (recipe.steps || []).map((s, idx) => renderStepItem(s, idx)).join("");
+  const servings = recipe.servings ? `${recipe.servings} 人份` : "未指定";
+  const timeText = recipe.cookTimeDisplay || recipe.cookTime || "";
+
+  const meta = [
+    renderMetaBadge("icons/sections/scene.svg", "出处", `《${recipe.source?.book || ""}》`),
+    renderMetaBadge("icons/sections/servings.svg", "份量", servings),
+    renderMetaBadge("icons/sections/taste.svg", "时长", timeText),
+    renderMetaBadge("icons/groups/staple.svg", "方式", recipe.method || "—"),
+    renderMetaBadge("icons/sections/notes.svg", "花费", recipe.cost || "—"),
+  ].join("");
 
   return `
     <article class="recipe-card ${isPrimary ? "primary" : "alt"}">
-      <div class="recipe-header">
-        ${img}
-        <div>
-          <h3>${escapeHtml(recipe.name)}</h3>
-          <p class="recipe-meta">
-            📖 《${escapeHtml(recipe.source?.book || "")}》
-            · ⏱ ${escapeHtml(recipe.cookTime || "")}
-            · 💰 ${escapeHtml(recipe.cost || "")}
-            · 🔥 ${escapeHtml(recipe.method || "")}
-          </p>
-          <p class="recipe-servings">${escapeHtml(String(recipe.servings || ""))} 人份</p>
+      <div class="recipe-hero">
+        <div class="recipe-hero-copy">
+          <p class="recipe-kicker">${isPrimary ? "今日推荐" : "也可以试试"}</p>
+          <h3 class="recipe-title">${escapeHtml(recipe.name)}</h3>
+          <div class="recipe-meta-grid">${meta}</div>
+        </div>
+        <div class="recipe-hero-art-frame">
+          <img class="recipe-hero-art" src="${escapeHtml(heroImg)}" alt="${escapeHtml(recipe.name)}" />
+          <span class="hero-caption">手绘出餐示意</span>
         </div>
       </div>
+      <div class="ingredient-showcase">
+        <h4><img src="icons/sections/ingredients.svg" alt="" class="section-icon" /> 食材清单</h4>
+        <div class="ing-grid">${renderIngredientGrid(recipe.ingredients)}</div>
+      </div>
       <div class="recipe-body">
-        <h4>食材清单</h4>
-        <ul>${ingList}</ul>
-        <h4>做法步骤</h4>
-        <ol>${steps}</ol>
+        <h4><img src="icons/steps/cook.svg" alt="" class="section-icon" /> 做法步骤</h4>
+        <ol class="step-list">${steps}</ol>
         ${recipe.disclaimer ? `<p class="disclaimer">${escapeHtml(recipe.disclaimer)}</p>` : ""}
       </div>
     </article>
@@ -91,14 +120,12 @@ function renderRecipeCard(recipe, title, isPrimary) {
 
 function renderResult(data) {
   const why = data.why ? `<p class="result-why">${escapeHtml(data.why)}</p>` : "";
-  const primary = renderRecipeCard(data.primary, "推荐", true);
-  const alts = (data.alternates || [])
-    .map((r) => renderRecipeCard(r, "备选", false))
-    .join("");
+  const primary = renderRecipeCard(data.primary, true);
+  const alts = (data.alternates || []).map((r) => renderRecipeCard(r, false)).join("");
   const source = data.skill?.source
     ? `<p class="result-source">Skill 来源：${escapeHtml(data.skill.source)}</p>`
     : "";
-  return `${why}${primary}${alts ? `<h3 class="alt-title">也可以试试</h3>${alts}` : ""}${source}`;
+  return `${why}${primary}${alts ? `<h3 class="alt-title">更多选择</h3>${alts}` : ""}${source}`;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -213,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
       outputEl.innerHTML = renderResult(data);
       outputEl.scrollIntoView({ behavior: "smooth", block: "start" });
     } catch (ex) {
-      outputEl.innerHTML = `<p class="error-block">出错了：${escapeHtml(ex.message)}<br><small>请确认已通过 <code>python scripts/web_server.py</code> 启动服务，而非直接打开 html 文件。</small></p>`;
+      outputEl.innerHTML = `<p class="error-block">出错了：${escapeHtml(ex.message)}<br><small>请运行 <code>python scripts/ensure_web_server.py</code> 确保 Web 服务已启动，而非直接打开 html 文件。</small></p>`;
     } finally {
       submitBtn.disabled = false;
       submitBtn.innerHTML = '<img src="icons/sections/submit.svg" alt="" class="btn-icon" /> 开始推荐';

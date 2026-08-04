@@ -50,9 +50,11 @@ def _pull_repo(branch: str, target: Path) -> None:
         _run_git(["git", "-C", str(target), "fetch", "origin", branch, "--depth", "1"])
         _run_git(["git", "-C", str(target), "reset", "--hard", f"origin/{branch}"])
     except subprocess.CalledProcessError:
-        # fallback: fetch all heads then reset
-        _run_git(["git", "-C", str(target), "fetch", "origin", "--depth", "1"])
-        _run_git(["git", "-C", str(target), "reset", "--hard", f"origin/{branch}"])
+        try:
+            _run_git(["git", "-C", str(target), "fetch", "origin", "--depth", "1"])
+            _run_git(["git", "-C", str(target), "reset", "--hard", f"origin/{branch}"])
+        except subprocess.CalledProcessError:
+            raise
 
 
 def _git_pull(repo_url: str, branch: str, target: Path) -> Path:
@@ -60,7 +62,11 @@ def _git_pull(repo_url: str, branch: str, target: Path) -> Path:
     if not target.exists():
         _clone_repo(repo_url, branch, target)
     else:
-        _pull_repo(branch, target)
+        try:
+            _pull_repo(branch, target)
+        except subprocess.CalledProcessError:
+            _refresh_cache(target)
+            _clone_repo(repo_url, branch, target)
     return target
 
 
@@ -114,11 +120,33 @@ def get_skill_root(force_refresh: bool = False) -> tuple[Path, dict]:
         branch = cfg.get("gitBranch") or "main"
         cache_name = repo_url.rstrip("/").split("/")[-1].replace(".git", "")
         cache_path = CACHE_DIR / cache_name
-        if force_refresh and cache_path.exists():
-            _refresh_cache(cache_path)
-        repo_root = _git_pull(repo_url, branch, cache_path)
         sub = (cfg.get("gitSkillSubPath") or "").strip().replace("\\", "/").strip("/")
-        skill_root = repo_root / sub if sub else repo_root
+        local_path = cfg.get("localSkillPath") or ".."
+        local_root = (WEB_DIR / local_path).resolve() if not Path(local_path).is_absolute() else Path(local_path)
+        git_error = ""
+        try:
+            if force_refresh and cache_path.exists():
+                _refresh_cache(cache_path)
+            repo_root = _git_pull(repo_url, branch, cache_path)
+            skill_root = repo_root / sub if sub else repo_root
+        except (RuntimeError, subprocess.CalledProcessError) as exc:
+            git_error = str(exc).strip()
+            if not local_root.exists() or not (local_root / "SKILL.md").exists():
+                raise RuntimeError(f"Git 拉取失败且本地 Skill 不可用:\n{git_error}") from exc
+            skill_root = local_root
+            source = "local"
+        recipe_count = _validate_skill_root(skill_root)
+        meta = {
+            "source": source,
+            "skillRoot": str(skill_root),
+            "gitRepoUrl": cfg.get("gitRepoUrl") or "",
+            "gitBranch": cfg.get("gitBranch") or "main",
+            "recipeCount": recipe_count,
+        }
+        if git_error:
+            meta["gitFallback"] = True
+            meta["gitError"] = git_error.split("\n")[0][:200]
+        return skill_root, meta
     else:
         local_path = cfg.get("localSkillPath") or ".."
         skill_root = (WEB_DIR / local_path).resolve() if not Path(local_path).is_absolute() else Path(local_path)

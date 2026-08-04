@@ -9,6 +9,8 @@
 | `README.md` | 安装方式、网页用法、配置、限制变更 |
 | `SKILL.md` | Agent 工作流、硬规则、QA 检查项变更 |
 | `references/output-template.md` | 输出格式、QA 清单变更 |
+| `references/measurement-cn.md` | 中国计量换算规则变更 |
+| `references/getting-started.md` | 安装成功示例、四种场景变更 |
 | `references/dietary-guidelines-cn.md` | 份量换算依据变更 |
 | `references/scene-router.md` | 场景路由规则变更 |
 | `references/style-guide.md` | 视觉/话术规范变更 |
@@ -33,3 +35,4 @@
 - [ ] `README.md` 已反映最新用户可见行为
 - [ ] `skill生成需求背景.md` 未被复制到远程（脚本已自动排除）
 - [ ] `references/dietary-guidelines-cn.md` 与 `recipe_format.py` 一致
+- [ ] `references/measurement-cn.md` 与 `recipe_format.py` 计量规则一致

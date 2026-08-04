@@ -1,5 +1,5 @@
 {
-  "skillSource": "git",
+  "skillSource": "local",
   "localSkillPath": "..",
   "gitRepoUrl": "https://github.com/testDevloper-QQ/AIcasefunc.git",
   "gitBranch": "main",

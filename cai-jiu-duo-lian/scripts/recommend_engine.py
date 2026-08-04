@@ -9,6 +9,8 @@ import yaml
 from recipe_format import (
     GUIDELINE_REF,
     MAX_COOK_MINUTES,
+    enrich_ingredients,
+    format_cook_time_cn,
     format_steps,
     is_quick_recipe,
     normalize_ingredients,
@@ -92,9 +94,10 @@ def format_recipe(recipe: dict, skill_root: Path, target_servings: int | None) -
         if (skill_root / rel).exists():
             art_url = f"/skill-assets/{rel}"
 
-    ingredients = normalize_ingredients(recipe, target_servings)
-    steps = format_steps(recipe.get("steps") or [])
+    ingredients = enrich_ingredients(normalize_ingredients(recipe, target_servings), skill_root)
+    steps = format_steps(recipe.get("steps") or [], ingredients, skill_root)
     cook_time = recipe.get("cook_time") or "20min"
+    cook_time_display = format_cook_time_cn(cook_time)
 
     formatted = {
         "id": recipe.get("id"),
@@ -102,6 +105,7 @@ def format_recipe(recipe: dict, skill_root: Path, target_servings: int | None) -
         "scene": recipe.get("scene", []),
         "tags": recipe.get("tags", []),
         "cookTime": cook_time,
+        "cookTimeDisplay": cook_time_display,
         "cost": recipe.get("cost"),
         "method": recipe.get("method"),
         "servings": target_servings or recipe.get("servings"),
@@ -112,6 +116,7 @@ def format_recipe(recipe: dict, skill_root: Path, target_servings: int | None) -
             "chapter": src.get("chapter"),
         },
         "lineArtUrl": art_url,
+        "heroImageUrl": art_url,
         "disclaimer": "仅供参考，非医疗建议" if "health" in (recipe.get("scene") or []) else None,
     }
     qa = validate_home_output(formatted, servings=target_servings or recipe.get("servings") or 1)

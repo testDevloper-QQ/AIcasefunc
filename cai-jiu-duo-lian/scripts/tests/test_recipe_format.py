@@ -9,7 +9,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from recipe_format import (  # noqa: E402
     MAX_COOK_MINUTES,
+    format_steps,
     is_quick_recipe,
+    localize_amount,
+    localize_text,
     normalize_ingredients,
     parse_cook_time_minutes,
     validate_home_output,
@@ -43,6 +46,23 @@ def test_commercial_batch_normalized_for_one_person():
     beef = next(i for i in result if "牛肉" in i["name"])
     assert "75" in beef["amount"] or "50" in beef["amount"]
     assert "膳食指南" in beef["amount"]
+
+
+def test_localize_fahrenheit_and_ounce():
+    assert "179" in localize_text("预热烤箱至华氏355度。")
+    assert "盎司" not in localize_amount("18盎司，去骨")
+    assert "510" in localize_amount("18盎司，去骨")
+    assert localize_text("杯（cup）,美国烹饪计量单位。") == ""
+
+
+def test_format_steps_skips_foreign_footnotes():
+    steps = format_steps(
+        ["预热烤箱至华氏355度。", "杯（cup）,美国烹饪计量单位。", "将红薯放入烤盘。"],
+        [{"name": "红薯", "amount": "200克"}],
+    )
+    assert len(steps) == 2
+    assert "℃" in steps[0]["text"]
+    assert steps[0]["sceneUrl"].endswith("oven.svg")
 
 
 def test_default_scene_is_happy(tmp_path):

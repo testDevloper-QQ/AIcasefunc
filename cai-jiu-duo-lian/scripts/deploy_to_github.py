@@ -104,10 +104,10 @@ def copy_skill(target_dir: Path) -> None:
         raise RuntimeError("打包包含不应提交的内容，已中止")
     print("[pack] 校验通过：未包含内部文档、参考书籍、缓存与大文件")
 
-    # 远程 config 使用 git 自引用
+    # 远程部署包已含完整 Skill，默认 local，避免用户再拉 Git
     config_path = target_dir / "web" / "config.json"
     cfg = {
-        "skillSource": "git",
+        "skillSource": "local",
         "localSkillPath": "..",
         "gitRepoUrl": REMOTE_URL,
         "gitBranch": "main",

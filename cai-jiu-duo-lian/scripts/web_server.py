@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import mimetypes
+import os
 import socket
 import sys
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -16,8 +17,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from recommend_engine import recommend  # noqa: E402
 from skill_loader import get_skill_root, load_config  # noqa: E402
 
-HOST = "0.0.0.0"
-PORT = 8765
+HOST = os.environ.get("CAIJIU_WEB_HOST", "127.0.0.1")
+PORT = int(os.environ.get("CAIJIU_WEB_PORT", "8765"))
 
 
 def local_ip() -> str:
@@ -150,7 +151,9 @@ def main() -> None:
     print("=" * 50)
     print("菜就多练 Web 服务已启动")
     print(f"  本机访问: http://127.0.0.1:{PORT}/")
-    print(f"  手机访问: http://{ip}:{PORT}/  （需同一 WiFi）")
+    if HOST in ("0.0.0.0", "::"):
+        print(f"  手机访问: http://{ip}:{PORT}/  （需同一 WiFi）")
+    print(f"  绑定地址: {HOST}:{PORT}")
     print(f"  Skill 来源: {skill_meta.get('source')} → {skill_meta.get('skillRoot')}")
     if skill_meta.get("source") == "git":
         print(f"  Git 仓库: {skill_meta.get('gitRepoUrl')}")
