@@ -1,0 +1,611 @@
+- id: sea-001
+  name: 腌笃鲜
+  scene:
+  - seasonal
+  tags:
+  - 节气
+  - 应季
+  - 立春
+  - 汤
+  servings: 2
+  cook_time: 75min
+  cost: 约40元
+  method: 炖
+  ingredients:
+  - name: 春笋
+    amount: 2根
+  - name: 咸肉
+    amount: 200克
+  - name: 排骨
+    amount: 250克
+  - name: 姜
+    amount: 适量
+  - name: 米酒
+    amount: 适量
+  - name: 盐
+    amount: 少许
+  steps:
+  - 春笋去皮切小块，焯水后放入凉水中待用。
+  - 排骨和咸肉一起焯水，焯好的咸肉切块，与排骨、春笋一起放进炖锅。
+  - 加清水、姜片和米酒，大火煮开后转小火，加盖煮1小时。
+  - 依据个人口味加少许盐调味即可。
+  source:
+    book: 食帖的节气食桌
+    file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
+    chapter: 腌笃鲜
+  line_art: assets/line-art/chicken.svg
+- id: sea-002
+  name: 水芹炒虾仁
+  scene:
+  - seasonal
+  tags:
+  - 节气
+  - 应季
+  - 雨水
+  - 炒
+  servings: 2
+  cook_time: 20min
+  cost: 约35元
+  method: 炒
+  ingredients:
+  - name: 水芹
+    amount: 1把
+  - name: 白虾
+    amount: 适量
+  - name: 彩椒
+    amount: 各半个
+  - name: 糖
+    amount: 少许
+  - name: 盐
+    amount: 少许
+  - name: 白胡椒
+    amount: 少许
+  steps:
+  - 水芹切段，白虾去头剥壳并去虾线，备用。
+  - 平底锅烧热油，倒入彩椒翻炒均匀后加入虾仁翻炒。
+  - 撒少许糖，按个人口味加少量盐和白胡椒调味即可。
+  source:
+    book: 食帖的节气食桌
+    file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
+    chapter: 水芹炒虾仁
+  line_art: assets/line-art/shrimp.svg
+- id: sea-003
+  name: 葱油豆腐
+  scene:
+  - seasonal
+  tags:
+  - 节气
+  - 应季
+  - 雨水
+  - 家常
+  servings: 2
+  cook_time: 20min
+  cost: 约15元
+  method: 煎
+  ingredients:
+  - name: 小葱
+    amount: 1把
+  - name: 老豆腐
+    amount: 1块
+  - name: 盐
+    amount: 适量
+  - name: 糖
+    amount: 适量
+  - name: 面粉
+    amount: 适量
+  steps:
+  - 小葱洗净切碎，老豆腐切块备用。
+  - 将豆腐沾满面粉后煎至两面金黄，沥干表面浮油。
+  - 豆腐装盘，淋上葱油和酱汁，撒好葱花即可。
+  source:
+    book: 食帖的节气食桌
+    file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
+    chapter: 葱油豆腐
+  line_art: assets/line-art/tomato.svg
+- id: sea-004
+  name: 豆芽小银鱼意面
+  scene:
+  - seasonal
+  tags:
+  - 节气
+  - 应季
+  - 雨水
+  - 轻食
+  servings: 2
+  cook_time: 35min
+  cost: 约25元
+  method: 炒
+  ingredients:
+  - name: 绿豆芽
+    amount: 200克
+  - name: 小银鱼
+    amount: 15克
+  - name: 意面
+    amount: 100克
+  - name: 小辣椒
+    amount: 适量
+  - name: 熟芝麻
+    amount: 适量
+  - name: 日本白酱油
+    amount: 少许
+  - name: 芝麻油
+    amount: 少许
+  - name: 水芹（取嫩芯）
+    amount: 1根
+  steps:
+  - 小银鱼用热水泡5分钟待用。
+  - 意面煮到七分熟，过冷水后沥干待用。
+  - 热锅倒橄榄油，放入小银鱼、小红辣椒和豆芽翻炒。
+  - 加入意面继续翻炒约1分钟，关火，加入熟芝麻和芝麻油拌匀。
+  - 装盘，用大蒜沫装饰即可。
+  source:
+    book: 食帖的节气食桌
+    file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
+    chapter: 豆芽小银鱼意面
+  line_art: assets/line-art/noodle.svg
+- id: sea-005
+  name: 芦笋雪梨沙拉
+  scene:
+  - seasonal
+  tags:
+  - 节气
+  - 应季
+  - 雨水
+  - 沙拉
+  servings: 2
+  cook_time: 30min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 芦笋
+    amount: 1根
+  - name: 梨
+    amount: 1个
+  - name: 混合胡椒
+    amount: 少许
+  - name: 橄榄油
+    amount: 1汤匙
+  - name: 燕麦
+    amount: 30克
+  - name: 蜂蜜
+    amount: 少许
+  - name: 柠檬
+    amount: 1个
+  - name: 海盐
+    amount: 少许
+  - name: 白葡萄酒醋
+    amount: 1汤匙
+  steps:
+  - 将芦笋削成细薄片，泡在蜂蜜海盐水中；雪梨切薄片，泡在柠檬水中，待用。
+  - 将浸泡过的芦笋片和雪梨片混合装盘。
+  - 依次放入混合的核桃燕麦碎、柠檬汁、白葡萄酒醋、橄榄油。
+  - 撒上混合胡椒即可。
+  source:
+    book: 食帖的节气食桌
+    file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
+    chapter: 芦笋雪梨沙拉
+  line_art: assets/line-art/cucumber.svg
+- id: sea-006
+  name: 味噌豆苗牛肉Tapas
+  scene:
+  - seasonal
+  tags:
+  - 节气
+  - 应季
+  - 雨水
+  - 开胃
+  servings: 2
+  cook_time: 135min
+  cost: 约45元
+  method: 炖
+  ingredients:
+  - name: 牛腱肉
+    amount: 100克
+  - name: 白味噌
+    amount: 2汤匙
+  - name: 蜂蜜
+    amount: 1汤匙
+  - name: 金针菇
+    amount: 50克
+  - name: 花椒
+    amount: 20粒
+  - name: 芝麻油
+    amount: 少许
+  - name: 乌鱼汁
+    amount: 少许
+  - name: 豆苗
+    amount: 适量
+  steps:
+  - 牛腱肉提前用白味噌、蜂蜜抹匀腌制一晚。
+  - 牛肉冷水下锅，投去血沫和浮沫，加入白味噌、花椒、小红辣椒炖1.5～2小时。
+  - 金针菇焯水后沥干待用。
+  - 炖好的牛肉沥干汤汁，切小片，和豆苗、金针菇一起装盘。
+  - 将白味噌、芝麻油、乌鱼汁混合成调味酱汁，淋入盘中，撒少许白芝麻、小红辣椒即可。
+  source:
+    book: 食帖的节气食桌
+    file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
+    chapter: 味噌豆苗牛肉Tapas
+  line_art: assets/line-art/beef.svg
+- id: sea-007
+  name: 蒜苗回锅肉
+  scene:
+  - seasonal
+  tags:
+  - 节气
+  - 应季
+  - 惊蛰
+  - 川菜
+  servings: 2
+  cook_time: 30min
+  cost: 约25元
+  method: 炒
+  ingredients:
+  - name: 五花肉
+    amount: 250克
+  - name: 蒜苗
+    amount: 适量
+  - name: 青椒、红椒
+    amount: 适量
+  - name: 姜
+    amount: 适量
+  - name: 八角、香叶
+    amount: 适量
+  - name: 郫县豆瓣酱
+    amount: 1大勺
+  - name: 生抽
+    amount: 1勺
+  - name: 料酒
+    amount: 适量
+  - name: 白糖
+    amount: 适量
+  steps:
+  - 五花肉整块放入锅中，倒入清水没过肉，放入八角、香叶，水沸后继续煮10～15分钟，捞出待用。
+  - 蒜苗切段，青红椒切粗丝，姜切片，肉块切薄片。
+  - 起油锅，热油后放入姜片和肉片煸炒，炒出油脂后盛到碗里待用。
+  - 用余油翻炒蒜苗至半熟，加入肉片、郫县豆瓣酱翻炒。
+  - 用料酒、生抽、白糖调味，倒入青椒、红椒继续翻炒约3分钟即可关火。
+  source:
+    book: 食帖的节气食桌
+    file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
+    chapter: 蒜苗回锅肉
+  line_art: assets/line-art/beef.svg
+- id: sea-008
+  name: 香椿拌豆腐
+  scene:
+  - seasonal
+  tags:
+  - 节气
+  - 应季
+  - 春分
+  - 凉拌
+  servings: 2
+  cook_time: 25min
+  cost: 约15元
+  method: 凉拌
+  ingredients:
+  - name: 香椿
+    amount: 1小把
+  - name: 北豆腐
+    amount: 1块
+  - name: 花椒粒
+    amount: 适量
+  - name: 盐
+    amount: 少许
+  - name: 辣椒面
+    amount: 1大匙
+  steps:
+  - 北豆腐切丁，香椿摘去老梗取嫩叶。
+  - 豆腐丁放入沸水中焯30秒，捞出沥水放入搅拌盆。
+  - 锅中再放入香椿烫15秒，捞出后沥干、切碎，和豆腐丁倒在一起，撒少许盐拌匀，然后撒上辣椒面。
+  - 冷锅冷油，放入花椒粒，小火慢慢炸出香味，捞出花椒，将油烧热，淋在辣椒面上即可。
+  source:
+    book: 食帖的节气食桌
+    file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
+    chapter: 香椿拌豆腐
+  line_art: assets/line-art/tomato.svg
+- id: sea-009
+  name: 樱桃萝卜一夜渍
+  scene:
+  - seasonal
+  tags:
+  - 节气
+  - 应季
+  - 春分
+  - 渍物
+  servings: 2
+  cook_time: 150min
+  cost: 约10元
+  method: 腌
+  ingredients:
+  - name: 樱桃萝卜
+    amount: 1把
+  - name: 绵白糖
+    amount: 2大匙
+  - name: 盐
+    amount: 适量
+  - name: 白醋
+    amount: 2大匙
+  steps:
+  - 樱桃萝卜去根，保留少许缨子，对半切开后再划成薄片（不要切断）。
+  - 萝卜片用盐抓匀，腌制15分钟，待出水后将水倒掉。
+  - 加入绵白糖和白醋，拌匀后放入冰箱冷藏2小时以上即可。
+  source:
+    book: 食帖的节气食桌
+    file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
+    chapter: 樱桃萝卜一夜渍
+  line_art: assets/line-art/cucumber.svg
+- id: sea-010
+  name: 黄油大蒜炒蛤蜊
+  scene:
+  - seasonal
+  tags:
+  - 节气
+  - 应季
+  - 谷雨
+  - 海鲜
+  servings: 2
+  cook_time: 30min
+  cost: 约35元
+  method: 炒
+  ingredients:
+  - name: 蛤蜊
+    amount: 1千克
+  - name: 黄油
+    amount: 20克
+  - name: 蒜
+    amount: 适量
+  - name: 白葡萄酒
+    amount: 100毫升
+  - name: 红辣椒
+    amount: 适量
+  - name: 柠檬
+    amount: 适量
+  - name: 欧芹或香菜
+    amount: 适量
+  - name: 海盐
+    amount: 适量
+  - name: 黑胡椒
+    amount: 适量
+  steps:
+  - 让蛤蜊充分吐沙洗净。
+  - 香菜、大蒜切碎待用。
+  - 中温加热煎锅，放入黄油，待其融化后放入蒜末炒至上色。
+  - 倒入蛤蜊、白葡萄酒和红辣椒，加盖煮至蛤蜊开口。
+  - 最后淋入柠檬汁，用海盐和黑胡椒调味，搅拌均匀即可。
+  source:
+    book: 食帖的节气食桌
+    file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
+    chapter: 黄油大蒜炒蛤蜊
+  line_art: assets/line-art/shrimp.svg
+- id: sea-011
+  name: 越南春卷
+  scene:
+  - seasonal
+  tags:
+  - 节气
+  - 应季
+  - 谷雨
+  - 轻食
+  servings: 4
+  cook_time: 90min
+  cost: 约30元
+  method: 卷
+  ingredients:
+  - name: 越南春卷米皮
+    amount: 12张
+  - name: 干粉丝
+    amount: 350克
+  - name: 黄瓜
+    amount: 1/2根
+  - name: 紫甘蓝
+    amount: 50克
+  - name: 黄彩椒
+    amount: 2个
+  - name: 红彩椒
+    amount: 2个
+  - name: 大叶生菜
+    amount: 适量
+  - name: 胡萝卜
+    amount: 适量
+  steps:
+  - 粉丝煮熟，放凉待用。
+  - 将米皮用热水浸湿后，快速铺平，向内折叠。
+  - 放入粉丝、蔬菜等馅料，卷好即可。
+  - 制作蘸料：小火煮沸后去沫，调好其他次料即可。
+  source:
+    book: 食帖的节气食桌
+    file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
+    chapter: 越南春卷
+  line_art: assets/line-art/cucumber.svg
+- id: sea-012
+  name: 茭白青椒炒蚕豆
+  scene:
+  - seasonal
+  tags:
+  - 节气
+  - 应季
+  - 立夏
+  - 炒
+  servings: 2
+  cook_time: 15min
+  cost: 约15元
+  method: 炒
+  ingredients:
+  - name: 茭白
+    amount: 2根
+  - name: 青椒
+    amount: 适量
+  - name: 蚕豆
+    amount: 1小碗
+  - name: 酱油
+    amount: 1茶匙
+  - name: 糖
+    amount: 少许
+  - name: 盐
+    amount: 少许
+  - name: 白胡椒粉
+    amount: 少许
+  steps:
+  - 茭白、青椒切丝，蚕豆洗净待用。
+  - 蚕豆在盐水中焯1分钟后捞出，放凉后去皮沥干待用。
+  - 热锅倒入适量油，快速翻炒约2分钟。
+  - 倒入茭白丝、蚕豆、1茶匙酱油和少许糖，继续翻炒至出香。
+  - 出锅前倒入盐和少许白胡椒粉调味即可。
+  source:
+    book: 食帖的节气食桌
+    file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
+    chapter: 茭白青椒炒蚕豆
+  line_art: assets/line-art/broccoli.svg
+- id: sea-013
+  name: 麻辣小龙虾
+  scene:
+  - seasonal
+  tags:
+  - 节气
+  - 应季
+  - 立夏
+  - 麻辣
+  servings: 2
+  cook_time: 60min
+  cost: 约60元
+  method: 煮
+  ingredients:
+  - name: 小龙虾
+    amount: 500克
+  - name: 花椒
+    amount: 50克
+  - name: 八角
+    amount: 适量
+  - name: 干辣椒
+    amount: 80克
+  - name: 郫县豆瓣酱
+    amount: 适量
+  - name: 大葱
+    amount: 适量
+  - name: 大蒜
+    amount: 3瓣
+  - name: 姜片
+    amount: 3片
+  - name: 酱油
+    amount: 1茶匙
+  - name: 白糖
+    amount: 1茶匙
+  steps:
+  - 小龙虾清洗干净，剪掉胃部，去除虾线后待用。
+  - 葱切段，大蒜切片待用。
+  - 清水煮小龙虾至水沸腾，捞出小龙虾后留一部分水。
+  - 起油锅，倒入葱、姜、蒜、花椒和干辣椒爆香后，再入其他调料。
+  source:
+    book: 食帖的节气食桌
+    file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
+    chapter: 麻辣小龙虾
+  line_art: assets/line-art/shrimp.svg
+- id: sea-014
+  name: 丝瓜风鸡粥
+  scene:
+  - seasonal
+  tags:
+  - 节气
+  - 应季
+  - 小满
+  - 粥
+  servings: 2
+  cook_time: 40min
+  cost: 约20元
+  method: 煮
+  ingredients:
+  - name: 大米
+    amount: 100克
+  - name: 糯米
+    amount: 50克
+  - name: 鸡胸肉
+    amount: 适量
+  - name: 丝瓜
+    amount: 半根
+  - name: 酱油
+    amount: 少许
+  - name: 盐
+    amount: 少许
+  steps:
+  - 鸡胸肉洗净，撕成丝状，用酱油腌制5分钟；丝瓜去皮切丁。
+  - 大米和糯米混合煮粥，至七分熟时，放入鸡丝和丝瓜。
+  - 再煮5～10分钟，加入少许盐调味即可。
+  source:
+    book: 食帖的节气食桌
+    file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
+    chapter: 丝瓜风鸡粥
+  line_art: assets/line-art/chicken.svg
+- id: sea-015
+  name: 迷迭香烤马铃薯
+  scene:
+  - seasonal
+  tags:
+  - 节气
+  - 应季
+  - 夏至
+  - 烤
+  servings: 2
+  cook_time: 35min
+  cost: 约15元
+  method: 烤
+  ingredients:
+  - name: 马铃薯
+    amount: 300克
+  - name: 大蒜
+    amount: 3瓣
+  - name: 橄榄油
+    amount: 30毫升
+  - name: 迷迭香
+    amount: 适量
+  - name: 盐
+    amount: 少许
+  steps:
+  - 马铃薯留皮切厚片，用厨房纸控干水分。
+  - 食品袋中加入橄榄油、迷迭香和少许盐，轻揉使食材与调料混合均匀。
+  - 烤箱预热10分钟，将马铃薯码在铺好锡纸的烤盘中。
+  - 设定220℃烘烤20分钟，翻面后以200℃再烘烤5分钟，然后取出。
+  - 在马铃薯上淋少许橄榄油增香，用鲜欧芹碎装饰即可。
+  source:
+    book: 食帖的节气食桌
+    file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
+    chapter: 迷迭香烤马铃薯
+  line_art: assets/line-art/potato.svg
+- id: sea-016
+  name: 玉米排骨汤
+  scene:
+  - seasonal
+  tags:
+  - 节气
+  - 应季
+  - 处暑
+  - 汤
+  servings: 3
+  cook_time: 100min
+  cost: 约30元
+  method: 炖
+  ingredients:
+  - name: 排骨
+    amount: 500克
+  - name: 玉米
+    amount: 1根
+  - name: 胡萝卜
+    amount: 1根
+  - name: 姜
+    amount: 3片
+  - name: 料酒
+    amount: 1汤匙
+  - name: 白醋
+    amount: 少许
+  - name: 盐
+    amount: 少许
+  steps:
+  - 玉米、胡萝卜、排骨分别切块。
+  - 将排骨块冷水下锅，焯水沥干待用。
+  - 炖锅中倒适量水，放入排骨、玉米、姜片、料酒、几滴白醋。
+  - 大火烧开后转小火，焖煮1小时。
+  - 放入胡萝卜，再继续煮40分钟，撒少许盐调味即可。
+  source:
+    book: 食帖的节气食桌
+    file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
+    chapter: 玉米排骨汤
+  line_art: assets/line-art/chicken.svg

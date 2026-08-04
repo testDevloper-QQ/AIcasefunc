@@ -1,0 +1,7 @@
+{
+  "skillSource": "git",
+  "localSkillPath": "..",
+  "gitRepoUrl": "在此填写你的 Git 仓库地址，例如 https://gitee.com/用户名/cai-jiu-duo-lian.git",
+  "gitBranch": "main",
+  "gitSkillSubPath": ""
+}

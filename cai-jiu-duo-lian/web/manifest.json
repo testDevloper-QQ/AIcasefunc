@@ -1,0 +1,19 @@
+{
+  "name": "菜就多练",
+  "short_name": "菜就多练",
+  "description": "先定场景，再出好菜 — 场景驱动菜谱推荐",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FFF8E7",
+  "theme_color": "#E8A838",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

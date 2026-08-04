@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#E8A838" />
+  <meta name="description" content="菜就多练 — 先定场景，再出好菜" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>菜就多练</title>
+</head>
+<body>
+  <header>
+    <div class="decor">
+      <img src="icons/decor/tomato.svg" alt="" class="decor-icon" />
+      <img src="icons/decor/egg.svg" alt="" class="decor-icon" />
+      <img src="icons/decor/broccoli.svg" alt="" class="decor-icon" />
+    </div>
+    <h1 class="title-hand">菜就多练</h1>
+    <p class="tagline">先定场景，再出好菜</p>
+    <span class="hint">
+      <img src="icons/sections/sparkle.svg" alt="" class="hint-icon" />
+      点选下方选项，直接在页面获得菜谱推荐
+    </span>
+  </header>
+
+  <form id="recipe-form">
+    <div class="section">
+      <h2>
+        <img src="icons/sections/scene.svg" alt="" class="section-icon" />
+        今天想吃什么？
+        <span class="badge optional">可选</span>
+      </h2>
+      <div class="scene-grid" id="scene-chips">
+        <button type="button" class="scene-card" data-scene="bento">
+          <img src="icons/scenes/bento.svg" alt="" class="scene-icon" />
+          <span class="name">便当</span>
+          <span class="desc">带饭、备餐、上班族</span>
+        </button>
+        <button type="button" class="scene-card" data-scene="light-meal">
+          <img src="icons/scenes/light-meal.svg" alt="" class="scene-icon" />
+          <span class="name">轻食</span>
+          <span class="desc">沙拉、清爽、少负担</span>
+        </button>
+        <button type="button" class="scene-card" data-scene="seasonal">
+          <img src="icons/scenes/seasonal.svg" alt="" class="scene-icon" />
+          <span class="name">时令</span>
+          <span class="desc">节气、应季、鲜味</span>
+        </button>
+        <button type="button" class="scene-card" data-scene="regional">
+          <img src="icons/scenes/regional.svg" alt="" class="scene-icon" />
+          <span class="name">地方味</span>
+          <span class="desc">家乡菜、地域风味</span>
+        </button>
+        <button type="button" class="scene-card" data-scene="health">
+          <img src="icons/scenes/health.svg" alt="" class="scene-icon" />
+          <span class="name">调理</span>
+          <span class="desc">营养、养生、轻调</span>
+        </button>
+        <button type="button" class="scene-card" data-scene="happy">
+          <img src="icons/scenes/happy.svg" alt="" class="scene-icon" />
+          <span class="name">快乐餐</span>
+          <span class="desc">解馋、小吃、轰趴</span>
+        </button>
+      </div>
+      <div class="error" id="scene-error"></div>
+    </div>
+
+    <div class="section">
+      <h2>
+        <img src="icons/sections/ingredients.svg" alt="" class="section-icon" />
+        冰箱里有什么？
+        <span class="badge">至少选 1 个</span>
+      </h2>
+      <div id="ingredient-groups">
+        <div class="ingredient-group">
+          <div class="group-label">
+            <img src="icons/groups/veggie.svg" alt="" class="group-icon" /> 蔬菜
+          </div>
+          <div class="chips">
+            <button type="button" class="chip" data-ingredient="番茄">番茄</button>
+            <button type="button" class="chip" data-ingredient="黄瓜">黄瓜</button>
+            <button type="button" class="chip" data-ingredient="菠菜">菠菜</button>
+            <button type="button" class="chip" data-ingredient="土豆">土豆</button>
+            <button type="button" class="chip" data-ingredient="西兰花">西兰花</button>
+            <button type="button" class="chip" data-ingredient="胡萝卜">胡萝卜</button>
+            <button type="button" class="chip" data-ingredient="蘑菇">蘑菇</button>
+          </div>
+        </div>
+        <div class="ingredient-group">
+          <div class="group-label">
+            <img src="icons/groups/meat.svg" alt="" class="group-icon" /> 肉蛋
+          </div>
+          <div class="chips">
+            <button type="button" class="chip" data-ingredient="鸡蛋">鸡蛋</button>
+            <button type="button" class="chip" data-ingredient="鸡肉">鸡肉</button>
+            <button type="button" class="chip" data-ingredient="牛肉">牛肉</button>
+            <button type="button" class="chip" data-ingredient="猪肉">猪肉</button>
+            <button type="button" class="chip" data-ingredient="虾仁">虾仁</button>
+          </div>
+        </div>
+        <div class="ingredient-group">
+          <div class="group-label">
+            <img src="icons/groups/staple.svg" alt="" class="group-icon" /> 主食
+          </div>
+          <div class="chips">
+            <button type="button" class="chip" data-ingredient="米饭">米饭</button>
+            <button type="button" class="chip" data-ingredient="面条">面条</button>
+            <button type="button" class="chip" data-ingredient="藜麦">藜麦</button>
+            <button type="button" class="chip" data-ingredient="吐司">吐司</button>
+          </div>
+        </div>
+        <div class="ingredient-group">
+          <div class="group-label">
+            <img src="icons/groups/dairy.svg" alt="" class="group-icon" /> 豆奶果
+          </div>
+          <div class="chips">
+            <button type="button" class="chip" data-ingredient="豆腐">豆腐</button>
+            <button type="button" class="chip" data-ingredient="奶酪">奶酪</button>
+            <button type="button" class="chip" data-ingredient="柠檬">柠檬</button>
+            <button type="button" class="chip" data-ingredient="鳄梨">鳄梨</button>
+          </div>
+        </div>
+      </div>
+      <div id="selection-summary" class="selected-summary">还没选呢～先挑个场景和食材吧</div>
+      <div class="error" id="ingredient-error"></div>
+    </div>
+
+    <div class="section">
+      <h2>
+        <img src="icons/sections/taste.svg" alt="" class="section-icon" />
+        口味偏好
+        <span class="badge optional">可选</span>
+      </h2>
+      <input type="text" id="taste" placeholder="清淡、麻辣、汤面、甜点…" />
+    </div>
+
+    <div class="section">
+      <h2>
+        <img src="icons/sections/servings.svg" alt="" class="section-icon" />
+        几人吃？
+        <span class="badge optional">可选</span>
+      </h2>
+      <select id="servings">
+        <option value="">不指定</option>
+        <option value="一人食">一人食</option>
+        <option value="二人家庭">二人家庭</option>
+        <option value="多人家庭">多人家庭</option>
+      </select>
+    </div>
+
+    <div class="section">
+      <h2>
+        <img src="icons/sections/notes.svg" alt="" class="section-icon" />
+        还有别的要求？
+        <span class="badge optional">可选</span>
+      </h2>
+      <input type="text" id="free-text" placeholder="赶时间、没有烤箱、想少洗碗…" />
+    </div>
+
+    <button type="submit" class="primary">
+      <img src="icons/sections/submit.svg" alt="" class="btn-icon" />
+      开始推荐
+    </button>
+  </form>
+
+  <div id="output"></div>
+
+  <p class="footer-note">通过本地服务打开后可添加到手机桌面；手机需与电脑在同一 WiFi</p>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
