@@ -100,6 +100,13 @@ python scripts/ensure_web_server.py --foreground --lan
 
 > Python 路径：优先 `PATH` 中的 `python` / `python3`；也可设置环境变量 `CAIJIU_PYTHON` 指向本机解释器。
 
+**大模型联网家常菜谱**（索引无匹配时）：设置 `OPENAI_API_KEY` 后启动服务，详见 `references/llm-config.md`。
+
+```powershell
+$env:OPENAI_API_KEY = "你的密钥"
+py -3 scripts/ensure_web_server.py --foreground
+```
+
 终端会显示本机地址；加 `-Lan` / `--lan` 时显示 **手机局域网地址**（如 `http://192.168.x.x:8765/`）。
 
 ### 使用步骤

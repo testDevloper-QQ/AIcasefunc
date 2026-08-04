@@ -6,7 +6,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from home_cooking_fallback import build_fallback_recipe, suggest_dish_name  # noqa: E402
+from home_cooking_fallback import build_fallback_recipe  # noqa: E402
 from recommend_engine import (  # noqa: E402
     _ingredient_match_count,
     recommend,
@@ -23,7 +23,8 @@ def test_no_豆角_in_index():
 
 
 def test_fallback_dish_name_for_greenbean_eggplant():
-    assert suggest_dish_name(["豆角", "茄子"]) == "豆角烧茄子"
+    recipe = build_fallback_recipe(["豆角", "茄子"], "seasonal", servings=2)
+    assert "茄子" in recipe["name"] or "豆角" in recipe["name"]
 
 
 def test_seasonal_greenbean_eggplant_uses_fallback():

@@ -357,6 +357,42 @@ button.secondary {
   margin-top: 24px;
 }
 
+.step-text {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  padding: 10px 12px;
+  background: linear-gradient(135deg, rgba(255, 236, 179, 0.98) 0%, rgba(255, 213, 130, 0.82) 100%);
+  border: 1px solid rgba(232, 168, 56, 0.42);
+  border-radius: 12px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.result-shell.result-art-loading .recipe-card,
+.result-shell.result-art-loading .alt-title,
+.result-shell.result-art-loading .result-why {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.result-shell.result-art-loading::after {
+  content: "正在加载手绘线稿…";
+  display: block;
+  text-align: center;
+  color: var(--accent-dark);
+  font-size: 0.92rem;
+  padding: 24px 12px;
+}
+
+.result-shell.result-art-ready .recipe-card {
+  animation: recipeFadeIn 0.35s ease-out;
+}
+
+@keyframes recipeFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .loading {
   text-align: center;
   color: var(--muted);
@@ -657,13 +693,6 @@ button.secondary {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.step-text {
-  margin: 0;
-  font-size: 0.92rem;
-  line-height: 1.6;
-  color: var(--text);
 }
 
 .recipe-header {

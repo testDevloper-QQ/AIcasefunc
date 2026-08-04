@@ -132,6 +132,57 @@ function renderRecipeCard(recipe, isPrimary) {
   `;
 }
 
+function collectImageUrls(root) {
+  if (!root) return [];
+  return [...new Set([...root.querySelectorAll("img[src]")].map((img) => img.getAttribute("src")).filter(Boolean))];
+}
+
+function preloadOne(url, timeoutMs = 12000) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    let done = false;
+    const finish = (ok) => {
+      if (done) return;
+      done = true;
+      resolve({ url, ok });
+    };
+    const timer = setTimeout(() => finish(false), timeoutMs);
+    img.onload = () => {
+      clearTimeout(timer);
+      if (img.decode) {
+        img.decode().then(() => finish(true)).catch(() => finish(true));
+      } else {
+        finish(true);
+      }
+    };
+    img.onerror = () => {
+      clearTimeout(timer);
+      finish(false);
+    };
+    img.src = url;
+  });
+}
+
+async function preloadImages(urls) {
+  const results = await Promise.all(urls.map((url) => preloadOne(url)));
+  const failed = results.filter((r) => !r.ok).map((r) => r.url);
+  if (failed.length) {
+    await Promise.all(failed.map((url) => preloadOne(url, 8000)));
+  }
+  return results;
+}
+
+async function mountResultWithArtReady(outputEl, html) {
+  outputEl.innerHTML = `<div class="result-shell result-art-loading">${html}</div>`;
+  const shell = outputEl.querySelector(".result-shell");
+  const urls = collectImageUrls(shell);
+  if (urls.length) {
+    await preloadImages(urls);
+  }
+  shell.classList.remove("result-art-loading");
+  shell.classList.add("result-art-ready");
+}
+
 function renderResult(data) {
   const why = data.why ? `<p class="result-why">${escapeHtml(data.why)}</p>` : "";
   const primary = renderRecipeCard(data.primary, true);
@@ -237,8 +288,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     submitBtn.disabled = true;
-    submitBtn.textContent = "正在推荐…";
-    outputEl.innerHTML = '<p class="loading">正在调用 Skill 为你选菜…</p>';
+    submitBtn.textContent = "正在搜索菜谱并绘制线稿…";
+    outputEl.innerHTML = '<p class="loading">正在搜索高频家常菜谱，并预加载手绘线稿…</p>';
     outputEl.classList.add("visible");
 
     try {
@@ -251,7 +302,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!res.ok || !data.ok) {
         throw new Error(data.error || `请求失败 (${res.status})`);
       }
-      outputEl.innerHTML = renderResult(data);
+      outputEl.innerHTML = '<p class="loading">线稿绘制中，请稍候…</p>';
+      await mountResultWithArtReady(outputEl, renderResult(data));
       outputEl.scrollIntoView({ behavior: "smooth", block: "start" });
     } catch (ex) {
       outputEl.innerHTML = `<p class="error-block">出错了：${escapeHtml(ex.message)}<br><small>请运行 <code>python scripts/ensure_web_server.py</code> 确保 Web 服务已启动，而非直接打开 html 文件。</small></p>`;

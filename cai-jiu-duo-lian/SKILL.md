@@ -5,7 +5,7 @@ description: |
   从预建索引推荐可执行菜谱；中国计量、膳食指南份量、≤60分钟、默认快乐餐。
   支持网页在线推荐与 Git 远程 Skill。暖黄手绘线稿风。
 argument-hint: "[场景或食材，如：轻食 鸡蛋 番茄]"
-version: "1.3.0"
+version: "1.4.0"
 user-invocable: true
 ---
 
@@ -121,7 +121,7 @@ python scripts/recommend_cli.py --ingredients 鸡蛋,番茄 --scene happy --serv
 
 - **中国计量**：禁止输出未换算的英美单位（见 measurement-cn.md）
 - **不捏造**、**不反向推荐**、**份量匹配**、**时长 ≤ 60min**
-- **食材对应**：用户选了食材时，推荐菜必须包含这些食材；索引无匹配时走 **AI 家常菜**（`home_cooking_fallback.py`），禁止推食材无关的菜
+- **食材对应**：用户选了食材时，推荐菜必须包含这些食材；索引无匹配时走 **网络搜索 + 大模型** 生成家常菜谱（`llm_recipe_search.py`），未配置 API 时降级离线模板
 - **health 场景**加「仅供参考，非医疗建议」
 - **v1 不含**：拍照识材、小红书、LLM 编造菜谱
 

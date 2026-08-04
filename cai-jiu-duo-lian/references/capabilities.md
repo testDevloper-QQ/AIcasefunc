@@ -10,6 +10,7 @@
 | 三种入口 | 场景 / 食材 / 指定需求 | 对话 + 网页表单 |
 | 默认快乐餐 | 用户未选场景 → `happy` | `recommend_engine.py` |
 | 自定义食材 | 示例外食材输入框 | 网页 + `customIngredients` API |
+| LLM 家常菜谱 | 索引无匹配时联网搜索 + 大模型 | `llm_recipe_search.py` + `OPENAI_API_KEY` |
 | 时长过滤 | 仅推荐 ≤ 60 分钟 | `recipe_format.is_quick_recipe` |
 | 家庭份量换算 | 批量配方 → 家庭克数 | `recipe_format.normalize_ingredients` |
 | 膳食指南 QA | 输出前份量校验 | `dietary-guidelines-cn.md` + `validate_home_output` |

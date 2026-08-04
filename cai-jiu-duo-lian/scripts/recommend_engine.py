@@ -149,6 +149,7 @@ def format_recipe(
         "heroImageUrl": art_url,
         "heroArts": hero_arts,
         "generated": bool(recipe.get("generated")),
+        "llmGenerated": bool(recipe.get("llmGenerated")),
         "disclaimer": "仅供参考，非医疗建议" if "health" in (recipe.get("scene") or []) else None,
     }
     if formatted["generated"]:
@@ -222,9 +223,16 @@ def recommend(
         why_parts.append(f"符合「{scene_labels.get(effective_scene, effective_scene)}」饮食偏好")
     if all_ingredients:
         if used_fallback:
-            why_parts.append(
-                f"索引暂无含 {'、'.join(all_ingredients)} 的菜谱，已按中国家常菜生成「{primary['name']}」"
-            )
+            src = primary.get("source", {}).get("book", "")
+            if primary.get("llmGenerated"):
+                why_parts.append(
+                    f"索引暂无含 {'、'.join(all_ingredients)} 的菜谱，已通过 **网络搜索+大模型** 生成「{primary['name']}」"
+                )
+            else:
+                why_parts.append(
+                    f"索引暂无含 {'、'.join(all_ingredients)} 的菜谱，已生成「{primary['name']}」"
+                    f"（未配置 OPENAI_API_KEY 时使用离线模板）"
+                )
         else:
             why_parts.append(f"食材对应：{'、'.join(all_ingredients)} 均在推荐菜中出现")
     if not scene:
