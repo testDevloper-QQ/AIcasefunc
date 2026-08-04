@@ -22,7 +22,10 @@ EXCLUDE_DIRS = {
     "web/.skill-cache",
     "参考书籍",
 }
-EXCLUDE_FILES = {".skill-cache"}
+# 不影响用户侧使用 Skill 的内部/本地文档，不提交远程
+EXCLUDE_FILES = {
+    "skill生成需求背景.md",
+}
 
 
 def run(args: list[str], *, cwd: Path | None = None, check: bool = True) -> subprocess.CompletedProcess[str]:
@@ -37,24 +40,69 @@ def run(args: list[str], *, cwd: Path | None = None, check: bool = True) -> subp
     )
 
 
+EXCLUDE_GLOBS_IN_TREE = ("*.pdf", "*.epub", "*.docx")
+
+
+def _should_skip_top(name: str) -> bool:
+    return name in EXCLUDE_DIRS or name in EXCLUDE_FILES or name.startswith(".")
+
+
+def verify_packaging(target_dir: Path) -> list[str]:
+    """Return list of violations if excluded content leaked into deploy tree."""
+    violations: list[str] = []
+    for name in EXCLUDE_FILES:
+        if (target_dir / name).exists():
+            violations.append(f"不应包含文件: {name}")
+    for name in EXCLUDE_DIRS - {".git", ".skill-cache", "__pycache__", ".pytest_cache", "web/.skill-cache"}:
+        p = target_dir / name
+        if p.exists():
+            violations.append(f"不应包含目录: {name}/")
+    cache = target_dir / "web" / ".skill-cache"
+    if cache.exists():
+        violations.append("不应包含目录: web/.skill-cache/")
+    for ext in (".pdf", ".epub", ".docx"):
+        for hit in target_dir.rglob(f"*{ext}"):
+            if hit.is_file():
+                violations.append(f"不应包含: {hit.relative_to(target_dir)}")
+    return violations
+
+
 def copy_skill(target_dir: Path) -> None:
     if target_dir.exists():
         shutil.rmtree(target_dir)
     target_dir.mkdir(parents=True)
 
+    skipped: list[str] = []
+    copied: list[str] = []
     for item in SKILL_ROOT.iterdir():
         name = item.name
-        if name in EXCLUDE_DIRS or name.startswith("."):
+        if _should_skip_top(name):
+            skipped.append(name)
             continue
         dest = target_dir / name
         if item.is_dir():
             shutil.copytree(
                 item,
                 dest,
-                ignore=shutil.ignore_patterns("__pycache__", "*.pyc", ".pytest_cache", ".skill-cache"),
+                ignore=shutil.ignore_patterns(
+                    "__pycache__", "*.pyc", ".pytest_cache", ".skill-cache",
+                    "*.pdf", "*.epub", "*.docx",
+                ),
             )
         else:
             shutil.copy2(item, dest)
+        copied.append(name)
+
+    print("[pack] 已排除:", ", ".join(skipped) if skipped else "(无)")
+    print("[pack] 已复制:", ", ".join(copied))
+
+    violations = verify_packaging(target_dir)
+    if violations:
+        print("[FAIL] 打包校验未通过:")
+        for v in violations:
+            print(f"  - {v}")
+        raise RuntimeError("打包包含不应提交的内容，已中止")
+    print("[pack] 校验通过：未包含内部文档、参考书籍、缓存与大文件")
 
     # 远程 config 使用 git 自引用
     config_path = target_dir / "web" / "config.json"

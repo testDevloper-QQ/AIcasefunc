@@ -110,13 +110,15 @@ class Handler(BaseHTTPRequestHandler):
         try:
             data = self._read_json_body()
             ingredients = data.get("ingredients") or []
-            if not ingredients:
-                self._send_json(400, {"error": "请至少选择一种食材"})
+            custom = data.get("customIngredients") or []
+            if not ingredients and not custom:
+                self._send_json(400, {"error": "请至少选择或输入一种食材"})
                 return
             result = recommend(
                 self.skill_root,
                 scene=data.get("scene") or None,
                 ingredients=ingredients,
+                custom_ingredients=custom,
                 taste=(data.get("taste") or "").strip(),
                 servings_label=(data.get("servings") or "").strip(),
                 free_text=(data.get("freeText") or "").strip(),

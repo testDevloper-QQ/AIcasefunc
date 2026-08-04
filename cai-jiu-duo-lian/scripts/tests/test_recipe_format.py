@@ -1,0 +1,143 @@
+#!/usr/bin/env python3
+"""Tests for home-cooking recipe formatting."""
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from recipe_format import (  # noqa: E402
+    MAX_COOK_MINUTES,
+    is_quick_recipe,
+    normalize_ingredients,
+    parse_cook_time_minutes,
+    validate_home_output,
+)
+from recommend_engine import recommend  # noqa: E402
+
+
+DENGYING = {
+    "id": "reg-001",
+    "name": "灯影牛肉",
+    "scene": ["regional"],
+    "tags": ["川渝", "牛肉"],
+    "servings": 4,
+    "cook_time": "480min",
+    "ingredients": [
+        {"name": "精瘦牛肉", "amount": "100公斤（按比例）"},
+        {"name": "盐", "amount": "2公斤（每100公斤肉）"},
+        {"name": "糖", "amount": "1公斤（每100公斤肉）"},
+    ],
+    "steps": ["切薄片", "腌制", "慢烤"],
+    "source": {"book": "食遍中国"},
+}
+
+
+def test_commercial_batch_normalized_for_one_person():
+    result = normalize_ingredients(DENGYING, 1)
+    amounts = " ".join(i["amount"] for i in result)
+    assert "100公斤" not in amounts
+    assert "2公斤" not in amounts
+    assert "1公斤" not in amounts
+    beef = next(i for i in result if "牛肉" in i["name"])
+    assert "75" in beef["amount"] or "50" in beef["amount"]
+    assert "膳食指南" in beef["amount"]
+
+
+def test_default_scene_is_happy(tmp_path):
+    index = tmp_path / "data" / "recipe-index"
+    index.mkdir(parents=True)
+    (index / "happy.yaml").write_text(
+        """
+- id: h1
+  name: 快乐小食
+  scene: [happy]
+  tags: [小吃]
+  servings: 1
+  cook_time: 15min
+  cost: 约10元
+  method: 煎
+  ingredients:
+  - name: 鸡蛋
+    amount: 1个
+  steps: [煎]
+  source: {book: test}
+- id: r1
+  name: 地方老菜
+  scene: [regional]
+  tags: [川渝]
+  servings: 1
+  cook_time: 20min
+  cost: 约10元
+  method: 炒
+  ingredients:
+  - name: 鸡蛋
+    amount: 1个
+  steps: [炒]
+  source: {book: test}
+""".strip(),
+        encoding="utf-8",
+    )
+    (tmp_path / "SKILL.md").write_text("# test", encoding="utf-8")
+    result = recommend(tmp_path, scene=None, ingredients=["鸡蛋"])
+    assert result["primary"]["name"] == "快乐小食"
+    assert "快乐餐" in result["why"]
+
+
+def test_slow_recipe_filtered():
+    assert not is_quick_recipe(DENGYING)
+    assert parse_cook_time_minutes("45min") == 45
+    assert parse_cook_time_minutes("480min") == 480
+
+
+def test_validate_home_output_flags_bad_amounts():
+    bad = {
+        "cookTime": "30min",
+        "ingredients": [{"name": "盐", "amount": "500克"}],
+    }
+    issues = validate_home_output(bad)
+    assert any("盐" in i for i in issues)
+
+
+def test_recommend_excludes_over_one_hour(tmp_path):
+    index = tmp_path / "data" / "recipe-index"
+    index.mkdir(parents=True)
+    (index / "regional.yaml").write_text(
+        """
+- id: slow
+  name: 灯影牛肉
+  scene: [regional]
+  tags: [川渝, 牛肉]
+  servings: 4
+  cook_time: 480min
+  cost: 约80元
+  method: 烤
+  ingredients:
+  - name: 牛肉
+    amount: 100公斤
+  steps: [慢烤]
+  source: {book: 食遍中国}
+- id: fast
+  name: 快手炒牛肉
+  scene: [regional]
+  tags: [川渝, 牛肉]
+  servings: 2
+  cook_time: 25min
+  cost: 约20元
+  method: 炒
+  ingredients:
+  - name: 牛肉
+    amount: 200克
+  - name: 番茄
+    amount: 1个
+  steps: [切肉, 快炒]
+  source: {book: 食遍中国}
+""".strip(),
+        encoding="utf-8",
+    )
+    (tmp_path / "SKILL.md").write_text("# test", encoding="utf-8")
+
+    result = recommend(tmp_path, scene="regional", ingredients=["牛肉", "番茄"])
+    assert result["primary"]["name"] == "快手炒牛肉"
+    assert parse_cook_time_minutes(result["primary"]["cookTime"]) <= MAX_COOK_MINUTES

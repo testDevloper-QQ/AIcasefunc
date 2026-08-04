@@ -9,20 +9,31 @@ const SCENES = [
 
 const SCENE_LABELS = Object.fromEntries(SCENES.map((s) => [s.id, s.label]));
 
-function validateForm(ingredients) {
-  if (!ingredients.length) return "请至少选择一种食材";
+function validateForm(ingredients, customIngredients) {
+  if (!ingredients.length && !customIngredients.length) return "请至少选择或输入一种食材";
   return "";
 }
 
-function updateSummary(selectedScene, selectedIngredients) {
+function parseCustomInput(raw) {
+  return raw
+    .split(/[,，、/\s]+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
+function updateSummary(selectedScene, selectedIngredients, customIngredients) {
   const el = document.getElementById("selection-summary");
   if (!el) return;
   const parts = [];
   if (selectedScene) {
     parts.push(`偏好：${SCENE_LABELS[selectedScene] || selectedScene}`);
   }
-  if (selectedIngredients.size) {
-    parts.push(`食材：${[...selectedIngredients].join("、")}`);
+  const all = [...selectedIngredients, ...customIngredients];
+  if (all.length) {
+    parts.push(`食材：${all.join("、")}`);
+  }
+  if (!selectedScene) {
+    parts.push("默认：快乐餐");
   }
   el.textContent = parts.length ? parts.join("  ·  ") : "还没选呢～先挑想吃的类型或食材吧";
   el.classList.toggle("has-selection", parts.length > 0);
@@ -39,7 +50,14 @@ function renderRecipeCard(recipe, title, isPrimary) {
     .map((i) => `<li>${escapeHtml(i.name)} ${escapeHtml(i.amount || "")}</li>`)
     .join("");
   const steps = (recipe.steps || [])
-    .map((s, idx) => `<li>${escapeHtml(s)}</li>`)
+    .map((s, idx) => {
+      const text = typeof s === "string" ? s : s.text || "";
+      const icon = typeof s === "object" && s.icon ? s.icon : `/icons/steps/prep.svg`;
+      return `<li class="step-item">
+        <img class="step-icon" src="${escapeHtml(icon)}" alt="" />
+        <span>${escapeHtml(text)}</span>
+      </li>`;
+    })
     .join("");
   const img = recipe.lineArtUrl
     ? `<img class="recipe-art" src="${escapeHtml(recipe.lineArtUrl)}" alt="" />`
@@ -86,8 +104,46 @@ function renderResult(data) {
 document.addEventListener("DOMContentLoaded", () => {
   let selectedScene = null;
   const selectedIngredients = new Set();
+  const customIngredients = new Set();
   const outputEl = document.getElementById("output");
   const submitBtn = document.querySelector("button.primary");
+  const customInput = document.getElementById("custom-ingredient");
+  const customChipsEl = document.getElementById("custom-ingredient-chips");
+
+  function renderCustomChips() {
+    customChipsEl.innerHTML = [...customIngredients]
+      .map(
+        (name) =>
+          `<button type="button" class="chip selected custom" data-custom="${escapeHtml(name)}">${escapeHtml(name)} ×</button>`
+      )
+      .join("");
+    customChipsEl.querySelectorAll("[data-custom]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        customIngredients.delete(btn.dataset.custom);
+        renderCustomChips();
+        updateSummary(selectedScene, selectedIngredients, customIngredients);
+      });
+    });
+  }
+
+  function addCustomIngredients(raw) {
+    parseCustomInput(raw).forEach((name) => customIngredients.add(name));
+    customInput.value = "";
+    renderCustomChips();
+    document.getElementById("ingredient-error").textContent = "";
+    updateSummary(selectedScene, selectedIngredients, customIngredients);
+  }
+
+  document.getElementById("add-custom-ingredient").addEventListener("click", () => {
+    addCustomIngredients(customInput.value);
+  });
+
+  customInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      addCustomIngredients(customInput.value);
+    }
+  });
 
   document.querySelectorAll(".scene-card").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -100,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".scene-card").forEach((c) => c.classList.remove("selected"));
         btn.classList.add("selected");
       }
-      updateSummary(selectedScene, selectedIngredients);
+      updateSummary(selectedScene, selectedIngredients, customIngredients);
     });
   });
 
@@ -115,14 +171,15 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.classList.add("selected");
       }
       document.getElementById("ingredient-error").textContent = "";
-      updateSummary(selectedScene, selectedIngredients);
+      updateSummary(selectedScene, selectedIngredients, customIngredients);
     });
   });
 
   document.getElementById("recipe-form").addEventListener("submit", async (e) => {
     e.preventDefault();
     const ingredients = [...selectedIngredients];
-    const err = validateForm(ingredients);
+    const custom = [...customIngredients];
+    const err = validateForm(ingredients, custom);
     if (err) {
       document.getElementById("ingredient-error").textContent = err;
       outputEl.classList.remove("visible");
@@ -132,6 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const payload = {
       scene: selectedScene,
       ingredients,
+      customIngredients: custom,
       taste: document.getElementById("taste").value.trim(),
       servings: document.getElementById("servings").value,
       freeText: document.getElementById("free-text").value.trim(),
@@ -166,5 +224,5 @@ document.addEventListener("DOMContentLoaded", () => {
     navigator.serviceWorker.register("/sw.js").catch(() => {});
   }
 
-  updateSummary(selectedScene, selectedIngredients);
+  updateSummary(selectedScene, selectedIngredients, customIngredients);
 });
