@@ -154,7 +154,10 @@ def main() -> int:
         copy_skill(skill_target)
 
         print("[3/4] 提交 …")
-        commit_all(work, f"feat: add {SKILL_SUBDIR} skill")
+        commit_all(
+            work,
+            "feat(cai-jiu-duo-lian): v1.10.2 Plan B illustrations, AskQuestion, web fixes",
+        )
 
         print("[4/4] 推送到 GitHub …")
         push = run([GIT, "push", "origin", "main"], cwd=work, check=False)

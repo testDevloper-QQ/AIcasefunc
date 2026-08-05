@@ -13,10 +13,11 @@ from recipe_format import (
     enrich_ingredients,
     format_cook_time_cn,
     format_steps,
-    ingredient_art_url,
+    ingredient_matches_in_text,
     is_quick_recipe,
     normalize_ingredients,
     parse_cook_time_minutes,
+    reference_book_match_score,
     validate_home_output,
 )
 
@@ -37,10 +38,13 @@ def load_all_recipes(skill_root: Path) -> list[dict[str, Any]]:
 
 
 def _recipe_haystack(recipe: dict) -> str:
+    steps = recipe.get("steps") or []
+    step_text = " ".join(s if isinstance(s, str) else s.get("text", "") for s in steps)
     return " ".join([
         recipe.get("name", ""),
         " ".join(recipe.get("tags", [])),
         " ".join(i.get("name", "") for i in recipe.get("ingredients", [])),
+        step_text,
     ])
 
 
@@ -48,7 +52,7 @@ def _ingredient_match_count(recipe: dict, user_ingredients: list[str]) -> int:
     if not user_ingredients:
         return 0
     hay = _recipe_haystack(recipe)
-    return sum(1 for u in user_ingredients if u and u in hay)
+    return sum(1 for u in user_ingredients if u and ingredient_matches_in_text(hay, u))
 
 
 def _matches_all_user_ingredients(recipe: dict, user_ingredients: list[str]) -> bool:
@@ -62,6 +66,8 @@ def score_recipe(
     scene: str | None,
     user_ingredients: list[str],
     taste: str,
+    *,
+    free_text: str = "",
 ) -> float:
     score = 0.0
     scenes = recipe.get("scene") or []
@@ -76,9 +82,9 @@ def score_recipe(
             score += 25
 
     if effective in scenes:
-        score += 8
+        score += 15
     elif user_ingredients:
-        score -= 2
+        score -= 5
     else:
         score -= 3
 
@@ -92,26 +98,16 @@ def score_recipe(
         score += 2
     elif minutes <= MAX_COOK_MINUTES:
         score += 1
+
+    score += reference_book_match_score(recipe, taste, free_text)
+
     return score
 
 
-def _hero_arts(recipe: dict, skill_root: Path, user_ingredients: list[str]) -> list[str]:
-    arts: list[str] = []
-    line_art = (recipe.get("line_art") or "").replace("\\", "/").lstrip("/")
-    if line_art and (skill_root / line_art).exists():
-        arts.append(f"/skill-assets/{line_art}")
+def _resolve_hero(recipe: dict, skill_root: Path) -> tuple[str, str]:
+    from illustration_resolver import resolve_dish_illustration
 
-    for ing in recipe.get("ingredients") or []:
-        url = ingredient_art_url(ing.get("name", ""), skill_root)
-        if url and url not in arts:
-            arts.append(url)
-
-    for name in user_ingredients:
-        url = ingredient_art_url(name, skill_root)
-        if url and url not in arts:
-            arts.append(url)
-
-    return arts[:4]
+    return resolve_dish_illustration(recipe, skill_root)
 
 
 def format_recipe(
@@ -121,11 +117,10 @@ def format_recipe(
     user_ingredients: list[str] | None = None,
 ) -> dict:
     src = recipe.get("source") or {}
-    hero_arts = _hero_arts(recipe, skill_root, user_ingredients or [])
-    art_url = hero_arts[0] if hero_arts else ""
+    hero_composite, hero_source = _resolve_hero(recipe, skill_root)
 
     ingredients = enrich_ingredients(normalize_ingredients(recipe, target_servings), skill_root)
-    steps = format_steps(recipe.get("steps") or [], ingredients, skill_root)
+    steps = format_steps(recipe.get("steps") or [], ingredients, skill_root, recipe_id=recipe.get("id"))
     cook_time = recipe.get("cook_time") or "20min"
     cook_time_display = format_cook_time_cn(cook_time)
 
@@ -145,18 +140,14 @@ def format_recipe(
             "book": src.get("book"),
             "chapter": src.get("chapter"),
         },
-        "lineArtUrl": art_url,
-        "heroImageUrl": art_url,
-        "heroArts": hero_arts,
+        "heroIllustrationUrl": hero_composite or None,
+        "heroIllustrationSource": hero_source if hero_composite else "missing",
         "generated": bool(recipe.get("generated")),
         "llmGenerated": bool(recipe.get("llmGenerated")),
         "disclaimer": "仅供参考，非医疗建议" if "health" in (recipe.get("scene") or []) else None,
     }
     if formatted["generated"]:
         formatted["disclaimer"] = "索引未收录该食材组合，以下为 AI 家常菜建议，请按口味调整。"
-    qa = validate_home_output(formatted, servings=target_servings or recipe.get("servings") or 1)
-    if qa:
-        formatted["qualityNotes"] = qa
     return formatted
 
 
@@ -204,10 +195,10 @@ def recommend(
 
     ranked = sorted(
         ingredient_pool,
-        key=lambda r: score_recipe(r, effective_scene, all_ingredients, combined_taste),
+        key=lambda r: score_recipe(r, effective_scene, all_ingredients, combined_taste, free_text=free_text),
         reverse=True,
     )
-    top = [r for r in ranked if score_recipe(r, effective_scene, all_ingredients, combined_taste) > 0][:3]
+    top = [r for r in ranked if score_recipe(r, effective_scene, all_ingredients, combined_taste, free_text=free_text) > 0][:3]
     if not top:
         top = ranked[:3]
 
@@ -239,6 +230,11 @@ def recommend(
         why_parts.append("未选场景，默认按「快乐餐」推荐")
     why_parts.append(f"烹饪时间均在 {MAX_COOK_MINUTES} 分钟内")
     why_parts.append(f"份量已对标{GUIDELINE_REF}核验")
+    book_hint = reference_book_match_score(top[0], combined_taste, free_text)
+    if book_hint > 0 and free_text.strip():
+        src_book = (top[0].get("source") or {}).get("book") or ""
+        if src_book:
+            why_parts.append(f"参考书籍匹配：{src_book}")
 
     return {
         "primary": primary,

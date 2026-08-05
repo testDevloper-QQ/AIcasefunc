@@ -35,7 +35,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/strawberry.svg
 - id: lig-009
   name: 樱桃沐昔
   scene:
@@ -70,7 +69,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/strawberry.svg
 - id: lig-017
   name: 鸡肉蛋黄酱沙拉馅西红柿
   scene:
@@ -112,7 +110,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/tomato.svg
 - id: lig-019
   name: 西红柿香草沙拉
   scene:
@@ -152,7 +149,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/tomato.svg
 - id: lig-020
   name: 黄瓜洋葱沙拉
   scene:
@@ -192,7 +188,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/cucumber.svg
 - id: lig-026
   name: 鸡肉沙拉配罗望子树调味汁
   scene:
@@ -239,7 +234,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/chicken.svg
 - id: lig-029
   name: 消炎沙拉拼盘
   scene:
@@ -278,7 +272,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/cucumber.svg
 - id: lig-031
   name: 鳄梨西红柿沙拉
   scene:
@@ -321,7 +314,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/avocado.svg
 - id: lig-032
   name: 西兰花核桃沙拉
   scene:
@@ -358,7 +350,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/broccoli.svg
 - id: lig-033
   name: 菠菜草莓沙拉
   scene:
@@ -393,7 +384,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/spinach.svg
 - id: lig-034
   name: 南瓜西葫芦沙拉
   scene:
@@ -439,7 +429,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/pumpkin.svg
 - id: lig-035
   name: 拔丝鸡肉蔬菜沙拉
   scene:
@@ -475,7 +464,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/chicken.svg
 - id: lig-036
   name: 鳄梨玉米沙拉
   scene:
@@ -517,7 +505,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/avocado.svg
 - id: lig-037
   name: 绿色花园沙拉
   scene:
@@ -553,7 +540,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/tomato.svg
 - id: lig-038
   name: 青豆沙拉
   scene:
@@ -593,7 +579,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/tomato.svg
 - id: lig-039
   name: 胡萝卜蜂蜜沙拉
   scene:
@@ -627,7 +612,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/carrot.svg
 - id: lig-040
   name: 黑鹰嘴豆沙拉
   scene:
@@ -668,7 +652,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/onion.svg
 - id: lig-060
   name: 鸡肉莴笋沙拉
   scene:
@@ -712,7 +695,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/chicken.svg
 - id: lig-066
   name: 菠萝芒果姜黄沐昔
   scene:
@@ -750,7 +732,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/tomato.svg
 - id: lig-067
   name: 菠菜菠萝沐昔
   scene:
@@ -783,7 +764,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/spinach.svg
 - id: lig-068
   name: 豆浆草莓沐昔
   scene:
@@ -814,7 +794,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/strawberry.svg
 - id: lig-069
   name: 草莓覆盆子姜沐昔
   scene:
@@ -850,7 +829,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/strawberry.svg
 - id: lig-070
   name: 橘子胡萝卜沐昔
   scene:
@@ -883,7 +861,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/carrot.svg
 - id: lig-071
   name: 鳄梨菠菜沐昔
   scene:
@@ -918,7 +895,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/avocado.svg
 - id: lig-073
   name: 蓝莓沐昔
   scene:
@@ -953,7 +929,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/tomato.svg
 - id: lig-074
   name: 木瓜杏仁沐昔
   scene:
@@ -988,7 +963,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/tomato.svg
 - id: lig-075
   name: 姜黄酸奶沐昔
   scene:
@@ -1020,7 +994,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/tomato.svg
 - id: lig-076
   name: 猕猴桃菠菜沐昔
   scene:
@@ -1050,7 +1023,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/spinach.svg
 - id: lig-077
   name: 蜜桃甜橙沐昔
   scene:
@@ -1078,7 +1050,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/tomato.svg
 - id: lig-078
   name: 香蕉杏仁红枣沐昔
   scene:
@@ -1110,7 +1081,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/tomato.svg
 - id: lig-079
   name: 樱桃葡萄柚沐昔
   scene:
@@ -1138,7 +1108,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/tomato.svg
 - id: lig-080
   name: 椰子水柠檬沐昔
   scene:
@@ -1168,7 +1137,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/cucumber.svg
 - id: lig-081
   name: 菠萝沐昔
   scene:
@@ -1194,7 +1162,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/tomato.svg
 - id: lig-082
   name: 草莓酸奶沐昔
   scene:
@@ -1222,7 +1189,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/strawberry.svg
 - id: lig-083
   name: 草莓黑莓沐昔
   scene:
@@ -1252,7 +1218,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/strawberry.svg
 - id: lig-084
   name: 芒果草莓沐昔
   scene:
@@ -1280,7 +1245,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/strawberry.svg
 - id: lig-085
   name: 鳄梨香蕉沐昔
   scene:
@@ -1309,4 +1273,3 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/avocado.svg

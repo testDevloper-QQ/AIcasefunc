@@ -78,7 +78,6 @@ def _template_fallback(ingredients: list[str], scene: str, servings: int) -> dic
             "book": "AI 家常菜建议（离线模板）",
             "chapter": f"根据{'、'.join(ingredients)}组合生成",
         },
-        "line_art": "",
         "generated": True,
         "llmGenerated": False,
     }

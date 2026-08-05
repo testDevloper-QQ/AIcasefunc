@@ -38,8 +38,12 @@ def test_seasonal_greenbean_eggplant_uses_fallback():
     assert result["primary"]["name"] == "豆角烧茄子"
     assert "豆角" in result["primary"]["name"] or any("豆角" in i["name"] for i in result["primary"]["ingredients"])
     assert any("茄子" in i["name"] for i in result["primary"]["ingredients"])
-    assert result["primary"]["heroArts"]
-    assert "greenbean" in result["primary"]["heroArts"][0] or "eggplant" in " ".join(result["primary"]["heroArts"])
+    hero = result["primary"].get("heroIllustrationUrl") or result["primary"].get("heroCompositeUrl")
+    if hero:
+        assert hero.startswith("/skill-assets/")
+        assert hero.endswith(".png") or hero.endswith(".webp")
+    else:
+        assert result["primary"].get("heroIllustrationSource") == "missing"
 
 
 def test_tomato_egg_index_match_not_shrimp():
@@ -52,6 +56,29 @@ def test_tomato_egg_index_match_not_shrimp():
     hay = name + " ".join(i["name"] for i in result["primary"]["ingredients"])
     assert "番茄" in hay or "鸡蛋" in hay
     assert "虾仁" not in name or ("番茄" in hay and "鸡蛋" in hay)
+
+
+def test_seasonal_chicken_not_shrimp():
+    result = recommend(
+        SKILL_ROOT,
+        scene="seasonal",
+        ingredients=["鸡肉"],
+    )
+    name = result["primary"]["name"]
+    hay = name + " ".join(i["name"] for i in result["primary"]["ingredients"])
+    assert "虾仁" not in name and "虾" not in name.replace("龙虾", ""), f"unexpected seafood: {name}"
+    assert any(
+        k in hay for k in ("鸡", "鸡肉", "鸡胸")
+    ), f"expected chicken dish, got {name} / {hay}"
+
+
+def test_seasonal_chicken_prefers_seasonal_index():
+    result = recommend(
+        SKILL_ROOT,
+        scene="seasonal",
+        ingredients=["鸡肉"],
+    )
+    assert result["primary"]["name"] == "丝瓜风鸡粥"
 
 
 def test_zero_match_scores_negative():

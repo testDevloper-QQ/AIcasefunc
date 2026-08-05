@@ -33,7 +33,6 @@
     book: 食帖的节气食桌
     file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
     chapter: 腌笃鲜
-  line_art: assets/line-art/chicken.svg
 - id: sea-002
   name: 水芹炒虾仁
   scene:
@@ -68,7 +67,6 @@
     book: 食帖的节气食桌
     file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
     chapter: 水芹炒虾仁
-  line_art: assets/line-art/shrimp.svg
 - id: sea-003
   name: 葱油豆腐
   scene:
@@ -101,7 +99,6 @@
     book: 食帖的节气食桌
     file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
     chapter: 葱油豆腐
-  line_art: assets/line-art/tomato.svg
 - id: sea-004
   name: 豆芽小银鱼意面
   scene:
@@ -142,7 +139,6 @@
     book: 食帖的节气食桌
     file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
     chapter: 豆芽小银鱼意面
-  line_art: assets/line-art/noodle.svg
 - id: sea-005
   name: 芦笋雪梨沙拉
   scene:
@@ -184,7 +180,6 @@
     book: 食帖的节气食桌
     file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
     chapter: 芦笋雪梨沙拉
-  line_art: assets/line-art/cucumber.svg
 - id: sea-006
   name: 味噌豆苗牛肉Tapas
   scene:
@@ -225,7 +220,6 @@
     book: 食帖的节气食桌
     file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
     chapter: 味噌豆苗牛肉Tapas
-  line_art: assets/line-art/beef.svg
 - id: sea-007
   name: 蒜苗回锅肉
   scene:
@@ -268,7 +262,6 @@
     book: 食帖的节气食桌
     file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
     chapter: 蒜苗回锅肉
-  line_art: assets/line-art/beef.svg
 - id: sea-008
   name: 香椿拌豆腐
   scene:
@@ -302,7 +295,6 @@
     book: 食帖的节气食桌
     file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
     chapter: 香椿拌豆腐
-  line_art: assets/line-art/tomato.svg
 - id: sea-009
   name: 樱桃萝卜一夜渍
   scene:
@@ -333,7 +325,6 @@
     book: 食帖的节气食桌
     file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
     chapter: 樱桃萝卜一夜渍
-  line_art: assets/line-art/cucumber.svg
 - id: sea-010
   name: 黄油大蒜炒蛤蜊
   scene:
@@ -376,7 +367,6 @@
     book: 食帖的节气食桌
     file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
     chapter: 黄油大蒜炒蛤蜊
-  line_art: assets/line-art/shrimp.svg
 - id: sea-011
   name: 越南春卷
   scene:
@@ -416,7 +406,6 @@
     book: 食帖的节气食桌
     file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
     chapter: 越南春卷
-  line_art: assets/line-art/cucumber.svg
 - id: sea-012
   name: 茭白青椒炒蚕豆
   scene:
@@ -455,7 +444,6 @@
     book: 食帖的节气食桌
     file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
     chapter: 茭白青椒炒蚕豆
-  line_art: assets/line-art/broccoli.svg
 - id: sea-013
   name: 麻辣小龙虾
   scene:
@@ -499,7 +487,6 @@
     book: 食帖的节气食桌
     file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
     chapter: 麻辣小龙虾
-  line_art: assets/line-art/shrimp.svg
 - id: sea-014
   name: 丝瓜风鸡粥
   scene:
@@ -534,7 +521,6 @@
     book: 食帖的节气食桌
     file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
     chapter: 丝瓜风鸡粥
-  line_art: assets/line-art/chicken.svg
 - id: sea-015
   name: 迷迭香烤马铃薯
   scene:
@@ -569,7 +555,6 @@
     book: 食帖的节气食桌
     file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
     chapter: 迷迭香烤马铃薯
-  line_art: assets/line-art/potato.svg
 - id: sea-016
   name: 玉米排骨汤
   scene:
@@ -608,4 +593,3 @@
     book: 食帖的节气食桌
     file: 参考书籍/食帖的节气食桌 (食贴番组, Shitiefanzu, editor).md
     chapter: 玉米排骨汤
-  line_art: assets/line-art/chicken.svg

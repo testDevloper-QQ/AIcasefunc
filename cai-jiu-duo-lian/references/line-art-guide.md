@@ -1,47 +1,34 @@
-# 手绘风视觉规范
+# 叙事插画规范（仅 AI  raster）
 
-> 参考用户提供的出餐图、步骤容器图样，统一为 **暖黄手账 + 线稿 + 淡水彩** 风格。禁止用 emoji 替代功能图标。
+> Plan B：**仅**使用 Agent / 宿主出图落盘的 PNG/WebP/JPG。**不存在** SVG 模板、线稿、几何拼盘或任何回退路径。
 
-## 三层配图（必保留）
+## 资产路径
 
-| 层级 | 位置 | 要求 | 资源 |
-|------|------|------|------|
-| **Hero 出餐图** | 推荐卡片顶部右侧 | 整菜或主食材 **手绘线稿**，暖黄画框，标注「手绘出餐示意」 | 索引 `line_art` → `/skill-assets/assets/line-art/` |
-| **食材线稿** | 食材清单网格 | 每项配食材 SVG 线稿 + 中文份量 | `assets/line-art/{name}.svg`，`recipe_format.enrich_ingredients` |
-| **步骤容器场景** | 做法每步左侧 | **容器场景**（烤/锅/炒/碗/砧/盘）+ 涉及食材线稿叠加 | `web/icons/step-scenes/` + 食材 art |
+| 类型 | 路径 | 解析 |
+|------|------|------|
+| Hero 成品 | `assets/illustrations/dishes/{recipe_id}.png` | `resolve_dish_illustration()` |
+| 步骤叙事 | `assets/illustrations/steps/{recipe_id}-step-{n}.png` | `resolve_step_illustration()` |
+| 食材单项 | `assets/illustrations/ingredients/{art_key}.png` | `resolve_ingredient_illustration()` |
 
-## 风格要点
+无文件 → API 返回空 URL → 网页显示「待出图」。
 
-- 描边 `#5C4F42` / `#4A4035`，填色 `#FFF8E7` 或淡水彩半透明
-- 背景暖黄 `#FFF8E7`，强调 `#E8A838`
-- 标题用手写体（站酷快乐体）
-- **不要**真实照片默认占位；**不要** emoji 图标
+## 出图工作流
 
-## 资源优先级
+1. `python scripts/illustration_jobs_cli.py --recipe-id {id}`
+2. Cursor / WorkBuddy Agent 用宿主 `GenerateImage` 出图（每 job ≤3 备选）
+3. `python scripts/save_illustration.py --recipe-id {id} --kind dish|step --from {path}`
 
-1. `assets/line-art/` 已有 SVG（`scripts/generate_line_art.py` 可批量生成）
-2. 索引字段 `line_art` 指向菜品/主材线稿
-3. 联网公开图（仅对话输出可选，网页优先线稿）
-4. 无图时用容器场景 + 食材 fallback，**不阻塞推荐**
+详见 [`agent-illustration-guide.md`](agent-illustration-guide.md)。
 
-## 网页实现对照
+## 验证
 
-| 需求 | 实现文件 |
-|------|----------|
-| Hero 大图 | `web/app.js` → `renderRecipeCard` → `heroImageUrl` / `lineArtUrl` |
-| 食材网格线稿 | `renderIngredientGrid` → `ingredient.artUrl` |
-| 步骤容器+叠加 | `renderStepItem` → `sceneUrl` + `ingredientArts` |
-| 后端格式化 | `scripts/recipe_format.py` → `format_steps`, `enrich_ingredients` |
+```bash
+python scripts/validate_illustration_coverage.py
+pytest scripts/tests/ -q
+```
 
-## 对话 / Agent 输出
+## 已移除（勿恢复）
 
-无网页时，须在文字中描述等价视觉（见 `output-template.md`）：
-
-- Hero：菜名 + 出处徽章 + 「出餐手绘线稿」说明
-- 食材：名称 + 克/毫升 + 线稿名称
-- 步骤：容器类型 + 涉及食材 + 中文步骤
-
-## 维护
-
-- 新增常见食材：运行 `python scripts/generate_line_art.py`，并在 `recipe_format.INGREDIENT_ART` 补映射
-- 变更视觉规范时同步：`style-guide.md`、`output-template.md`、本文件
+- `assets/line-art/`、`compose_art.py`、`generate_line_art.py`
+- `generate_illustration_assets.py`、品类/步骤 SVG 模板
+- 索引字段 `line_art`、API 字段 `heroArts` / `sceneUrl` / `ingredientArts`

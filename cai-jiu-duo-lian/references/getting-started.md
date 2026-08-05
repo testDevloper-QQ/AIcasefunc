@@ -25,7 +25,19 @@ python scripts/verify_install.py
 ## 网页表单要点
 
 - **自定义食材输入框**：在「冰箱里有什么？」下方独立面板，可只输入折耳根、豆花等（不必点选示例）
-- **手绘风推荐卡片**：Hero 出餐线稿 + 食材线稿网格 + 步骤容器场景图（见 `references/line-art-guide.md`）
+- **手绘风推荐卡片**：Hero 叙事插画 + 食材手绘网格 + 步骤叙事小图（见 `references/illustration-style-bible.md`）
+
+## Agent 表单引导（AskQuestion）
+
+网页有 **5 个表单区块**；Agent 侧用 **AskQuestion** 逐轮复现（场景 → 食材多选 → 口味 → 份量 → 补充说明），选项与 `web/index.html` 保持一致。
+
+完整 JSON 模板与 CLI 映射见 [`agent-form-askquestion.md`](agent-form-askquestion.md)。
+
+安装成功后建议话术：
+
+1. 展示上方四种场景示例  
+2. 问：「要不要像网页一样点选场景和食材？」  
+3. 用户同意 → 按 Q1–Q5 调用 AskQuestion → `recommend_cli.py` → Step 4.6 补图
 
 ```bash
 python scripts/ensure_web_server.py

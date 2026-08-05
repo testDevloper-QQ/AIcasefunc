@@ -55,17 +55,6 @@ def guess_method(name: str, steps: list[str]) -> str:
     return "煮"
 
 
-def guess_line_art(name: str, ingredients: list[dict]) -> str:
-    for ing in ingredients:
-        for key, art in INGREDIENT_ART.items():
-            if key in ing["name"]:
-                return f"assets/line-art/{art}.svg"
-    for key, art in INGREDIENT_ART.items():
-        if key in name:
-            return f"assets/line-art/{art}.svg"
-    return "assets/line-art/tomato.svg"
-
-
 def classify_scene(name: str, chapter: str) -> tuple[list[str], list[str]]:
     tags: list[str] = []
     if any(k in name for k in ("沙拉", "凉拌", "沐昔", "饮")):
@@ -139,7 +128,6 @@ def parse_recipes(text: str) -> list[dict]:
                 "file": BOOK_REL,
                 "chapter": chapter,
             },
-            "line_art": guess_line_art(name, ingredients),
         })
     return recipes
 

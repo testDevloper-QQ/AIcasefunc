@@ -24,3 +24,12 @@
 | light-meal | 重油炸、高糖甜点 |
 | health | 高汞鱼、未熟蛋、酒精（孕期） |
 | seasonal | 反季强行推荐（无依据时） |
+
+## 扩展新场景
+
+新增第 N 类场景时 **必做**（详见 [`extension-checklist.md`](extension-checklist.md) §A）：
+
+1. 索引 yaml + 本书籍来源
+2. 本表 + `web` 场景 chip
+3. 新场景菜谱的 **插画 PNG 覆盖率**（`validate_illustration_coverage.py`）
+4. 至少 1 个推荐回归测试

@@ -31,7 +31,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 灯影牛肉
-  line_art: assets/line-art/beef.svg
 - id: reg-002
   name: 四川香肠
   scene:
@@ -67,7 +66,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 四川香肠
-  line_art: assets/line-art/beef.svg
 - id: reg-003
   name: 清远鸡
   scene:
@@ -97,7 +95,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 清远鸡
-  line_art: assets/line-art/chicken.svg
 - id: reg-004
   name: 福州鱼丸
   scene:
@@ -131,7 +128,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 福州鱼丸
-  line_art: assets/line-art/shrimp.svg
 - id: reg-005
   name: 盐水鸭
   scene:
@@ -163,7 +159,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 盐水鸭
-  line_art: assets/line-art/chicken.svg
 - id: reg-006
   name: 秃黄油
   scene:
@@ -195,7 +190,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 秃黄油
-  line_art: assets/line-art/shrimp.svg
 - id: reg-007
   name: 金华火腿
   scene:
@@ -223,7 +217,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 金华火腿
-  line_art: assets/line-art/beef.svg
 - id: reg-008
   name: 湖南腊肉
   scene:
@@ -251,7 +244,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 湖南腊肉
-  line_art: assets/line-art/beef.svg
 - id: reg-009
   name: 白肉血肠
   scene:
@@ -285,7 +277,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 白肉血肠
-  line_art: assets/line-art/beef.svg
 - id: reg-010
   name: 血粑鸭
   scene:
@@ -321,7 +312,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 湘西凤凰：血粑鸭、桐叶粑与苗家社饭
-  line_art: assets/line-art/chicken.svg
 - id: reg-011
   name: 石屏豆腐
   scene:
@@ -353,7 +343,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 石屏豆腐
-  line_art: assets/line-art/tomato.svg
 - id: reg-012
   name: 慈城年糕
   scene:
@@ -383,7 +372,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 慈城年糕
-  line_art: assets/line-art/potato.svg
 - id: reg-013
   name: 红龟粿
   scene:
@@ -417,7 +405,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 红龟粿
-  line_art: assets/line-art/tomato.svg
 - id: reg-014
   name: 宣威火腿
   scene:
@@ -447,7 +434,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 宣威火腿
-  line_art: assets/line-art/beef.svg
 - id: reg-015
   name: 文昌鸡
   scene:
@@ -477,7 +463,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 文昌鸡和老爸茶
-  line_art: assets/line-art/chicken.svg
 - id: reg-016
   name: 天府花生
   scene:
@@ -507,7 +492,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 天府花生
-  line_art: assets/line-art/potato.svg
 - id: reg-017
   name: 苏北醉蟹
   scene:
@@ -534,7 +518,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 苏北醉蟹
-  line_art: assets/line-art/shrimp.svg
 - id: reg-018
   name: 霉干菜
   scene:
@@ -561,7 +544,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 霉干菜
-  line_art: assets/line-art/kale.svg
 - id: reg-019
   name: 大连海参
   scene:
@@ -588,7 +570,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 大连海参
-  line_art: assets/line-art/shrimp.svg
 - id: reg-020
   name: 顺德鲮鱼
   scene:
@@ -615,7 +596,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 顺德鲮鱼
-  line_art: assets/line-art/shrimp.svg
 - id: reg-021
   name: 汕尾蚝
   scene:
@@ -642,7 +622,6 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 汕尾蚝
-  line_art: assets/line-art/shrimp.svg
 - id: reg-022
   name: 米花糖
   scene:
@@ -671,4 +650,3 @@
     book: 食遍中国
     file: 参考书籍/食遍中国 (三联生活周刊).md
     chapter: 米花糖
-  line_art: assets/line-art/potato.svg

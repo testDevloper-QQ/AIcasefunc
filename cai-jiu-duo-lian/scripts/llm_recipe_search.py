@@ -202,7 +202,6 @@ def search_and_generate_recipe(
             "book": "网络高频家常菜（LLM）",
             "chapter": parsed.get("source_hint") or f"{'、'.join(ingredients)}",
         },
-        "line_art": "",
         "generated": True,
         "llmGenerated": True,
     }

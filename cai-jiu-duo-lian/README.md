@@ -115,7 +115,7 @@ py -3 scripts/ensure_web_server.py --foreground
 2. **今天想吃什么？**（可选）：便当 / 轻食 / 时令 / 地方味 / 调理 / 快乐餐；不选则默认 **快乐餐**
 3. **冰箱里有什么？**：点选示例食材，或在输入框 **自定义食材**（如折耳根、豆花），至少 1 个
 4. 可选填写口味、份量、补充说明
-5. 点击「开始推荐」→ 页面直接显示 **手账风推荐卡片**（Hero 出餐线稿、食材网格、容器步骤图）
+5. 点击「开始推荐」→ 页面直接显示 **手账风推荐卡片**（Hero 叙事插画、食材网格、步骤叙事小图）
 
 > 不要直接双击 `index.html`（`file://` 无法调用 API）。若页面报错，运行 `python scripts/ensure_web_server.py` 确保服务已启动。
 
@@ -188,9 +188,9 @@ python scripts/deploy_to_github.py
 
 每道推荐菜包含：
 
-- **Hero 卡片**：菜名、出处、时长/方式/份量/花费徽章、**出餐手绘线稿**
-- **食材清单**：按人份，**中国计量**（克/毫升/个），已做家庭份量换算，配食材线稿
-- **做法步骤**：**容器场景图**（烤/锅/炒/碗/砧/盘）+ 涉及食材线稿 + 中文步骤
+- **Hero 卡片**：菜名、出处、时长/方式/份量/花费、**整道菜叙事插画**（Plan B）
+- **食材清单**（见 `references/ingredient-art-guide.md`）：虚线框 + 每项 **独立手绘** + 中国计量
+- **做法步骤**（见 `references/step-layout-guide.md`）：步骤叙事插画 + 荧光笔文字 + 唠唠叨叨
 - 可选：0–2 道备选
 
 ## 知识库说明
@@ -201,6 +201,10 @@ python scripts/deploy_to_github.py
 | 书籍原文（补读） | `参考书籍/`（本地，不随 Git 远程部署） |
 | 能力清单 | `references/capabilities.md` |
 | 场景路由 | `references/scene-router.md` |
+| 手绘规范 | `references/illustration-style-bible.md`（主）、`line-art-guide.md` |
+| 食材线稿 | `references/ingredient-art-guide.md` |
+| 推荐引擎 | `references/recommend-engine-guide.md` |
+| 扩展清单 | `references/extension-checklist.md` |
 | 输出模板与 QA | `references/output-template.md` |
 | 中国计量 | `references/measurement-cn.md` |
 | 份量依据 | `references/dietary-guidelines-cn.md` |
@@ -215,7 +219,8 @@ python scripts/deploy_to_github.py
 ├── README.md                     # 本指南（用户文档）
 ├── references/                   # 路由、风格、输出模板、膳食指南
 ├── data/recipe-index/            # 预建菜谱索引
-├── assets/line-art/              # 食材线稿
+├── assets/
+│   └── illustrations/            # Plan B：dishes / steps / ingredients PNG
 ├── web/                          # 网页 + PWA + config.json
 ├── scripts/                      # 推荐引擎、Web 服务、部署与测试
 └── 参考书籍/                     # 本地书籍（可选，不推远程）
@@ -224,19 +229,30 @@ python scripts/deploy_to_github.py
 ## 维护工具
 
 ```powershell
-# 校验所有索引文件
+# 校验索引 YAML 结构
 python scripts/validate_index.py
 
-# 运行单元测试
+# 校验 Plan B 插画覆盖率（PNG 待出图统计）
+python scripts/validate_illustration_coverage.py
+
+# Agent 出图任务（Cursor 内置 GenerateImage）
+python scripts/illustration_jobs_cli.py --recipe-id ben-054
+
+# 可选：OpenAI API 批量出图（需 OPENAI_API_KEY）
+python scripts/generate_ai_illustrations.py --recipe-id ben-054 --candidates 1
+
+# 单元测试
 python -m pytest scripts/tests/ -q
 
-# 从《抗炎食谱100例》重建部分索引（可选）
-python scripts/build_index.py
+# 安装验证 + 四种场景示例
+python scripts/verify_install.py
 ```
+
+扩展新场景、新食材、改 UI 时，请按 **`references/extension-checklist.md`** 逐项检查。
 
 ## 限制（v1）
 
-- ✅ 场景驱动推荐、在线网页推荐、自定义食材、Hero 出餐图、容器步骤配图、中国计量、膳食指南份量核验
+- ✅ 场景驱动推荐、在线网页推荐、自定义食材、Hero 叙事插画、步骤叙事配图、中国计量、膳食指南份量核验
 - ✅ Git 远程 Skill 拉取
 - ❌ 拍照识材（v2）
 - ❌ 小红书补充（v2）

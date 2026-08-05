@@ -7,63 +7,69 @@
 📖 出处：《[书名]》· [场景标签]
 ⏱ [烹饪时间] · 💰 [预计花费] · 🔥 [烹饪方式] · 👤 [N] 人份
 
-[Hero 出餐线稿：优先 line_art / lineArtUrl；无则主食材线稿组合]
+[Hero：整道菜成品叙事插画说明 / heroIllustrationUrl]
 
-🥬 食材清单（[N] 人份，中国计量）
-1. [食材名] [份量，如 80 克 / 15 毫升 / 2 个]
-...
+🥬 食材（[N] 人份，中国计量）
+· [食材名] [份量] — 手绘（如：水芹叶茎、白虾、糖罐…）
+…
 
-👩‍🍳 做法步骤
-1. [容器场景：烤/锅/炒/碗/砧/盘] + [涉及食材线稿] 步骤文字（中文单位）
-2. ...
+👩‍🍳 做法
+① [动作叙事插画：腌制 / 煮粥 / 翻炒…]
+   步骤文字（荧光笔底纹体感）
+② …
 
-💡 关键提示
-- ...
+💡 唠唠叨叨
+- [关键提示]
 
 🔄 替代方案
-- ...
+- …
 ```
 
 ## 输出质量检查（必做）
 
-对标 [`dietary-guidelines-cn.md`](dietary-guidelines-cn.md)（《中国居民膳食指南（2022）》单餐估算）与 [`measurement-cn.md`](measurement-cn.md)：
-
 | 检查项 | 标准 |
 |--------|------|
-| 烹饪时间 | ≤ 60 分钟（含备料+烹饪）；超时菜品不推荐 |
-| 中国计量 | 无华氏、盎司、cup；温度 ℃，重量克，体积毫升 |
-| 鱼禽肉蛋（主荤） | 50–100 克/人·餐 |
-| 蔬菜 | 100–170 克/人·餐 |
-| 谷薯 | 70–100 克/人·餐 |
-| 盐 | ≤ 2 克/人·餐（日摄入 < 5 克） |
-| 烹调油 | ≤ 10 克/人·餐 |
-| 添加糖（咸味菜） | ≤ 15 克/人·餐 |
-| 批量配方 | 须按膳食指南换算并标注 |
-| Hero 出餐图 | 优先整菜线稿；无则主食材线稿 |
-| 步骤配图 | 容器场景 + 涉及食材线稿（见 style-guide.md） |
+| 烹饪时间 | ≤ 60 分钟 |
+| 中国计量 | 无华氏、盎司、cup |
+| 膳食份量 | 见 `dietary-guidelines-cn.md` |
+| **食材对应** | 用户所选食材均在主推荐中出现（同义词算） |
+| Hero | **菜品叙事插画**（专属或品类模板），非空盘拼 icon |
+| 食材 | 每项有 `artUrl`（`/skill-assets/` URL） |
+| 步骤配图 | 每步有 `stepIllustrationUrl` 叙事插画 |
+| 步骤排版 | 见 `step-layout-guide.md` |
 
-## 字段说明
+## API 字段（POST /api/recommend → primary）
 
-| 字段 | 要求 |
-|------|------|
-| 菜名 | 须能在本地资料中找到依据 |
-| lineArtUrl / line_art | Hero 出餐手绘线稿路径或 URL |
-| 食材清单 | 按用户份量缩放；**中国计量** |
-| 预计花费 | 粗估，标注「约」 |
-| 烹饪时间 | 含备料 + 烹饪 |
-| 烹饪方式 | 煎/炒/烤/凉拌等 |
-| step.scene | 步骤容器场景：bake / pot / wok / bowl / board / plate |
-| step.ingredientArts | 该步涉及食材的线稿路径列表 |
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `name` | string | 菜名 |
+| `source.book` | string | 出处 |
+| `cookTimeDisplay` | string | 中文时长 |
+| `method` | string | 烹饪方式 |
+| `servings` | number | 人份 |
+| `cost` | string | 花费 |
+| `heroIllustrationUrl` | string | **主** Hero 叙事插画 URL |
+| `heroIllustrationSource` | string? | `dish` \| `category` |
+| `heroCompositeUrl` | string? | 兼容，同 heroIllustrationUrl |
+| `lineArtUrl` / `heroImageUrl` | string? | 兼容 |
+| `ingredients[]` | array | `{ name, amount, artUrl }` |
+| `steps[]` | array | 见下表 |
+| `qualityNotes` | array? | QA 提示 |
+| `disclaimer` | string? | 唠唠叨叨 / 免责 |
+| `why` | string | 推荐理由 |
+| `usedFallback` | boolean | 是否 AI/模板生成 |
 
-## 网页 API 返回字段（参考）
-
-`POST /api/recommend` 返回 JSON 中，前端按以下结构渲染：
+## step 对象
 
 | 字段 | 说明 |
 |------|------|
-| `title` | 菜名 |
-| `source` | 出处与场景 |
-| `meta` | 时长、方式、份量、花费 |
-| `lineArtUrl` | Hero 出餐线稿 |
-| `ingredients[]` | `{ name, amount, artUrl }` |
-| `steps[]` | `{ text, scene, ingredientArts[] }` |
+| `sceneId` | 叙事场景 ID（如 `pot_porridge_simmer`） |
+| `stepIllustrationUrl` | **主** 步骤叙事插画 URL |
+| `stepArtUrl` | 兼容，同 stepIllustrationUrl |
+| `scene` | legacy 容器名（oven/pot/wok…） |
+| `sceneUrl` | legacy 容器 SVG（降级） |
+| `ingredientArts` | legacy 食材列表（降级） |
+
+## 维护
+
+字段变更时同步：`illustration_resolver.py`、`recipe_format.py`、`recommend_engine.py`、`web/app.js`、[`extension-checklist.md`](extension-checklist.md) §E。

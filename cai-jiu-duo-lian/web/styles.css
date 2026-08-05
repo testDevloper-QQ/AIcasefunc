@@ -357,16 +357,6 @@ button.secondary {
   margin-top: 24px;
 }
 
-.step-text {
-  margin: 0;
-  font-size: 0.92rem;
-  line-height: 1.55;
-  padding: 10px 12px;
-  background: linear-gradient(135deg, rgba(255, 236, 179, 0.98) 0%, rgba(255, 213, 130, 0.82) 100%);
-  border: 1px solid rgba(232, 168, 56, 0.42);
-  border-radius: 12px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
-}
 
 .result-shell.result-art-loading .recipe-card,
 .result-shell.result-art-loading .alt-title,
@@ -529,8 +519,8 @@ button.secondary {
 }
 
 .recipe-hero-art {
-  width: min(220px, 70vw);
-  height: min(220px, 70vw);
+  width: min(280px, 85vw);
+  height: min(245px, 74vw);
   object-fit: contain;
   filter: drop-shadow(0 6px 10px rgba(74, 64, 53, 0.12));
 }
@@ -552,12 +542,37 @@ button.secondary {
 }
 
 .recipe-hero-art-placeholder {
-  min-height: 120px;
+  min-height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: var(--font-hand);
   color: var(--muted);
-  font-size: 0.85rem;
+}
+
+.recipe-hero-art-pending {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--muted);
+  padding: 24px 12px;
+}
+
+.recipe-hero-art-pending small {
+  font-size: 0.78rem;
+  opacity: 0.85;
+}
+
+.step-art-pending {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 80px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-align: center;
+  padding: 8px;
 }
 
 .hero-caption {
@@ -569,6 +584,34 @@ button.secondary {
 
 .ingredient-showcase {
   margin-bottom: 14px;
+}
+
+.ingredients-banner {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 5px 18px 7px;
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+  color: #fff;
+  background: #2a2520;
+  border-radius: 4px 14px 6px 12px;
+  transform: rotate(-0.8deg);
+  letter-spacing: 0.1em;
+}
+
+.ing-servings {
+  font-size: 0.85em;
+  opacity: 0.92;
+  margin-left: 4px;
+}
+
+.ing-footer {
+  margin: 10px 0 0;
+  text-align: center;
+  font-family: "Ma Shan Zheng", var(--font-hand), cursive;
+  font-size: 0.95rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
 }
 
 .ingredient-showcase h4,
@@ -583,12 +626,12 @@ button.secondary {
 
 .ing-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
-  gap: 10px;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px dashed rgba(139, 105, 20, 0.35);
-  border-radius: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 12px;
+  padding: 16px 14px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 2px dashed rgba(42, 37, 32, 0.35);
+  border-radius: 16px;
 }
 
 .ing-tile {
@@ -596,30 +639,43 @@ button.secondary {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 4px;
+  gap: 6px;
 }
 
 .ing-art {
-  width: 44px;
-  height: 44px;
+  width: 72px;
+  height: 72px;
   object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(92, 79, 66, 0.12));
 }
 
-.ing-art-fallback {
-  display: block;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(232, 168, 56, 0.15);
+.ing-art-fallback,
+.ing-art-pending {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255, 248, 231, 0.95) 0%, rgba(255, 232, 163, 0.45) 100%);
+  border: 1.5px dashed rgba(139, 105, 20, 0.35);
+  font-size: 0.68rem;
+  color: var(--muted);
+  line-height: 1.2;
+  text-align: center;
+  padding: 4px;
 }
 
 .ing-name {
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-family: "Ma Shan Zheng", var(--font-hand), cursive;
+  font-size: 0.88rem;
+  font-weight: 400;
   line-height: 1.25;
+  color: var(--text);
 }
 
 .ing-amt {
+  font-family: var(--font-hand);
   font-size: 0.72rem;
   color: var(--muted);
   line-height: 1.25;
@@ -631,68 +687,142 @@ button.secondary {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 18px;
+}
+
+.steps-banner {
+  display: inline-block;
+  margin: 0 0 14px;
+  padding: 6px 20px 8px;
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  color: #fff;
+  background: #2a2520;
+  border-radius: 4px 16px 8px 14px;
+  transform: rotate(-1.5deg);
+  box-shadow: 2px 3px 0 rgba(42, 37, 32, 0.25);
+  letter-spacing: 0.12em;
 }
 
 .step-card {
   display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 12px;
+  grid-template-columns: minmax(130px, 38%) 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.step-card--medium .step-scene-wrap {
+  height: 150px;
+}
+
+.step-card--long .step-scene-wrap {
+  height: 180px;
+}
+
+.step-card--long {
   align-items: start;
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 14px;
-  border: 1px solid rgba(224, 213, 192, 0.55);
 }
 
 .step-scene-wrap {
   position: relative;
-  width: 120px;
-  height: 100px;
-  background: linear-gradient(180deg, rgba(255, 248, 231, 0.9) 0%, rgba(255, 232, 163, 0.45) 100%);
-  border-radius: 12px;
-  border: 1px solid rgba(139, 105, 20, 0.2);
+  width: 100%;
+  height: 135px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 248, 231, 0.85) 100%);
+  border-radius: 14px;
+  border: 1.5px solid rgba(139, 105, 20, 0.22);
   overflow: hidden;
+  box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.5);
 }
 
-.step-scene-bg {
+.step-composite-art {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  opacity: 0.95;
+  display: block;
+  padding: 4px;
 }
 
-.step-scene-ingredients {
-  position: absolute;
-  inset: 12px 6px 6px 6px;
+.step-copy {
+  min-width: 0;
+}
+
+.step-text {
+  margin: 0;
+  font-family: "Ma Shan Zheng", "ZCOOL KuaiLe", var(--font-hand), cursive;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text);
+  padding: 10px 14px 12px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 58%,
+    rgba(255, 232, 100, 0.55) 58%,
+    rgba(255, 232, 100, 0.55) 92%,
+    transparent 92%
+  );
+  background-size: 100% 1.75em;
+  border-radius: 8px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.step-index {
+  font-family: var(--font-hand);
+  font-size: 1.15em;
+  margin-right: 4px;
+  color: var(--accent-dark);
+}
+
+.step-tip-box {
+  margin-top: 20px;
+  padding: 14px 16px 12px;
+  background: linear-gradient(135deg, #fff9e6 0%, #ffe8a8 100%);
+  border: 2px solid rgba(232, 168, 56, 0.55);
+  border-radius: 16px;
+  position: relative;
+}
+
+.step-tip-head {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  pointer-events: none;
+  gap: 8px;
+  margin-bottom: 6px;
 }
 
-.step-ing-art {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.12));
+.step-tip-mascot {
+  width: 36px;
+  height: 28px;
 }
 
-.step-num {
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #fff;
-  font-size: 0.75rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.step-tip-label {
+  font-family: var(--font-hand);
+  font-size: 0.95rem;
+  color: var(--accent-dark);
+  letter-spacing: 0.06em;
+}
+
+.step-tip-text {
+  margin: 0;
+  font-family: "Ma Shan Zheng", cursive;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+@media (max-width: 480px) {
+  .step-card {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .step-scene-wrap {
+    max-width: 200px;
+    margin: 0 auto;
+  }
 }
 
 .recipe-header {

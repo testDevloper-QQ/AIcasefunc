@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import re
+from pathlib import Path
 from typing import Any
 
 MAX_COOK_MINUTES = 60
@@ -33,16 +34,6 @@ SUGAR_KEYS = ("糖", "冰糖", "砂糖", "白糖")
 OIL_KEYS = ("油", "麻油", "香油", "芝麻油", "橄榄油")
 SPICE_KEYS = ("香料", "八角", "桂皮", "花椒", "胡椒", "筚", "山奈", "桂子", "孜然", "辣椒")
 
-STEP_ICON_RULES: list[tuple[str, str]] = [
-    (r"切|片|丝|块|剁|改刀", "cut"),
-    (r"腌|拌|揉|搓|上味|调味|手拌", "mix"),
-    (r"铺|摆|放|码|装|入模|竹|筲", "arrange"),
-    (r"烤|炒|煮|炖|蒸|炸|煎|烧|焖|煲|烙|烘干|翻动", "cook"),
-    (r"取食|装盘|出锅|淋|点缀|保鲜|浸泡|完成|享用", "finish"),
-]
-
-STEP_ICON_FALLBACK = ["prep", "cut", "mix", "cook", "finish"]
-
 INGREDIENT_ART: dict[str, str] = {
     "鳄梨": "avocado", "西红柿": "tomato", "番茄": "tomato", "黄瓜": "cucumber",
     "鸡蛋": "egg", "鸡": "chicken", "火鸡": "turkey", "牛肉": "beef", "猪肉": "pork",
@@ -55,46 +46,171 @@ INGREDIENT_ART: dict[str, str] = {
     "南瓜": "pumpkin", "西葫芦": "zucchini", "羽衣甘蓝": "kale", "燕麦": "oats",
     "豆角": "greenbean", "四季豆": "greenbean", "长豆角": "greenbean",
     "茄子": "eggplant", "大茄子": "eggplant",
+    "鸡肉": "chicken", "鸡胸肉": "chicken", "鸡翅": "chicken", "鸡腿": "chicken",
+    "鸡块": "chicken", "鸡丁": "chicken", "鸡肉碎": "chicken", "鸡丝": "chicken",
+    "白虾": "shrimp", "明虾": "shrimp", "对虾": "shrimp",
+    "水芹": "celery", "芹菜": "celery", "西芹": "celery",
+    "彩椒": "pepper", "甜椒": "pepper", "灯笼椒": "pepper", "青椒": "pepper", "红椒": "pepper",
+    "白砂糖": "sugar", "白糖": "sugar", "砂糖": "sugar", "冰糖": "sugar", "糖": "sugar",
+    "盐": "salt", "精盐": "salt",
+    "白胡椒": "whitepepper", "黑胡椒": "blackpepper", "胡椒": "whitepepper", "花椒": "spicejar",
+    "姜": "ginger", "生姜": "ginger", "姜片": "ginger",
+    "葱": "scallion", "大葱": "scallion", "小葱": "scallion", "青蒜": "scallion",
+    "油": "oil", "麻油": "oil", "香油": "oil", "芝麻油": "oil", "橄榄油": "oil", "食用油": "oil",
+    "酱油": "soy", "生抽": "soy", "老抽": "soy",
+    "米酒": "wine", "料酒": "wine", "黄酒": "wine",
+    "牛奶": "milk", "酸奶": "yogurt", "曲奇": "cookie", "饼干": "cookie",
+    "吉利丁": "gelatin", "吉利丁片": "gelatin",
+    "排骨": "pork", "咸肉": "pork", "春笋": "bamboo", "笋": "bamboo",
+    "米": "rice", "大米": "rice", "糯米": "rice",
+    "辣椒粉": "chilipowder", "辣椒面": "chilipowder",
+    "姜黄粉": "turmeric",
+    "孜然粉": "cumin", "小茴香": "cumin",
+    "肉桂粉": "cinnamon",
+    "干香菜粉": "coriander", "香菜粉": "coriander",
+    "牛至": "oregano",
+    "迷迭香": "rosemary",
+    "青柠汁": "limejuice", "青柠": "limejuice", "柠檬汁": "limejuice",
+    "生姜酱": "gingerpaste", "姜蒜酱": "gingerpaste",
+    "蜂蜜": "honey",
+    "鹰嘴豆粉": "chickpeaflour", "鹰嘴豆": "chickpea",
+    "薄荷": "mint", "薄荷叶": "mint",
+    "橄榄油": "oil",
 }
 
-STEP_SCENE_RULES: list[tuple[str, str]] = [
-    (r"烤箱|预热|烘烤|烘焙|烤房", "oven"),
-    (r"炖|煲|煮|锅|小火|大火|出沙", "pot"),
-    (r"炒|煎|煸|锅铲", "wok"),
-    (r"碗|拌|腌|搅拌|沐昔|沙拉", "bowl"),
-    (r"切|片|丝|块|剁|改刀|备料", "board"),
-    (r"装盘|出锅|享用|取食|上桌|完成", "plate"),
-]
+# 用户点选食材 → 索引中可能出现的同义表述（不含易混淆项，如「鸡」不含以免误匹配「鸡蛋」）
+INGREDIENT_SYNONYMS: dict[str, list[str]] = {
+    "鸡肉": ["鸡肉", "鸡胸肉", "鸡翅", "鸡腿", "鸡块", "鸡丁", "鸡肉碎", "鸡丝", "整鸡", "清远鸡", "文昌鸡"],
+    "鸡": ["鸡肉", "鸡胸肉", "鸡翅", "鸡腿", "鸡块", "鸡丁", "鸡肉碎", "鸡丝", "整鸡"],
+    "虾": ["虾", "虾仁", "白虾", "明虾", "对虾", "小龙虾"],
+    "虾仁": ["虾", "虾仁", "白虾", "明虾", "对虾"],
+    "番茄": ["番茄", "西红柿"],
+    "西红柿": ["番茄", "西红柿"],
+    "土豆": ["土豆", "马铃薯", "洋芋"],
+    "马铃薯": ["土豆", "马铃薯", "洋芋"],
+    "豆角": ["豆角", "四季豆", "长豆角"],
+    "四季豆": ["豆角", "四季豆", "长豆角"],
+}
 
-STEP_SCENE_FALLBACK = ["board", "bowl", "pot", "wok", "oven", "plate"]
+
+def ingredient_match_terms(user_ingredient: str) -> list[str]:
+    name = (user_ingredient or "").strip()
+    if not name:
+        return []
+    terms = {name}
+    for key, aliases in INGREDIENT_SYNONYMS.items():
+        group = {key, *aliases}
+        if name in group:
+            terms.update(group)
+    return sorted(terms, key=len, reverse=True)
+
+
+def ingredient_matches_in_text(hay: str, user_ingredient: str) -> bool:
+    if not hay or not user_ingredient:
+        return False
+    for term in ingredient_match_terms(user_ingredient):
+        if term and term in hay:
+            if user_ingredient in ("鸡肉", "鸡") and term == "鸡" and "鸡蛋" in hay and "鸡肉" not in hay:
+                continue
+            return True
+    return False
 
 
 def _fahrenheit_to_celsius(f: float) -> int:
     return round((f - 32) * 5 / 9)
 
 
-def localize_amount(amount: str) -> str:
+# 非烹饪步骤：营养表、无动作冗余句
+NUTRITION_STEP_RE = re.compile(
+    r"卡路里|千卡|\bkcal\b|"
+    r"钠\s*[-—]?\s*毫克|总脂肪|饱和脂肪|反式脂肪|单不饱和|多元不饱和|"
+    r"膳食纤维|总碳水化合物|胆固醇\s*[-—]?\s*毫克|"
+    r"维生素\s*[A-ZＡ-Ｚ]|维生素[A-CＡ-Ｃ]|"
+    r"钾\s*[-—]?\s*毫克|蛋白质\s*\d+\s*克|糖\s*[-—]?\s*克",
+    re.I,
+)
+REDUNDANT_STEP_RE = re.compile(
+    r"^(?:即可|趁热|慢慢)?(?:品尝|享用|食用)[。．.!！]?$|"
+    r"^装盘享用[。．.!！]?$|"
+    r"^[\*\s\.]+$",
+    re.I,
+)
+FOREIGN_UNIT_RE = re.compile(
+    r"美国烹饪计量|cups?\b|cup=|盎司＝|"
+    r"\b(?:teaspoon|tablespoon|tsp|tbsp|pound|lb|fl\s*oz|quart|pint|inch|in\.)\b",
+    re.I,
+)
+
+
+FRACTION_CHARS: dict[str, str] = {
+    "¼": "0.25",
+    "½": "0.5",
+    "¾": "0.75",
+    "⅓": "0.333",
+    "⅔": "0.667",
+}
+LIQUID_INGREDIENT_HINTS = ("奶", "油", "汁", "酱", "水", "汤", "酒", "醋", "液", "蜜", "茶", "咖啡")
+
+
+def _normalize_fractions(text: str) -> str:
+    out = text or ""
+    for ch, val in FRACTION_CHARS.items():
+        out = out.replace(ch, val)
+    out = re.sub(
+        r"(\d+)\s*/\s*(\d+)",
+        lambda m: str(round(float(m.group(1)) / float(m.group(2)), 3)).rstrip("0").rstrip("."),
+        out,
+    )
+    return out
+
+
+def localize_amount(amount: str, ingredient_name: str = "") -> str:
     if not amount:
         return amount
-    text = amount
+    text = _normalize_fractions(amount)
+    name = ingredient_name or ""
+    is_liquid = any(h in name for h in LIQUID_INGREDIENT_HINTS)
     # 盎司 → 克
     def oz_repl(m: re.Match[str]) -> str:
         grams = round(float(m.group(1)) * 28.35)
         return f"约{grams}克"
     text = re.sub(r"([\d.]+)\s*盎司", oz_repl, text)
+    text = re.sub(
+        r"([\d.]+)\s*(?:pound|lb|磅)\b",
+        lambda m: f"约{round(float(m.group(1)) * 454)}克",
+        text,
+        flags=re.I,
+    )
     # cup → 毫升（液体语境）或克
     def cup_repl(m: re.Match[str]) -> str:
         val = float(m.group(1))
         return f"约{round(val * 240)}毫升"
-    text = re.sub(r"([\d.]+)\s*(?:cup|Cup|杯)", cup_repl, text, flags=re.I)
+
+    if is_liquid:
+        text = re.sub(r"([\d.]+)\s*(?:cup|Cup|杯)", cup_repl, text, flags=re.I)
+    else:
+        text = re.sub(r"([\d.]+)\s*(?:cup|Cup|杯)", lambda m: f"约{m.group(1)}杯", text, flags=re.I)
+    text = re.sub(
+        r"([\d.]+)\s*(?:teaspoon|tsp|茶匙)",
+        lambda m: f"约{round(float(m.group(1)) * 5)}毫升",
+        text,
+        flags=re.I,
+    )
+    text = re.sub(
+        r"([\d.]+)\s*(?:tablespoon|tbsp|汤匙)",
+        lambda m: f"约{round(float(m.group(1)) * 15)}毫升",
+        text,
+        flags=re.I,
+    )
     return text
 
 
 def localize_text(text: str) -> str:
     if not text:
         return text
-    if re.search(r"美国烹饪计量|cups?|cup=|盎司＝", text, re.I):
-        return ""
+    if FOREIGN_UNIT_RE.search(text):
+        if re.search(r"美国烹饪计量|cups?\b|cup=|盎司＝", text, re.I):
+            return ""
     out = text.strip()
 
     def f_repl(m: re.Match[str]) -> str:
@@ -105,8 +221,97 @@ def localize_text(text: str) -> str:
     out = re.sub(r"(\d+)\s*°?\s*F\b", f_repl, out, flags=re.I)
     out = re.sub(r"在华氏\s*(\d+)\s*度", lambda m: f"在约{_fahrenheit_to_celsius(float(m.group(1)))}℃", out)
     out = re.sub(r"([\d.]+)\s*盎司", lambda m: f"约{round(float(m.group(1)) * 28.35)}克", out)
+    out = re.sub(
+        r"([\d.]+)\s*(?:pound|lb|磅)\b",
+        lambda m: f"约{round(float(m.group(1)) * 454)}克",
+        out,
+        flags=re.I,
+    )
     out = re.sub(r"([\d.]+)\s*(?:cup|Cup|杯)", lambda m: f"约{round(float(m.group(1)) * 240)}毫升", out, flags=re.I)
+    out = re.sub(
+        r"([\d.]+)\s*(?:teaspoon|tsp|茶匙)",
+        lambda m: f"约{round(float(m.group(1)) * 5)}毫升",
+        out,
+        flags=re.I,
+    )
+    out = re.sub(
+        r"([\d.]+)\s*(?:tablespoon|tbsp|汤匙)",
+        lambda m: f"约{round(float(m.group(1)) * 15)}毫升",
+        out,
+        flags=re.I,
+    )
     return out.strip()
+
+
+def is_cooking_step(text: str) -> bool:
+    """True when step is an actionable cooking instruction (not nutrition / filler)."""
+    t = (text or "").strip()
+    if not t:
+        return False
+    if REDUNDANT_STEP_RE.match(t):
+        return False
+    if NUTRITION_STEP_RE.search(t):
+        return False
+    if t.count("毫克") >= 2:
+        return False
+    if ("维生素" in t or "钙" in t or "铁" in t) and "%" in t:
+        return False
+    return True
+
+
+def filter_cooking_steps(steps: list[Any]) -> list[str]:
+    """Return localized, actionable cooking steps only."""
+    out: list[str] = []
+    for raw in steps or []:
+        text = raw if isinstance(raw, str) else (raw.get("text") if isinstance(raw, dict) else "")
+        localized = localize_text(str(text or ""))
+        if localized and is_cooking_step(localized):
+            out.append(localized)
+    return out
+
+
+def extract_reference_book_hints(*texts: str) -> list[str]:
+    """Pull likely cookbook / reference-book phrases from user free text."""
+    hay = " ".join(t.strip() for t in texts if t and str(t).strip())
+    if not hay:
+        return []
+    hints: list[str] = []
+    for m in re.finditer(r"[《「]([^》」]+)[》」]", hay):
+        hints.append(m.group(1).strip())
+    for m in re.finditer(r"(?:参考|来自|指定|按照|用|看)\s*[《「]?([^，。,.；;]{2,40})", hay):
+        hints.append(m.group(1).strip())
+    if re.search(r"食谱|cookbook|Cookbook|书", hay, re.I):
+        hints.append(hay)
+    for m in re.finditer(r"[A-Za-z][A-Za-z\s\-]{3,}", hay):
+        hints.append(m.group(0).strip())
+    deduped = list(dict.fromkeys(h for h in hints if len(h) >= 2))
+    return deduped
+
+
+def reference_book_match_score(recipe: dict[str, Any], *texts: str) -> float:
+    """Boost when recipe source matches user-mentioned reference book (any origin)."""
+    hints = extract_reference_book_hints(*texts)
+    if not hints:
+        return 0.0
+    src = recipe.get("source") or {}
+    book = str(src.get("book") or "")
+    chapter = str(src.get("chapter") or "")
+    file_path = str(src.get("file") or "")
+    corpus = f"{book} {chapter} {file_path}"
+    score = 0.0
+    for hint in hints:
+        h = hint.strip()
+        if not h:
+            continue
+        if h in corpus:
+            score += 25
+        elif book and (h in book or book in h):
+            score += 22
+        elif len(h) >= 3 and h[: min(6, len(h))] in corpus:
+            score += 15
+        elif file_path and h.lower() in file_path.lower():
+            score += 18
+    return score
 
 
 def format_cook_time_cn(cook_time: str | None) -> str:
@@ -117,63 +322,57 @@ def format_cook_time_cn(cook_time: str | None) -> str:
 
 
 def guess_ingredient_art_key(name: str) -> str | None:
-    for key, art in INGREDIENT_ART.items():
+    for key in sorted(INGREDIENT_ART.keys(), key=len, reverse=True):
         if key in name:
-            return art
-    return None
+            return INGREDIENT_ART[key]
+    cat = _ingredient_category(name)
+    if cat == "salt":
+        return "salt"
+    if cat == "sugar":
+        return "sugar"
+    if cat == "oil":
+        return "oil"
+    if cat == "spice":
+        return "spicejar"
+    return "generic"
 
 
-def ingredient_art_url(name: str, skill_root: Path | None) -> str:
-    art = guess_ingredient_art_key(name)
-    if not art:
-        return ""
-    rel = f"assets/line-art/{art}.svg"
-    if skill_root and not (skill_root / rel).exists():
-        return ""
-    return f"/skill-assets/{rel}" if skill_root else ""
+def _art_url_with_cache_bust(url: str, skill_root: Path | None) -> str:
+    if not url or not skill_root:
+        return url
+    rel = url.replace("/skill-assets/", "").split("?", 1)[0]
+    path = skill_root / rel
+    if path.is_file():
+        return f"{url.split('?', 1)[0]}?v={int(path.stat().st_mtime)}"
+    return ""
 
 
-def pick_step_scene(step_text: str, index: int) -> str:
-    for pattern, scene in STEP_SCENE_RULES:
-        if re.search(pattern, step_text):
-            return scene
-    return STEP_SCENE_FALLBACK[index % len(STEP_SCENE_FALLBACK)]
+def ingredient_art_url(name: str, skill_root: Path | None) -> tuple[str, str]:
+    """Return (art_key, url). URL empty when no dedicated asset (never generic fallback)."""
+    from illustration_resolver import resolve_ingredient_illustration
 
-
-def step_ingredient_arts(step_text: str, ingredients: list[dict], skill_root: Path | None) -> list[str]:
-    arts: list[str] = []
-    for ing in ingredients:
-        name = ing.get("name", "")
-        if not name:
-            continue
-        if name in step_text or any(key in step_text and key in name for key in INGREDIENT_ART):
-            url = ingredient_art_url(name, skill_root)
-            if url and url not in arts:
-                arts.append(url)
-    if not arts:
-        for key in INGREDIENT_ART:
-            if key in step_text:
-                url = ingredient_art_url(key, skill_root)
-                if url and url not in arts:
-                    arts.append(url)
-    if not arts and ingredients:
-        for ing in ingredients[:3]:
-            url = ingredient_art_url(ing.get("name", ""), skill_root)
-            if url:
-                arts.append(url)
-    return arts[:3]
+    art = guess_ingredient_art_key(name) or ""
+    if art == "generic" and not any(k in (name or "") for k in ("覆盆子", "通用", "其他")):
+        return art, ""
+    url = resolve_ingredient_illustration(name, art, skill_root) if art else ""
+    url = _art_url_with_cache_bust(url, skill_root)
+    return art, url
 
 
 def enrich_ingredients(ingredients: list[dict[str, str]], skill_root: Path | None) -> list[dict[str, str]]:
     enriched = []
     for ing in ingredients:
         name = ing.get("name", "")
-        amount = localize_amount(ing.get("amount", ""))
-        enriched.append({
+        amount = localize_amount(ing.get("amount", ""), name)
+        art_key, art_url = ingredient_art_url(name, skill_root)
+        row: dict[str, str] = {
             "name": name,
             "amount": amount,
-            "artUrl": ingredient_art_url(name, skill_root),
-        })
+            "artUrl": art_url,
+        }
+        if art_key and art_url:
+            row["artKey"] = art_key
+        enriched.append(row)
     return enriched
 
 
@@ -343,43 +542,35 @@ def normalize_ingredients(recipe: dict, target_servings: int | None) -> list[dic
 
         if note and note not in amount:
             amount = f"{amount}{note}"
-        amount = localize_amount(amount)
+        amount = localize_amount(amount, name)
         normalized.append({"name": name, "amount": amount})
     return normalized
-
-
-def pick_step_icon(step_text: str, index: int, total: int) -> str:
-    for pattern, icon in STEP_ICON_RULES:
-        if re.search(pattern, step_text):
-            return icon
-    if total <= len(STEP_ICON_FALLBACK):
-        return STEP_ICON_FALLBACK[min(index, len(STEP_ICON_FALLBACK) - 1)]
-    return STEP_ICON_FALLBACK[index % len(STEP_ICON_FALLBACK)]
 
 
 def format_steps(
     steps: list[str],
     ingredients: list[dict] | None = None,
     skill_root: Path | None = None,
+    recipe_id: str | None = None,
 ) -> list[dict[str, Any]]:
-    total = len(steps)
-    ing_list = ingredients or []
+    from illustration_resolver import resolve_step_illustration
+
     formatted = []
-    step_num = 0
-    for i, raw in enumerate(steps):
-        text = localize_text(raw)
-        if not text:
-            continue
-        step_num += 1
-        scene = pick_step_scene(text, i)
-        arts = step_ingredient_arts(text, ing_list, skill_root)
+    cooking_steps = filter_cooking_steps(steps)
+    for step_num, text in enumerate(cooking_steps, start=1):
+        step_art_url, scene_id = resolve_step_illustration(
+            text,
+            step_num - 1,
+            skill_root,
+            recipe_id=recipe_id,
+            step_index=step_num,
+        )
         formatted.append({
             "index": step_num,
             "text": text,
-            "icon": f"/icons/steps/{pick_step_icon(text, i, total)}.svg",
-            "scene": scene,
-            "sceneUrl": f"/icons/step-scenes/{scene}.svg",
-            "ingredientArts": arts,
+            "sceneId": scene_id,
+            "stepArtUrl": step_art_url or None,
+            "stepIllustrationUrl": step_art_url or None,
         })
     return formatted
 

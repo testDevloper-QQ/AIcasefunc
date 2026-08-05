@@ -36,7 +36,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/strawberry.svg
 - id: hea-002
   name: 樱桃沐昔
   scene:
@@ -72,7 +71,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/strawberry.svg
 - id: hea-003
   name: 鸡肉蛋黄酱沙拉馅西红柿
   scene:
@@ -115,7 +113,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/tomato.svg
 - id: hea-004
   name: 西红柿香草沙拉
   scene:
@@ -156,7 +153,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/tomato.svg
 - id: hea-005
   name: 黄瓜洋葱沙拉
   scene:
@@ -197,7 +193,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/cucumber.svg
 - id: hea-006
   name: 鸡肉沙拉配罗望子树调味汁
   scene:
@@ -245,7 +240,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/chicken.svg
 - id: hea-007
   name: 消炎沙拉拼盘
   scene:
@@ -285,7 +279,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/cucumber.svg
 - id: hea-008
   name: 鳄梨西红柿沙拉
   scene:
@@ -329,7 +322,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/avocado.svg
 - id: hea-009
   name: 西兰花核桃沙拉
   scene:
@@ -367,7 +359,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/broccoli.svg
 - id: hea-010
   name: 菠菜草莓沙拉
   scene:
@@ -403,7 +394,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/spinach.svg
 - id: hea-011
   name: 南瓜西葫芦沙拉
   scene:
@@ -450,7 +440,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/pumpkin.svg
 - id: hea-012
   name: 拔丝鸡肉蔬菜沙拉
   scene:
@@ -487,7 +476,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/chicken.svg
 - id: hea-013
   name: 鳄梨玉米沙拉
   scene:
@@ -530,7 +518,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/avocado.svg
 - id: hea-014
   name: 绿色花园沙拉
   scene:
@@ -567,7 +554,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/tomato.svg
 - id: hea-015
   name: 青豆沙拉
   scene:
@@ -608,7 +594,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/tomato.svg
 - id: hea-016
   name: 胡萝卜蜂蜜沙拉
   scene:
@@ -643,7 +628,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/carrot.svg
 - id: hea-017
   name: 黑鹰嘴豆沙拉
   scene:
@@ -685,7 +669,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/onion.svg
 - id: hea-018
   name: 鸡肉莴笋沙拉
   scene:
@@ -730,4 +713,3 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/chicken.svg

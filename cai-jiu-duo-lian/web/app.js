@@ -45,6 +45,13 @@ function escapeHtml(text) {
   return d.innerHTML;
 }
 
+/** Plan B: only AI/host raster assets under assets/illustrations/ */
+function isRasterIllustration(url) {
+  if (!url || typeof url !== "string") return false;
+  if (!url.includes("/assets/illustrations/")) return false;
+  return /\.(png|webp|jpe?g)(\?|$)/i.test(url);
+}
+
 function renderMetaBadge(icon, label, value) {
   return `<span class="meta-badge"><img src="${icon}" alt="" class="meta-icon" /><span class="meta-label">${escapeHtml(label)}</span><span class="meta-value">${escapeHtml(value)}</span></span>`;
 }
@@ -52,49 +59,103 @@ function renderMetaBadge(icon, label, value) {
 function renderIngredientGrid(ingredients) {
   return (ingredients || [])
     .map((i) => {
-      const art = i.artUrl
-        ? `<img class="ing-art" src="${escapeHtml(i.artUrl)}" alt="" />`
-        : `<span class="ing-art ing-art-fallback"></span>`;
+      const artUrl = isRasterIllustration(i.artUrl) ? i.artUrl : "";
+      const art = artUrl
+        ? `<img class="ing-art" src="${escapeHtml(artUrl)}" alt="" loading="eager" decoding="async" />`
+        : `<span class="ing-art ing-art-pending" title="食材插画待生成">待出图</span>`;
       return `<div class="ing-tile">${art}<span class="ing-name">${escapeHtml(i.name)}</span><span class="ing-amt">${escapeHtml(i.amount || "")}</span></div>`;
     })
     .join("");
 }
 
+function bindIngredientArtErrors(root) {
+  if (!root) return;
+  root.querySelectorAll("img.ing-art").forEach((img) => {
+    if (img.dataset.ingBound) return;
+    img.dataset.ingBound = "1";
+    img.addEventListener(
+      "error",
+      () => {
+        const span = document.createElement("span");
+        span.className = "ing-art ing-art-pending";
+        span.title = "食材插画待生成";
+        span.textContent = "待出图";
+        img.replaceWith(span);
+      },
+      { once: true }
+    );
+  });
+}
+
+const CIRCLED_NUMBERS = ["①", "②", "③", "④", "⑤", "⑥", "⑦", "⑧", "⑨", "⑩"];
+
+function stepCardClass(text) {
+  const len = (text || "").length;
+  if (len > 85) return "step-card--long";
+  if (len > 42) return "step-card--medium";
+  return "step-card--short";
+}
+
 function renderStepItem(s, idx) {
   const text = typeof s === "string" ? s : s.text || "";
-  const sceneUrl = (typeof s === "object" && s.sceneUrl) || "/icons/step-scenes/bowl.svg";
-  const arts = (typeof s === "object" && s.ingredientArts) || [];
+  const rawUrl =
+    (typeof s === "object" && (s.stepIllustrationUrl || s.stepArtUrl)) || "";
+  const compositeUrl = isRasterIllustration(rawUrl) ? rawUrl : "";
   const stepNo = (typeof s === "object" && s.index) || idx + 1;
-  const artHtml = arts
-    .map((url) => `<img class="step-ing-art" src="${escapeHtml(url)}" alt="" />`)
-    .join("");
-  return `<li class="step-card">
-    <div class="step-scene-wrap">
-      <img class="step-scene-bg" src="${escapeHtml(sceneUrl)}" alt="" />
-      <div class="step-scene-ingredients">${artHtml}</div>
-      <span class="step-num">${stepNo}</span>
+  const circled = CIRCLED_NUMBERS[stepNo - 1] || `${stepNo}.`;
+  const sizeClass = stepCardClass(text);
+  let sceneHtml;
+  if (compositeUrl) {
+    sceneHtml = `<img class="step-composite-art" src="${escapeHtml(compositeUrl)}" alt="" loading="eager" />`;
+  } else {
+    sceneHtml = `<div class="step-art-pending" aria-hidden="true">步骤插画待生成</div>`;
+  }
+  return `<li class="step-card ${sizeClass}">
+    <div class="step-scene-wrap" aria-hidden="true">${sceneHtml}</div>
+    <div class="step-copy">
+      <p class="step-text"><span class="step-index">${circled}</span>${escapeHtml(text)}</p>
     </div>
-    <p class="step-text">${escapeHtml(text)}</p>
   </li>`;
 }
 
+function isCookingStep(text) {
+  const t = (text || "").trim();
+  if (!t) return false;
+  if (/^(?:即可|趁热|慢慢)?(?:品尝|享用|食用)[。．.!！]?$/.test(t)) return false;
+  if (/^装盘享用[。．.!！]?$/.test(t)) return false;
+  if (/^[\*\s.]+$/.test(t)) return false;
+  if (/卡路里|千卡|总脂肪|饱和脂肪|反式脂肪|膳食纤维|总碳水化合物/.test(t)) return false;
+  if (/维生素\s*[A-CＡ-Ｃ]|钠\s*[-—]?\s*毫克|钾\s*[-—]?\s*毫克/.test(t)) return false;
+  if ((/维生素|钙|铁/.test(t) && /%/.test(t)) || (t.includes("毫克") && t.split("毫克").length > 2)) return false;
+  return true;
+}
+
+function filterCookingSteps(steps) {
+  const out = [];
+  (steps || []).forEach((s) => {
+    const text = typeof s === "string" ? s : s.text || "";
+    if (!isCookingStep(text)) return;
+    out.push(typeof s === "object" ? { ...s } : { text: s });
+  });
+  return out.map((s, idx) => ({ ...s, index: idx + 1 }));
+}
+
+function renderStepTips(_recipe) {
+  return "";
+}
+
 function renderHeroArts(recipe) {
-  const arts = recipe.heroArts && recipe.heroArts.length ? recipe.heroArts : [];
-  const single = recipe.heroImageUrl || recipe.lineArtUrl;
-  const urls = arts.length ? arts : single ? [single] : [];
-  if (!urls.length) {
-    return `<div class="recipe-hero-art-placeholder">手绘出餐示意</div>`;
+  const composite = recipe.heroIllustrationUrl;
+  if (composite) {
+    return `<img class="recipe-hero-art" src="${escapeHtml(composite)}" alt="${escapeHtml(recipe.name)}" />`;
   }
-  if (urls.length === 1) {
-    return `<img class="recipe-hero-art" src="${escapeHtml(urls[0])}" alt="${escapeHtml(recipe.name)}" />`;
-  }
-  return `<div class="recipe-hero-art-grid">${urls
-    .map((url) => `<img class="recipe-hero-art-item" src="${escapeHtml(url)}" alt="" />`)
-    .join("")}</div>`;
+  return `<div class="recipe-hero-art-placeholder recipe-hero-art-pending">插画待生成<br><small>在 Cursor 中让 Agent 执行 illustration_jobs_cli 出图</small></div>`;
 }
 
 function renderRecipeCard(recipe, isPrimary) {
-  const steps = (recipe.steps || []).map((s, idx) => renderStepItem(s, idx)).join("");
+  const steps = filterCookingSteps(recipe.steps || [])
+    .map((s, idx) => renderStepItem(s, idx))
+    .join("");
   const servings = recipe.servings ? `${recipe.servings} 人份` : "未指定";
   const timeText = recipe.cookTimeDisplay || recipe.cookTime || "";
 
@@ -120,13 +181,14 @@ function renderRecipeCard(recipe, isPrimary) {
         </div>
       </div>
       <div class="ingredient-showcase">
-        <h4><img src="icons/sections/ingredients.svg" alt="" class="section-icon" /> 食材清单</h4>
+        <div class="ingredients-banner">食材<span class="ing-servings">（${escapeHtml(servings)}）</span></div>
         <div class="ing-grid">${renderIngredientGrid(recipe.ingredients)}</div>
+        <p class="ing-footer">再忙也要好好吃饭</p>
       </div>
       <div class="recipe-body">
-        <h4><img src="icons/steps/cook.svg" alt="" class="section-icon" /> 做法步骤</h4>
+        <div class="steps-banner">做法</div>
         <ol class="step-list">${steps}</ol>
-        ${recipe.disclaimer ? `<p class="disclaimer">${escapeHtml(recipe.disclaimer)}</p>` : ""}
+        ${renderStepTips(recipe)}
       </div>
     </article>
   `;
@@ -175,6 +237,7 @@ async function preloadImages(urls) {
 async function mountResultWithArtReady(outputEl, html) {
   outputEl.innerHTML = `<div class="result-shell result-art-loading">${html}</div>`;
   const shell = outputEl.querySelector(".result-shell");
+  bindIngredientArtErrors(shell);
   const urls = collectImageUrls(shell);
   if (urls.length) {
     await preloadImages(urls);
@@ -288,8 +351,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     submitBtn.disabled = true;
-    submitBtn.textContent = "正在搜索菜谱并绘制线稿…";
-    outputEl.innerHTML = '<p class="loading">正在搜索高频家常菜谱，并预加载手绘线稿…</p>';
+    submitBtn.textContent = "正在搜索菜谱并加载手绘插画…";
+    outputEl.innerHTML = '<p class="loading">正在搜索高频家常菜谱，并预加载手绘插画…</p>';
     outputEl.classList.add("visible");
 
     try {
@@ -302,7 +365,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!res.ok || !data.ok) {
         throw new Error(data.error || `请求失败 (${res.status})`);
       }
-      outputEl.innerHTML = '<p class="loading">线稿绘制中，请稍候…</p>';
+      outputEl.innerHTML = '<p class="loading">手绘插画加载中，请稍候…</p>';
       await mountResultWithArtReady(outputEl, renderResult(data));
       outputEl.scrollIntoView({ behavior: "smooth", block: "start" });
     } catch (ex) {

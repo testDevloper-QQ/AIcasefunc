@@ -7,6 +7,14 @@ import json
 import sys
 from pathlib import Path
 
+# Windows 终端默认 GBK，含 SVG data URL / 中文时须 UTF-8
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+        sys.stderr.reconfigure(encoding="utf-8")
+    except (AttributeError, OSError):
+        pass
+
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from recommend_engine import recommend  # noqa: E402

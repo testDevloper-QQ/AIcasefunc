@@ -40,7 +40,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/potato.svg
 - id: ben-002
   name: 隔夜杏仁燕麦片
   scene:
@@ -76,7 +75,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/oats.svg
 - id: ben-004
   name: 早餐能量棒
   scene:
@@ -117,7 +115,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/oats.svg
 - id: ben-007
   name: 鸡蛋罗勒吐司
   scene:
@@ -159,7 +156,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/noodle.svg
 - id: ben-010
   name: 菠菜羽衣甘蓝煎蛋饼
   scene:
@@ -204,7 +200,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/egg.svg
 - id: ben-012
   name: 姜黄烤花椰菜
   scene:
@@ -242,7 +237,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/lemon.svg
 - id: ben-015
   name: 酸奶烤茄子卷
   scene:
@@ -282,7 +276,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/garlic.svg
 - id: ben-021
   name: 烤橙鸡
   scene:
@@ -332,7 +325,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/chicken.svg
 - id: ben-054
   name: 香烤全鸡
   scene:
@@ -381,7 +373,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/chicken.svg
 - id: ben-055
   name: 鸡肉烤串
   scene:
@@ -430,7 +421,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/chicken.svg
 - id: ben-056
   name: 鸡肉烧烤
   scene:
@@ -475,7 +465,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/chicken.svg
 - id: ben-058
   name: 香烤鸡腿
   scene:
@@ -514,7 +503,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/chicken.svg
 - id: ben-062
   name: 牛肉烤串
   scene:
@@ -561,7 +549,6 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/beef.svg
 - id: ben-063
   name: 猪肉烤串
   scene:
@@ -605,4 +592,3 @@
     file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
       Immune System and Improving Health) (亚历克斯·巴拉克斯).md
     chapter: 抗炎食谱100例
-  line_art: assets/line-art/pork.svg
