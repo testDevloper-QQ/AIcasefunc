@@ -5,7 +5,7 @@ description: |
   从预建索引推荐可执行菜谱；中国计量、膳食指南份量、≤60分钟、默认快乐餐。
   支持网页在线推荐与 Git 远程 Skill。暖黄手账风 + 叙事插画（Plan B）。
 argument-hint: "[场景或食材，如：轻食 鸡蛋 番茄]"
-version: "1.10.3"
+version: "1.10.4"
 user-invocable: true
 ---
 
@@ -45,7 +45,7 @@ user-invocable: true
 
 ## Read these references when needed
 
-- [`references/agent-form-askquestion.md`](references/agent-form-askquestion.md) — **AskQuestion 表单引导（对齐网页 5 区块，必遵）**
+- [`references/workbuddy-output-guide.md`](references/workbuddy-output-guide.md) — **WorkBuddy 内联出图（必遵，非侧边栏）**
 - [`references/capabilities.md`](references/capabilities.md) — 能力清单与版本
 - [`references/agent-illustration-guide.md`](references/agent-illustration-guide.md) — **Agent 内置出图（Cursor/WorkBuddy，必遵）**
 - [`references/illustration-style-bible.md`](references/illustration-style-bible.md) — 手账叙事插画风格（Plan B）
@@ -201,6 +201,23 @@ python scripts/recommend_cli.py -i 鸡蛋,番茄 -s happy --servings 一人食 -
 ### Step 5: Output
 
 严格按 [`references/output-template.md`](references/output-template.md)。
+
+#### WorkBuddy / Cursor 对话（必遵，与 Web 不同）
+
+见 [`references/workbuddy-output-guide.md`](references/workbuddy-output-guide.md)：
+
+1. **禁止**只把 PNG 附在侧边栏；**必须**在回复正文用 `![描述](路径)` **内联嵌入**。
+2. **成品图**放在食材清单**上方**；**每步做法**在步骤文字**上方**放步骤图。
+3. **`/skill-assets/` 相对 URL 在 WorkBuddy 无效** → 用 PNG **绝对路径**，或 `--image-mode http`（须先启动 Web）。
+4. **`alternates[]` 备选 2 道菜**：每道须完整输出 Hero + 食材 + 步骤（不能只写菜名）。
+
+**推荐**：Step 4.6 完成后执行（参数与 recommend 一致）：
+
+```bash
+python scripts/format_chat_output_cli.py -i 鸡,酸奶 -s happy --servings 二人家庭
+```
+
+将 CLI 输出的 Markdown **作为最终用户可见回复**（或同等结构手写）。
 
 **对话输出视觉要求**（与网页一致的精神）：
 

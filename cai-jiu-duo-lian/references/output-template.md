@@ -73,3 +73,8 @@
 ## 维护
 
 字段变更时同步：`illustration_resolver.py`、`recipe_format.py`、`recommend_engine.py`、`web/app.js`、[`extension-checklist.md`](extension-checklist.md) §E。
+
+## WorkBuddy 对话（非 Web）
+
+- 须内联 `![…](绝对路径.png)`，见 [`workbuddy-output-guide.md`](workbuddy-output-guide.md)
+- 生成器：`python scripts/format_chat_output_cli.py …`
