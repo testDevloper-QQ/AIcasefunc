@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
-  <rect width="192" height="192" rx="32" fill="#FFF8E7"/>
-  <circle cx="96" cy="100" r="48" stroke="#E8A838" stroke-width="6" fill="none"/>
-  <path d="M96 52 C86 72, 76 64, 66 76 M96 52 C106 72, 116 64, 126 76" stroke="#4A4035" stroke-width="5" stroke-linecap="round" fill="none"/>
-  <text x="96" y="168" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#4A4035">Ã</text>
-</svg>

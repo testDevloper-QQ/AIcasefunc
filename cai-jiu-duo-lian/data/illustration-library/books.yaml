@@ -1,9 +1,0 @@
-# 插画素材库 — 按参考资料（书籍）维护预生成范围
-version: 1
-books:
-  - id: anti-inflammatory-100
-    title: 抗炎食谱100例
-    sourceMatch: 抗炎食谱100例
-    status: active
-    priority: 1
-    notes: 首期预生成范围；索引 source.book 等于 sourceMatch 的菜谱纳入素材库
