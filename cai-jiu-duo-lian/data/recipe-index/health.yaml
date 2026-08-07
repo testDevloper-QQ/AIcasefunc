@@ -1,0 +1,715 @@
+- id: hea-001
+  name: 菠萝芒果沐昔碗
+  scene:
+  - health
+  tags:
+  - 轻食
+  - 沙拉
+  - 抗炎
+  - 日常参考
+  servings: 1
+  cook_time: 0min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 菠萝片
+    amount: 1杯，冷冻
+  - name: 菠萝汁
+    amount: 1杯
+  - name: 芒果块
+    amount: 1杯
+  - name: 小香蕉
+    amount: 1个，冷冻
+  - name: 椰子肉
+    amount: ¼杯，磨碎
+  - name: 猕猴桃
+    amount: ½杯，切片
+  - name: 草莓
+    amount: 2~3颗，切片
+  - name: 杏仁
+    amount: 2汤匙，切碎
+  steps:
+  - 在搅拌机中加入芒果、菠萝、香蕉和菠萝汁，然后搅拌成泥。
+  - 将混合物放入一个碗中，在上面放上猕猴桃、草莓、椰肉和杏仁。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hea-002
+  name: 樱桃沐昔
+  scene:
+  - health
+  tags:
+  - 轻食
+  - 沙拉
+  - 抗炎
+  - 日常参考
+  servings: 1
+  cook_time: 0min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 樱桃
+    amount: ½杯
+  - name: 椰奶
+    amount: 1杯
+  - name: 小香蕉
+    amount: 1个
+  - name: 冰块
+    amount: ¼杯
+  - name: 草莓
+    amount: 3~4颗
+  steps:
+  - 在搅拌机中加入樱桃、草莓、椰奶、冰块和香蕉。搅拌至奶油状。
+  - 倒入就餐的玻璃杯。
+  - 卡路里 20 钠 12毫克 总脂肪 0克 钾 325毫克 饱和脂肪 0克 总碳水化合物 3克 多元不饱和脂肪1克 膳食纤维 1克 单不饱和脂肪 0克 糖 2克
+    反式脂肪 --克 蛋白质 2克 胆固醇 0毫克
+  - 维生素A 5% 钙 2% 维生素C 35% 铁 2%
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hea-003
+  name: 鸡肉蛋黄酱沙拉馅西红柿
+  scene:
+  - health
+  tags:
+  - 轻食
+  - 沙拉
+  - 抗炎
+  - 日常参考
+  servings: 3
+  cook_time: 0min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 大西红柿
+    amount: 3个
+  - name: 蛋黄酱
+    amount: 1杯
+  - name: 鸡肉
+    amount: 1.5杯，去骨、煮熟、切丁
+  - name: 小洋葱
+    amount: 1个，切碎
+  - name: 香菜
+    amount: 1汤匙，切碎
+  - name: 青柠汁
+    amount: 1汤匙
+  - name: 姜黄粉
+    amount: ¼茶匙
+  - name: 百里香
+    amount: ¼茶匙，干的
+  - name: 盐和胡椒粉
+    amount: 少许
+  steps:
+  - 在每一个西红柿的蒂顶部切下一块，用勺子把果肉取出。
+  - 在一个碗中，放入鸡肉、洋葱、百里香、青柠汁、盐、胡椒粉、姜黄粉、香菜和蛋黄酱充分搅拌。
+  - 把鸡肉等混合物塞进西红柿中。
+  - 把塞好馅的西红柿放在一个盘子里端上桌。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hea-004
+  name: 西红柿香草沙拉
+  scene:
+  - health
+  tags:
+  - 轻食
+  - 沙拉
+  - 抗炎
+  - 日常参考
+  servings: 1
+  cook_time: 0min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 西红柿
+    amount: 3个，切片
+  - name: 薄荷叶
+    amount: 1汤匙，切碎
+  - name: 香菜
+    amount: 1茶匙，切碎
+  - name: 苹果醋
+    amount: 1茶匙
+  - name: 青柠汁
+    amount: 1茶匙
+  - name: 橄榄油
+    amount: 1茶匙
+  - name: 欧芹
+    amount: 1茶匙
+  - name: 盐和胡椒粉
+    amount: 少许
+  steps:
+  - 在碗中放入西红柿、香菜、欧芹和薄荷叶。
+  - 加入盐、胡椒粉、橄榄油、青柠汁、苹果醋，搅拌均匀。
+  - 倒入一个就餐碗中。
+  - 上桌。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hea-005
+  name: 黄瓜洋葱沙拉
+  scene:
+  - health
+  tags:
+  - 轻食
+  - 沙拉
+  - 抗炎
+  - 日常参考
+  servings: 2
+  cook_time: 5min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 黄瓜
+    amount: 2根，切片
+  - name: 西红柿
+    amount: 2个，切片
+  - name: 洋葱
+    amount: 2个，切片
+  - name: 青柠汁
+    amount: 2茶匙
+  - name: 橙汁
+    amount: ½杯
+  - name: 盐
+    amount: 少许
+  steps:
+  - 把黄瓜片、洋葱片和西红柿片放在碗里搅拌。
+  - 加入青柠汁、橙汁和盐，搅拌均匀。
+  - 倒入一个就餐碗中。
+  - 上桌。
+  - 卡路里 145 钠 --毫克 总脂肪 13克 钾 --毫克 饱和脂肪 --克 总碳水化合物 3克 多元不饱和脂肪 --克 膳食纤维 0克 单不饱和脂肪 --克
+    糖 0克 反式脂肪 --克 蛋白质 5克 胆固醇 --毫克
+  - 维生素A --% 钙 --% 维生素C --% 铁 --%
+  - '# 第3章：晚餐食谱'
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hea-006
+  name: 鸡肉沙拉配罗望子树调味汁
+  scene:
+  - health
+  tags:
+  - 轻食
+  - 沙拉
+  - 抗炎
+  - 日常参考
+  servings: 2
+  cook_time: 0min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 鸡肉
+    amount: 2杯，去骨，煮熟
+  - name: 红甘蓝
+    amount: ½杯，切丝
+  - name: 卷心菜
+    amount: ½杯，切丝
+  - name: 胡萝卜
+    amount: 1~2个，去皮，切丝
+  - name: 调料
+    amount: ''
+  - name: 罗望子果肉
+    amount: ¼杯
+  - name: 盐
+    amount: 半茶匙
+  - name: 红糖
+    amount: 1茶匙
+  - name: 芥末酱
+    amount: 1茶匙
+  - name: 大蒜
+    amount: 2~3瓣，切碎
+  - name: 辣椒粉
+    amount: 1小捏
+  - name: 苹果醋
+    amount: 1茶匙
+  steps:
+  - 在碗中加入所有沙拉材料并搅拌均匀。
+  - 将酱汁材料在另一个碗中混合搅拌。
+  - 配上酱料即可享用沙拉。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hea-007
+  name: 消炎沙拉拼盘
+  scene:
+  - health
+  tags:
+  - 轻食
+  - 沙拉
+  - 抗炎
+  - 日常参考
+  servings: 1
+  cook_time: 20min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 鹰嘴豆
+    amount: ½杯，沸水煮熟
+  - name: 甜椒
+    amount: 1个，切条
+  - name: 生菜叶
+    amount: 1~2片
+  - name: 石榴籽
+    amount: 2汤匙
+  - name: 亚麻籽
+    amount: ½茶匙
+  - name: 黄瓜
+    amount: 1根，切成薄片
+  - name: 杏仁
+    amount: 2~3个
+  steps:
+  - 在一个盘子中加入鹰嘴豆、甜椒、石榴籽、杏仁、生菜叶和黄瓜片。撒上亚麻籽。
+  - 即可享用。
+  - 卡路里 230 钠 1毫克 总脂肪 4克 钾 0毫克 饱和脂肪 0克 总碳水化合物 0克 多元不饱和脂肪 0克 膳食纤维 0克 单不饱和脂肪 0克 糖 6克
+    反式脂肪 0克 蛋白质 0克 胆固醇 0毫克
+  - 维生素A 0% 钙 0% 维生素C 0% 铁 0%
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hea-008
+  name: 鳄梨西红柿沙拉
+  scene:
+  - health
+  tags:
+  - 轻食
+  - 沙拉
+  - 抗炎
+  - 日常参考
+  servings: 2
+  cook_time: 0min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 鳄梨
+    amount: 1个，去皮，去核，切碎
+  - name: 西红柿
+    amount: 1~2个，切碎
+  - name: 中等大小的黄瓜
+    amount: 1.5个，切碎
+  - name: 欧芹
+    amount: ½汤匙，切碎
+  - name: 香菜
+    amount: ½汤匙，切碎
+  - name: 韭菜
+    amount: ½汤匙，切碎
+  - name: 盐
+    amount: ¼茶匙
+  - name: 黑胡椒
+    amount: ½茶匙
+  - name: 柠檬汁
+    amount: 1~2汤匙
+  - name: 胡椒粉
+    amount: 适量
+  steps:
+  - 在碗里加入鳄梨、韭菜、西红柿、柠檬汁、黄瓜、欧芹和香菜。
+  - 加入盐和胡椒粉。
+  - 装到餐碗里即可。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hea-009
+  name: 西兰花核桃沙拉
+  scene:
+  - health
+  tags:
+  - 轻食
+  - 沙拉
+  - 抗炎
+  - 日常参考
+  servings: 2
+  cook_time: 0min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 西兰花小花
+    amount: 1~2杯
+  - name: 核桃
+    amount: ½杯
+  - name: 中等大小的红洋葱
+    amount: 1个，切片
+  - name: 蔓越莓
+    amount: ¼杯，干制品，切碎
+  - name: 黑胡椒
+    amount: ¼茶匙
+  - name: 蜂蜜
+    amount: ¼茶匙
+  - name: 盐
+    amount: 少许
+  steps:
+  - 在碗里放入西兰花、核桃、蔓越莓干、洋葱、盐、黑胡椒和蜂蜜。
+  - 搅拌充分。
+  - 即可用餐。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hea-010
+  name: 菠菜草莓沙拉
+  scene:
+  - health
+  tags:
+  - 轻食
+  - 沙拉
+  - 抗炎
+  - 日常参考
+  servings: 2
+  cook_time: 0min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 菠菜叶
+    amount: 1~2杯
+  - name: 草莓
+    amount: 1.5杯，切成薄片
+  - name: 小红洋葱
+    amount: ½个，切成薄片
+  - name: 小番茄
+    amount: 1.5个，切碎
+  - name: 杏仁
+    amount: 4~5个，切碎
+  - name: 菲达奶酪
+    amount: ¼杯，捣碎
+  steps:
+  - 在大平盘子里放入菠菜叶、西红柿、草莓和菲达奶酪。
+  - 撒上杏仁和洋葱切片。
+  - 即可享用。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hea-011
+  name: 南瓜西葫芦沙拉
+  scene:
+  - health
+  tags:
+  - 轻食
+  - 沙拉
+  - 抗炎
+  - 日常参考
+  servings: 4
+  cook_time: 0min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 南瓜
+    amount: 1个，切片
+  - name: 西葫芦
+    amount: 1.5个，切片
+  - name: 樱桃西红柿
+    amount: 1.5杯，对半切
+  - name: 醋
+    amount: 2~3茶匙
+  - name: 盐
+    amount: 1茶匙
+  - name: 黑胡椒
+    amount: ½茶匙
+  - name: 百里香
+    amount: ½茶匙
+  - name: 牛至1
+    amount: ½茶匙
+  - name: 柠檬汁
+    amount: 1茶匙
+  - name: 橄榄油
+    amount: 1茶匙
+  steps:
+  - 在碗里加入西葫芦、西红柿和南瓜。
+  - 加入橄榄油、醋、柠檬汁、盐、胡椒粉、百里香和牛至。
+  - 搅拌均匀。
+  - 即可享用。
+  - '* * *'
+  - ' 又称小叶薄荷。'
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hea-012
+  name: 拔丝鸡肉蔬菜沙拉
+  scene:
+  - health
+  tags:
+  - 轻食
+  - 沙拉
+  - 抗炎
+  - 日常参考
+  servings: 2
+  cook_time: 10min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 鸡肉
+    amount: 1.5杯，煮沸，撕碎
+  - name: 青葱
+    amount: 1杯，斜切段
+  - name: 红甘蓝
+    amount: ½杯，切丝
+  - name: 胡萝卜
+    amount: ½根，切丝
+  - name: 香菜
+    amount: 1汤匙
+  - name: 墨西哥红辣椒
+    amount: 1个，切丝
+  - name: 腰果
+    amount: 3茶匙，切碎
+  steps:
+  - 在大盘中，加入所有材料并搅拌均匀。
+  - 配任何酱汁，沙拉即成。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hea-013
+  name: 鳄梨玉米沙拉
+  scene:
+  - health
+  tags:
+  - 轻食
+  - 沙拉
+  - 抗炎
+  - 日常参考
+  servings: 2
+  cook_time: 0min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 鳄梨
+    amount: 1个，去皮，去核，切丁
+  - name: 樱桃西红柿
+    amount: 1杯，对半切开
+  - name: 中等黄瓜
+    amount: 2个，切成薄片
+  - name: 玉米粒
+    amount: 数杯，煮熟
+  - name: 盐
+    amount: ¼茶匙
+  - name: 黑胡椒
+    amount: ½茶匙
+  - name: 柠檬汁
+    amount: 1汤匙
+  - name: 橄榄油
+    amount: 2茶匙
+  - name: 蜂蜜
+    amount: 1汤匙
+  steps:
+  - 将鳄梨、西红柿、玉米和黄瓜放入碗中，搅拌均匀。
+  - 在另一个碗，加入蜂蜜、橄榄油、柠檬汁、盐和胡椒粉，拌匀调成汁。
+  - 将调好的汁淋在沙拉上，翻拌均匀。
+  - 即可享用。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hea-014
+  name: 绿色花园沙拉
+  scene:
+  - health
+  tags:
+  - 轻食
+  - 沙拉
+  - 抗炎
+  - 日常参考
+  servings: 1
+  cook_time: 0min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 西红柿
+    amount: 3~4片
+  - name: 黑橄榄
+    amount: 2~3个
+  - name: 腌辣椒
+    amount: 2~3个
+  - name: 胡萝卜
+    amount: ¼杯，切丝
+  - name: 生菜叶
+    amount: 1杯
+  - name: 红洋葱
+    amount: 3~4片
+  steps:
+  - 按个人喜好将所有材料排列在用餐盘子里。
+  - 卡路里 95 钠 13毫克 总脂肪 8克 钾 --毫克 饱和脂肪 1克 总碳水化合物 5克 多元不饱和脂肪 --克 膳食纤维 2克 单不饱和脂肪 --克 糖
+    1克 反式脂肪 --克 蛋白质 3克 胆固醇 --毫克
+  - 维生素A 13% 钙 3% 维生素C 68% 铁 3%
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hea-015
+  name: 青豆沙拉
+  scene:
+  - health
+  tags:
+  - 轻食
+  - 沙拉
+  - 抗炎
+  - 日常参考
+  servings: 2
+  cook_time: 8min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 青豆
+    amount: 2杯，在沸水中煮8分钟
+  - name: 菲达奶酪
+    amount: ¼杯，捣碎
+  - name: 樱桃西红柿
+    amount: 1杯，对半切开
+  - name: 黑胡椒
+    amount: 1茶匙
+  - name: 盐
+    amount: ¼茶匙
+  - name: 牛至
+    amount: ¼茶匙
+  - name: 芥菜籽
+    amount: ¼茶匙
+  - name: 苹果醋
+    amount: 4茶匙
+  steps:
+  - 在碗里放入芥菜籽、盐、胡椒、牛至和苹果醋。搅拌充分。
+  - 将豆子和西红柿加入碗中，搅拌均匀。
+  - 加入酱汁，翻动均匀。
+  - 在沙拉上撒上碎菲达奶酪。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hea-016
+  name: 胡萝卜蜂蜜沙拉
+  scene:
+  - health
+  tags:
+  - 轻食
+  - 沙拉
+  - 抗炎
+  - 日常参考
+  servings: 2
+  cook_time: 0min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 胡萝卜
+    amount: 3~4个，去皮，切丝
+  - name: 蜂蜜
+    amount: 2汤匙
+  - name: 柠檬汁
+    amount: 1茶匙
+  - name: 橄榄油
+    amount: 2茶匙
+  - name: 香菜籽
+    amount: 1茶匙
+  steps:
+  - 将胡萝卜、蜂蜜、柠檬汁、橄榄油和香菜籽放入碗中，拌匀。
+  - 卡路里 20 钠 12毫克 总脂肪 0克 钾 325毫克 饱和脂肪 0克 总碳水化合物 3克 多元不饱和脂肪 1克 膳食纤维 1克 单不饱和脂肪 0克 糖
+    2克 反式脂肪 --克 蛋白质 2克 胆固醇 0毫克
+  - 维生素A 5% 钙 2% 维生素C 35% 铁 2%
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hea-017
+  name: 黑鹰嘴豆沙拉
+  scene:
+  - health
+  tags:
+  - 轻食
+  - 沙拉
+  - 抗炎
+  - 日常参考
+  servings: 2
+  cook_time: 20min
+  cost: 约20元
+  method: 炖
+  ingredients:
+  - name: 鹰嘴豆
+    amount: 2杯，清水浸泡一夜
+  - name: 中等洋葱
+    amount: 1个，切碎
+  - name: 中等西红柿
+    amount: 2个，切碎
+  - name: 柠檬汁
+    amount: ¼杯
+  - name: 盐
+    amount: ½茶匙
+  - name: 辣椒粉
+    amount: ¼茶匙
+  - name: 香菜
+    amount: 3汤匙，切碎
+  steps:
+  - 在高压锅中加入3杯水和鹰嘴豆，煮至高压锅鸣叫1~2次。
+  - 煮完后清水冲洗豆子。
+  - 将所有材料放在碗中搅拌均匀，然后盛放在餐盘子上。
+  - 卡路里 210 钠 --毫克 总脂肪 3克 钾 --毫克 饱和脂肪 --克 总碳水化合物 22克 多元不饱和脂肪 --克 膳食纤维 --克 单不饱和脂肪 --克
+    糖 --克 反式脂肪 --克 蛋白质 30克 胆固醇 --毫克
+  - 维生素A --% 钙 --% 维生素C --% 铁 --%
+  - '# 第5章：羹汤食谱'
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hea-018
+  name: 鸡肉莴笋沙拉
+  scene:
+  - health
+  tags:
+  - 轻食
+  - 沙拉
+  - 抗炎
+  - 日常参考
+  servings: 1
+  cook_time: 20min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 鸡块
+    amount: 1杯，去骨，煮熟
+  - name: 西红柿
+    amount: 1个，纵向切片
+  - name: 生菜叶
+    amount: 1杯
+  - name: 小西葫芦
+    amount: 1个，去皮，切片
+  - name: 小土豆
+    amount: 1个，煮沸，切片
+  - name: 盐和胡椒粉
+    amount: 适量
+  - name: 苹果醋
+    amount: 1汤匙
+  - name: 罗勒叶
+    amount: 2~3片，切碎
+  - name: 小红洋葱
+    amount: 1个，切碎
+  steps:
+  - 将所有材料放入碗中，然后搅拌混合。
+  - 装盘享用。
+  - 卡路里 210 钠 --毫克 总脂肪 3克 钾 --毫克 饱和脂肪 --克 总碳水化合物 22克 多元不饱和脂肪 --克 膳食纤维 --克 单不饱和脂肪 --克
+    糖 --克 反式脂肪 --克 蛋白质 30克 胆固醇 --毫克
+  - 维生素A --% 钙 --% 维生素C --% 铁 --%
+  - '# 第7章：肉类食谱'
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例

@@ -1,0 +1,1426 @@
+- id: hap-003
+  name: 热巧克力茶
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 1
+  cook_time: 6min
+  cost: 约20元
+  method: 炖
+  ingredients:
+  - name: 牛奶
+    amount: 1杯
+  - name: 可可粉
+    amount: 1茶匙
+  - name: 姜黄粉
+    amount: ¼茶匙
+  - name: 蜂蜜
+    amount: 2茶匙
+  steps:
+  - 在深平底锅中加入牛奶、姜黄粉和可可粉，开中火，搅拌至煮沸。
+  - 加入蜂蜜拌匀。
+  - 倒入就餐的马克杯并享用。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-005
+  name: 火鸡蔬菜杂烩
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 3
+  cook_time: 15min
+  cost: 约20元
+  method: 炒
+  ingredients:
+  - name: 火鸡肉
+    amount: 2杯，切碎
+  - name: 盐
+    amount: ½茶匙
+  - name: 苹果
+    amount: 1个，去皮，切片
+  - name: 黑胡椒粉
+    amount: ¼茶匙
+  - name: 中等大小的南瓜
+    amount: 2个，切丁
+  - name: 中等大小的胡萝卜
+    amount: 2根，切片
+  - name: 菠菜叶
+    amount: 1杯半
+  - name: 百里香
+    amount: 1茶匙
+  - name: 孜然粉
+    amount: 1茶匙
+  - name: 肉桂粉
+    amount: 1茶匙
+  - name: 生姜
+    amount: 1茶匙，切碎
+  - name: 大蒜
+    amount: 1茶匙，切碎
+  steps:
+  - 在平底锅中加热油，加入生姜和大蒜一起炒洋葱，直到洋葱变软。
+  - 加入火鸡肉，翻炒4~5分钟。
+  - 加入所有蔬菜和苹果片，再用大火炒几分钟。
+  - 加入盐、胡椒和百里香调味。
+  - 关火，加入孜然和肉桂粉，搅拌均匀。
+  - 装盘享用。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-008
+  name: 羽衣甘蓝和红薯煎锅
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 1
+  cook_time: 10min
+  cost: 约20元
+  method: 炒
+  ingredients:
+  - name: 羽衣甘蓝叶
+    amount: 1杯，切碎
+  - name: 鸡蛋
+    amount: 1个
+  - name: 红薯
+    amount: 1个，去皮，切碎
+  - name: 橄榄油
+    amount: 2汤匙
+  - name: 盐和胡椒粉
+    amount: 少许
+  steps:
+  - 在平底煎锅中将油加热，然后将红薯煎炸4~5分钟。
+  - 加入羽衣甘蓝叶，翻炒几分钟
+  - 加入盐和胡椒粉调味。
+  - 在锅内混杂菜中拨弄开一个空洞，打一个鸡蛋放入。文火炖3~4分钟。
+  - 卡路里 23 钠 63毫克 总脂肪 1克 钾 206毫克 饱和脂肪 1克 总碳水化合物 3克 多元不饱和脂肪0克 膳食纤维 1克 单不饱和脂肪 0克 糖 1克
+    反式脂肪 --克 蛋白质 2克 胆固醇 2毫克
+  - 维生素A 57% 钙 5% 维生素C 34% 铁 5%
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-011
+  name: 鸡肉馅菜卷
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 6
+  cook_time: 30min
+  cost: 约20元
+  method: 炒
+  ingredients:
+  - name: 鸡丁
+    amount: 2杯
+  - name: 中等大小洋葱
+    amount: 1个，切碎
+  - name: 西红柿酱
+    amount: 2汤匙
+  - name: 姜黄粉
+    amount: ½茶匙
+  - name: 大蒜
+    amount: 1茶匙，切碎
+  - name: 姜片
+    amount: 2英寸，切碎
+  - name: 盐
+    amount: 1茶匙
+  - name: 辣椒粉
+    amount: ½茶匙
+  - name: 卷心菜叶
+    amount: 6片
+  - name: 橄榄油
+    amount: 2汤匙
+  steps:
+  - 在平底锅中加热油，将洋葱煎至透明。
+  - 加入鸡丁、姜丝、蒜末，炒至肉色变白。
+  - 加入所有香料，搅拌均匀。
+  - 加入西红柿酱，用文火炖至收汁。放在碗里放一边待用。
+  - 在深平底锅中加入4~5杯水，煮沸。
+  - 将卷心菜叶放入沸水中汆烫30~40秒。
+  - 用冷水冲洗并去除茎。
+  - 将卷心菜叶平铺在干净的案板上，然后铺上一层鸡肉混合物，卷起。做成单卷。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-013
+  name: 甜椒黄瓜卷
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 4
+  cook_time: 10min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 大黄瓜
+    amount: 2~3个，纵向切成薄片
+  - name: 酸奶
+    amount: 1杯
+  - name: 迷迭香
+    amount: 6~7枝
+  - name: 红甜椒
+    amount: 1~2个，切片
+  - name: 柠檬汁
+    amount: 1茶匙
+  - name: 姜黄粉
+    amount: ½茶匙
+  - name: 甜椒
+    amount: 1~2个，切片
+  - name: 盐和胡椒粉
+    amount: 少许
+  steps:
+  - 在碗中将放入酸奶、盐、胡椒粉、柠檬汁和姜黄粉混合，搅拌均匀。
+  - 把黄瓜片放在干净的案板上，每片淋上1~2汤匙酸奶，然后涂抹均匀。
+  - 放上甜椒和迷迭香枝，小心地把它们卷起来。
+  - 整齐排放在一个盘子里。
+  - 装盘享用。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-014
+  name: 虾仁生菜卷
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 4
+  cook_time: 10min
+  cost: 约20元
+  method: 炒
+  ingredients:
+  - name: 虾
+    amount: 8~10只
+  - name: 大莴苣叶
+    amount: 4~5片
+  - name: 橙色甜椒
+    amount: 1个，切丁
+  - name: 大青椒
+    amount: 1个，切丁
+  - name: 香菜
+    amount: 1~2茶匙，切碎
+  - name: 番茄酱
+    amount: 4汤匙
+  - name: 橄榄油
+    amount: 2茶匙
+  - name: 姜黄粉
+    amount: 1茶匙
+  - name: 柠檬汁
+    amount: 1茶匙
+  - name: 盐和白胡椒粉
+    amount: 少许
+  steps:
+  - 在平底锅中加热油，放入甜椒炒软为止。
+  - 加入西红柿酱、盐和胡椒粉，搅拌均匀。
+  - 加入虾，翻炒3~4分钟。
+  - 浇上柠檬汁，撒上姜黄粉，加入香菜。混合均匀。
+  - 将生菜叶铺在干净的案板上，然后在每片叶子上放2只虾及其混杂料。把它们卷起来放在一个盘子里。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-016
+  name: 鳄梨酱
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 2
+  cook_time: 0min
+  cost: 约20元
+  method: 煮
+  ingredients:
+  - name: 鳄梨
+    amount: 2个，去皮，去核
+  - name: 中等大小的西红柿
+    amount: 2个，切碎
+  - name: 小洋葱
+    amount: 1个，切碎
+  - name: 大蒜
+    amount: 1~2瓣，切碎
+  - name: 苹果醋
+    amount: 1茶匙
+  - name: 大葱
+    amount: 2汤匙
+  - name: 盐和胡椒粉
+    amount: 少许
+  steps:
+  - 在大碗中加入鳄梨，用叉子捣碎。
+  - 加入洋葱、西红柿、盐、胡椒粉、醋和葱。拌匀。
+  - 放入碗中，上菜。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-018
+  name: 薄荷柠檬口味西葫芦丝
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 1
+  cook_time: 5min
+  cost: 约20元
+  method: 炒
+  ingredients:
+  - name: 小西葫芦
+    amount: 1个，切丝
+  - name: 青柠汁
+    amount: 1汤匙
+  - name: 薄荷叶
+    amount: 1茶匙，切碎
+  - name: 橄榄油
+    amount: 1汤匙
+  - name: 辣椒粉
+    amount: 1大捏
+  - name: 盐和胡椒粉
+    amount: 少许
+  steps:
+  - 在平底锅中加热油，然后放入西葫芦丝炒3~4分钟。
+  - 加入盐、胡椒粉、辣椒粉、青柠汁，搅拌均匀。
+  - 将锅从火上移开，加入薄荷，搅拌均匀。
+  - 装盘上桌。
+  - 卡路里 230 钠 68毫克 总脂肪 7克 钾 0毫克 饱和脂肪 5克 总碳水化合物 35克 多元不饱和脂肪0克 膳食纤维 3克 单不饱和脂肪 0克 糖 20克
+    反式脂肪 0克 蛋白质 7克 胆固醇 5毫克
+  - 维生素A 2% 钙 11% 维生素C 32% 铁 6%
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-023
+  name: 火鸡肉馅甜椒
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 2
+  cook_time: 30min
+  cost: 约20元
+  method: 烤
+  ingredients:
+  - name: 甜椒
+    amount: 2个，对半切开
+  - name: 红薯
+    amount: 1杯，去皮，切碎
+  - name: 火鸡肉
+    amount: 1杯，碾碎
+  - name: 盐
+    amount: 1茶匙
+  - name: 辣椒碎片
+    amount: ¼茶匙
+  - name: 菲达奶酪
+    amount: 3汤匙，捣碎
+  - name: 欧芹
+    amount: 2茶匙，切碎
+  - name: 大蒜
+    amount: 4~5瓣，切碎
+  - name: 橄榄油
+    amount: 2汤匙
+  steps:
+  - 将烤箱预热至华氏350度。
+  - 在锅中加热油并将蒜末炒20~30秒。
+  - 加入火鸡碎肉和马铃薯，然后在中火下翻炒9~10分钟。
+  - 放入盐和辣椒碎片，调味。
+  - 然后用火鸡肉混合物填充甜椒并将它们放入烤盘中。
+  - 烘烤15~20分钟。
+  - 完成后，撒上欧芹和菲达奶酪碎屑。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-024
+  name: 南瓜意粉
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 4
+  cook_time: 50min
+  cost: 约20元
+  method: 烤
+  ingredients:
+  - name: 意面南瓜
+    amount: 2磅
+  - name: 帕玛森奶酪
+    amount: 1杯
+  - name: 小麦面粉
+    amount: ½杯
+  - name: 橄榄油
+    amount: 2茶匙
+  - name: 大蒜
+    amount: 4~5瓣，切碎
+  - name: 百里香
+    amount: 1茶匙
+  steps:
+  - 将烤箱预热至华氏350度。
+  - 用叉子刺破意面南瓜并将其放入烤盘中，烘烤40~45分钟。
+  - 完成后，让它冷却。
+  - 把意面南瓜切成两半，去掉籽粒。
+  - 同时在平底锅加热油和烹饪蒜末20~40秒。
+  - 加入小麦面粉，搅拌均匀。
+  - 加入牛奶并连续搅拌直至像面糊一样浓稠。
+  - 现在将平底锅从火上移开，加入帕玛森奶酪、盐、胡椒粉和百里香，将它们充分拌匀。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-025
+  name: 火鸡肉丸
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 4
+  cook_time: 30min
+  cost: 约20元
+  method: 烤
+  ingredients:
+  - name: 火鸡肉
+    amount: 2杯，碾碎的
+  - name: 盐
+    amount: 1茶匙
+  - name: 黑胡椒
+    amount: 1茶匙
+  - name: 肉桂粉
+    amount: 1茶匙
+  - name: 薄荷叶
+    amount: 2汤匙
+  - name: 香菜叶
+    amount: 2汤匙
+  - name: 橄榄油
+    amount: 1茶匙
+  - name: 鸡蛋
+    amount: 1个
+  - name: 面包屑
+    amount: ¼杯
+  - name: 大蒜
+    amount: 3~4瓣
+  - name: 姜片
+    amount: 1英寸
+  steps:
+  - 将烤箱预热至华氏350度。
+  - 在食品加工机中，加入所有材料并搅拌均匀。
+  - 将混合物制作成几个圆球，并放在烤盘纸衬底的烤盘中。
+  - 烘烤20~30分钟，或直到食物表面呈现金黄色。
+  - 装盘享用。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-027
+  name: 炒饭
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 2
+  cook_time: 10min
+  cost: 约20元
+  method: 炒
+  ingredients:
+  - name: 糙米
+    amount: 2杯，煮熟
+  - name: 红糖
+    amount: 2茶匙
+  - name: 酱油
+    amount: 2茶匙，低盐
+  - name: 豌豆
+    amount: 1杯，沸水焯一下
+  - name: 西兰花
+    amount: 1杯，处理成小碎花
+  - name: 洋葱
+    amount: 1个，切碎
+  - name: 姜片
+    amount: 1英寸，切碎
+  - name: 大蒜
+    amount: 3~4瓣，切碎
+  - name: 橄榄油
+    amount: 2茶匙
+  steps:
+  - 在平底锅或炒锅中加热油，放入生姜、大蒜和洋葱一起炒，直到洋葱呈现透明。
+  - 加入豌豆和西兰花小碎花，再翻炒几分钟。
+  - 加入米饭、酱油、红糖、盐和胡椒粉，然后翻动拌匀。
+  - 装入餐盘。
+  - 即可享用。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-028
+  name: 甜椒羽衣甘蓝一锅出
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 4
+  cook_time: 20min
+  cost: 约20元
+  method: 炒
+  ingredients:
+  - name: 甜椒
+    amount: 3~4个，切片
+  - name: 羽衣甘蓝叶
+    amount: 1杯
+  - name: 西红柿
+    amount: 2~3个，切片
+  - name: 青柠汁
+    amount: 1茶匙
+  - name: 生姜
+    amount: 2~3片，切碎
+  - name: 中等大小的洋葱
+    amount: 2个，切碎
+  - name: 姜黄粉
+    amount: 1茶匙
+  - name: 橄榄油
+    amount: 2茶匙
+  - name: 鸡汤
+    amount: ½杯
+  steps:
+  - 在深锅中加热油，将洋葱和姜丝炒1~2分钟。
+  - 加入甜椒，翻炒至熟透。
+  - 加入羽衣甘蓝叶、盐、胡椒粉和姜黄粉，拌匀。小火煮4~5分钟。
+  - 加入鸡汤，煮上8~9分钟。
+  - 完成后加入青柠汁。
+  - 即可享用。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-030
+  name: 黄瓜西红柿苹果拼盘
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 1
+  cook_time: 0min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 黄瓜
+    amount: 1根，切碎
+  - name: 大苹果
+    amount: 1个，去皮，切碎
+  - name: 西红柿
+    amount: 2个，切碎
+  steps:
+  - 在大浅盘里放入苹果、黄瓜和番茄片。
+  - 撒上盐和胡椒粉。
+  - 即可食用。
+  - '# 第4章：沙拉食谱'
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-051
+  name: 椰子鸡肉球
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 4
+  cook_time: 20min
+  cost: 约20元
+  method: 炒
+  ingredients:
+  - name: 鸡肉碎
+    amount: 3杯
+  - name: 中等洋葱
+    amount: 1~2个，切碎
+  - name: 椰子粉
+    amount: ½杯
+  - name: 盐
+    amount: 1茶匙
+  - name: 大蒜酱
+    amount: 1茶匙
+  - name: 孜然粉
+    amount: 1茶匙
+  - name: 肉桂粉
+    amount: 1茶匙
+  - name: 辣椒粉
+    amount: ½茶匙
+  - name: 油
+    amount: 用于浅炸的量
+  steps:
+  - 在食品加工机中加入鸡肉碎、洋葱、盐、辣椒粉、大蒜酱、孜然粉、肉桂粉和椰子粉，然后搅拌加工成泥。
+  - 用搅拌好的混合物制作小圆球。
+  - 在不粘锅中加热油，在小火下浅煎炸肉丸至熟透。
+  - 即可享用。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-052
+  name: 蜜汁鸡翅
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 3
+  cook_time: 20min
+  cost: 约20元
+  method: 烤
+  ingredients:
+  - name: 鸡翅
+    amount: 18盎司
+  - name: 蜂蜜
+    amount: 1杯
+  - name: 西红柿酱
+    amount: 5汤匙
+  - name: 苹果醋
+    amount: 2茶匙
+  - name: 黑胡椒
+    amount: ½茶匙
+  - name: 橄榄油
+    amount: 1茶匙
+  steps:
+  - 在碗里加入蜂蜜、橄榄油、番茄酱、胡椒和醋，拌匀。
+  - 将拌好的混合物涂抹在鸡翅上，挂糊适中。
+  - 将烤箱预热至华氏355度。
+  - 将鸡翅放在涂有油脂的烤盘中，烤20分钟。
+  - 即可享用。
+  - 卡路里 95 钠 13毫克 总脂肪 8克 钾 --毫克 饱和脂肪 1克 总碳水化合物 5克 多元不饱和脂肪 --克 膳食纤维 2克 单不饱和脂肪 --克 糖
+    1克 反式脂肪 --克 蛋白质 3克 胆固醇 --毫克
+  - 维生素A 13% 钙 3% 维生素C 68% 铁 3%
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-053
+  name: 咖喱酱涂鸡胸肉
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 1
+  cook_time: 20min
+  cost: 约20元
+  method: 烤
+  ingredients:
+  - name: 鸡胸肉
+    amount: 1个
+  - name: 姜黄粉
+    amount: ¼茶匙
+  - name: 辣椒粉
+    amount: ¼茶匙
+  - name: 盐
+    amount: ¼茶匙
+  - name: 醋
+    amount: 2茶匙
+  - name: 柠檬汁
+    amount: 1茶匙
+  - name: 迷迭香
+    amount: 1茶匙
+  - name: 橄榄油
+    amount: 1茶匙
+  steps:
+  - 在碗里放入所有香料、柠檬汁和鸡肉，混合均匀。
+  - 将鸡胸肉放入涂有油脂的烤盘中。
+  - 在华氏355度下烘烤20分钟。
+  - 即可享用。
+  - 卡路里 23 钠 63毫克 总脂肪 1克 钾 206毫克 饱和脂肪 1克 总碳水化合物 3克 多元不饱和脂肪 0克 膳食纤维 1克 单不饱和脂肪 0克 糖
+    1克 反式脂肪 --克 蛋白质 2克 胆固醇 2毫克
+  - 维生素A 57% 钙 5% 维生素C 34% 铁 5%
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-057
+  name: 卤制鸡肉
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 4
+  cook_time: 20min
+  cost: 约20元
+  method: 炒
+  ingredients:
+  - name: 鸡肉
+    amount: 18盎司，去骨，小块
+  - name: 中等洋葱
+    amount: 2个，切碎
+  - name: 中等西红柿
+    amount: 2个，切碎
+  - name: 酸奶
+    amount: ½杯
+  - name: 盐
+    amount: 1汤匙
+  - name: 辣椒粉
+    amount: ½汤匙
+  - name: 姜黄粉
+    amount: ½茶匙
+  - name: 肉桂粉
+    amount: 1茶匙
+  - name: 孜然粉
+    amount: 1茶匙
+  - name: 生姜酱
+    amount: 1茶匙
+  - name: 橄榄油
+    amount: 2汤匙
+  - name: 大蒜酱
+    amount: 1茶匙
+  steps:
+  - 在碗里放入鸡肉、酸奶、盐、辣椒粉和姜黄粉。混合均匀，腌制30分钟。
+  - 在平底锅中放入油加热，放入洋葱烹饪软化。
+  - 加入生姜、大蒜和西红柿，翻炒7~8分钟，将西红柿煮熟为止。
+  - 加入腌好的鸡肉，盖好锅盖热煮，直到鸡肉收汁变干为止。
+  - 再用中火将鸡肉翻炒6~7分钟。
+  - 当鸡肉酥软时，从火上移开。
+  - 装盘享用。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-059
+  name: 慢煮鸡肉丝
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 2
+  cook_time: 20min
+  cost: 约20元
+  method: 炖
+  ingredients:
+  - name: 鸡
+    amount: 18盎司，无骨
+  - name: 水
+    amount: 1杯
+  - name: 盐
+    amount: 1茶匙
+  - name: 姜黄粉
+    amount: 1茶匙
+  - name: 大蒜粉
+    amount: 1茶匙
+  - name: 黑胡椒
+    amount: 1茶匙
+  steps:
+  - 在慢炖锅中加入鸡肉、水、盐、胡椒粉、大蒜粉和姜黄粉。
+  - 盖上锅盖，让鸡肉在高火模式下煮3小时。
+  - 当鸡肉酥软并且汤汁收干时，用两把叉子将鸡肉撕碎。
+  - 即可享用。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-061
+  name: 胡萝卜炖肉
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 6
+  cook_time: 20min
+  cost: 约20元
+  method: 炖
+  ingredients:
+  - name: 牛肉
+    amount: 22盎司，切块
+  - name: 胡萝卜
+    amount: 3根，去皮切片
+  - name: 月桂叶
+    amount: 1片
+  - name: 西红柿
+    amount: 3个，切碎
+  - name: 洋葱
+    amount: 3个，切片
+  - name: 盐
+    amount: 1汤匙
+  - name: 黑胡椒
+    amount: 1汤匙
+  - name: 蜂蜜
+    amount: 2汤匙
+  - name: 水
+    amount: 4杯
+  - name: 大蒜
+    amount: 7~8瓣，切碎
+  - name: 西红柿酱
+    amount: ½杯
+  - name: 姜片
+    amount: 2英寸段，切碎
+  steps:
+  - 在慢炖锅底部放入牛肉片，上面再放上胡萝卜、洋葱、西红柿、西红柿酱、盐、胡椒、姜、月桂叶、大蒜。
+  - 淋上水，盖上盖子。
+  - 慢炖8小时或一整夜。
+  - 炖好之后，加入蜂蜜并混合。
+  - 趁热享用。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-064
+  name: 酱汁羊肉
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 4
+  cook_time: 60min
+  cost: 约20元
+  method: 炒
+  ingredients:
+  - name: 羊肉
+    amount: 18盎司，切块
+  - name: 西红柿
+    amount: 3个，切碎
+  - name: 洋葱
+    amount: 3个，切碎
+  - name: 橄榄油
+    amount: 4汤匙
+  - name: 盐
+    amount: 2茶匙
+  - name: 姜黄粉
+    amount: 1茶匙
+  - name: 辣椒粉
+    amount: ½茶匙
+  - name: 姜酱
+    amount: 1茶匙
+  - name: 大蒜酱
+    amount: 1茶匙
+  - name: 孜然粉
+    amount: 1茶匙
+  - name: 水
+    amount: 4杯
+  - name: 肉桂粉
+    amount: 1茶匙
+  steps:
+  - 在深平底锅中加热油，将洋葱煎至金黄色。
+  - 加入姜蒜酱和羊肉，炒10~12分钟或炒至变色。
+  - 加入盐、辣椒粉和姜黄粉。混合均匀。
+  - 加水，盖上锅盖煮40~45分钟，或煮到羊肉酥软为止。
+  - 当汤水收干后，加入西红柿，再将整锅食物煎炒10~12分钟。
+  - 撒上孜然和肉桂粉，混合均匀。
+  - 趁热享用。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-065
+  name: 马萨拉碎牛肉
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 3
+  cook_time: 30min
+  cost: 约20元
+  method: 炒
+  ingredients:
+  - name: 碎牛肉
+    amount: 16盎司
+  - name: 西红柿
+    amount: 2个，切碎
+  - name: 中等大小的洋葱
+    amount: 2个，切碎
+  - name: 橄榄油
+    amount: 4汤匙
+  - name: 盐
+    amount: 1茶匙
+  - name: 姜黄粉
+    amount: 1.2茶匙
+  - name: 辣椒粉
+    amount: ½茶匙
+  - name: 姜酱
+    amount: 1茶匙
+  - name: 大蒜酱
+    amount: 1茶匙
+  - name: 孜然粉
+    amount: 1茶匙
+  - name: 肉桂粉
+    amount: 1茶匙
+  steps:
+  - 在深平底锅中加热油，放入碎洋葱，煎至柔软。
+  - 加入姜蒜酱和碎牛肉煎炒10~12分钟。
+  - 加入盐、辣椒粉和姜黄粉。翻炒直到色泽亮丽。
+  - 再把西红柿倒入混合物中，用中火或高火将整锅食物翻炒，直到西红柿熟透。
+  - 撒上孜然和肉桂粉，混合均匀。
+  - 趁热享用。
+  - '# 第8章：沐昔食谱'
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-072
+  name: 酸奶芒果奶昔
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 2
+  cook_time: 0min
+  cost: 约20元
+  method: 凉拌
+  ingredients:
+  - name: 酸奶
+    amount: 1杯
+  - name: 蜂蜜
+    amount: 2茶匙
+  - name: 芒果块
+    amount: 2杯
+  - name: 香蕉
+    amount: 1根
+  - name: 冰块
+    amount: 4~5块
+  - name: 姜黄粉
+    amount: 1大撮
+  steps:
+  - 在搅拌机中加入芒果、蜂蜜、姜黄、酸奶、冰块和香蕉，搅拌均匀。
+  - 倒入就餐的玻璃杯。
+  - 卡路里 390 钠 0毫克 总脂肪 12克 钾 0毫克 饱和脂肪 3克 总碳水化合物 0克 多元不饱和脂肪 0克 膳食纤维 0克 单不饱和脂肪 0克 糖 0克
+    反式脂肪 0克 蛋白质 0克 胆固醇 0毫克
+  - 维生素A 0% 钙 0% 维生素C 0% 铁 0%
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-086
+  name: 苹果肉桂茶
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 1
+  cook_time: 20min
+  cost: 约20元
+  method: 炖
+  ingredients:
+  - name: 苹果
+    amount: 1个，去皮，切片
+  - name: 肉桂棒
+    amount: 1~2
+  - name: 蜂蜜
+    amount: 2茶匙
+  - name: 水
+    amount: 3杯
+  steps:
+  - 在炖锅中，加入水、苹果和肉桂棒，盖上盖子并小火煮20分钟，或直到苹果软化。
+  - 将茶汤滤入杯中，加入蜂蜜，搅拌混合。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-087
+  name: 印度香料奶茶
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 3
+  cook_time: 10min
+  cost: 约20元
+  method: 炖
+  ingredients:
+  - name: 丁香
+    amount: 2个
+  - name: 姜片
+    amount: 1英寸
+  - name: 八角茴香
+    amount: 1角
+  - name: 小肉桂棒
+    amount: 1支
+  - name: 绿色小豆蔻
+    amount: 2个
+  - name: 杏仁牛奶
+    amount: 2.5杯
+  - name: 水
+    amount: 1.5杯
+  - name: 蜂蜜
+    amount: 2茶匙
+  - name: 茶包
+    amount: 2个
+  steps:
+  - 在炖锅中加入茶包、所有香料、生姜和水。中火煮沸6~7分钟。
+  - 加入牛奶和蜂蜜，煮沸即可。
+  - 将煮好的茶汤过滤，倒入茶杯中，趁热上桌。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-088
+  name: 姜黄茶
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 1
+  cook_time: 4min
+  cost: 约20元
+  method: 炖
+  ingredients:
+  - name: 牛奶
+    amount: 1.5杯
+  - name: 姜黄粉
+    amount: 1茶匙
+  - name: 蜂蜜
+    amount: 2茶匙
+  - name: 丁香
+    amount: 2个
+  steps:
+  - 在炖锅中加入牛奶和丁香，搅拌均匀，直到煮沸。
+  - 加入姜黄粉和蜂蜜，搅拌至混合。
+  - 再煮几分钟。
+  - 把茶汤倒进盛茶的杯子里。
+  - 卡路里 270 钠 480毫克 总脂肪 15克 钾 --毫克 饱和脂肪 4克 总碳水化合物 31克 多元不饱和脂肪 7克 膳食纤维 2克 单不饱和脂肪 4克
+    糖 19克 反式脂肪 0克 蛋白质 4克 胆固醇 55毫克
+  - 维生素A 0% 钙 8% 维生素C 0% 铁 20%
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-089
+  name: 薄荷柠檬茶
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 2
+  cook_time: 10min
+  cost: 约20元
+  method: 炖
+  ingredients:
+  - name: 水
+    amount: 2.5杯
+  - name: 柠檬角1
+    amount: 1个
+  - name: 薄荷叶
+    amount: 1把
+  - name: 姜段
+    amount: 2英寸
+  - name: 萨缇瓦
+    amount: 1~2滴
+  steps:
+  - 在炖锅中加水。
+  - 将肉桂棒、生姜、薄荷叶和柠檬片放入平底锅中，煮沸。
+  - 加入萨缇瓦，搅拌均匀。
+  - 将茶汤滤入茶杯。
+  - 趁热享用。
+  - '* * *'
+  - ' 装饰用的柠檬片。'
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-090
+  name: 菠萝姜茶
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 2
+  cook_time: 6min
+  cost: 约20元
+  method: 炖
+  ingredients:
+  - name: 水
+    amount: 2杯
+  - name: 姜段
+    amount: 1英寸
+  - name: 蜂蜜
+    amount: 1茶匙
+  - name: 绿色小豆蔻
+    amount: 1个
+  - name: 菠萝片
+    amount: 1~2片
+  steps:
+  - 在炖锅中加入水、菠萝、豆蔻和生姜，盖上锅盖煮4~5分钟。
+  - 加入蜂蜜搅拌，将茶汤滤入茶杯。
+  - 卡路里 90 钠 10毫克 总脂肪 0克 钾 190毫克 饱和脂肪 0克 总碳水化合物 0克 多元不饱和脂肪 0克 膳食纤维 0克 单不饱和脂肪 0克 糖
+    18克 反式脂肪 0克 蛋白质 0克 胆固醇 0毫克
+  - 维生素A 0% 钙 2% 维生素C 20% 铁 0%
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-091
+  name: 蜂蜜肉桂茶
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 1
+  cook_time: 10min
+  cost: 约20元
+  method: 炖
+  ingredients:
+  - name: 肉桂棒
+    amount: 1根
+  - name: 八角茴香
+    amount: 1角
+  - name: 青柠汁
+    amount: 2茶匙
+  - name: 水
+    amount: 1.5杯
+  steps:
+  - 在炖锅中加入水、八角茴香和肉桂，煮沸直到茶汤颜色赏心悦目。
+  - 加入蜂蜜，搅拌均匀。
+  - 将茶汤滤入杯中，淋上青柠汁。
+  - 卡路里 396 钠 324毫克 总脂肪 21克 钾 1016毫克 饱和脂肪 13克 总碳水化合物 32克 多元不饱和脂肪 1克 膳食纤维 0克 单不饱和脂肪
+    6克 糖 24克 反式脂肪 0克 蛋白质 21克 胆固醇 75毫克
+  - 维生素A 13% 钙 19% 维生素C 3% 铁 1%
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-092
+  name: 马萨拉茶
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 2
+  cook_time: 10min
+  cost: 约20元
+  method: 炖
+  ingredients:
+  - name: 丁香
+    amount: 2个
+  - name: 肉桂棒
+    amount: 1根
+  - name: 绿色小豆蔻
+    amount: 2个
+  - name: 杏仁露露
+    amount: 2杯
+  - name: 水
+    amount: 1杯
+  - name: 萨缇瓦
+    amount: 2滴
+  - name: 姜片
+    amount: 1英寸
+  - name: 茶包
+    amount: 1个
+  steps:
+  - 在炖锅中加入茶包、所有香料和水。煮沸。
+  - 加入杏仁露露煮沸。
+  - 将茶汤滤入杯中即可上桌。
+  - 卡路里 390 钠 0毫克 总脂肪 12克 钾 0毫克 饱和脂肪 3克 总碳水化合物 0克 多元不饱和脂肪 0克 膳食纤维 0克 单不饱和脂肪 0克 糖 0克
+    反式脂肪 0克 蛋白质 0克 胆固醇 0毫克
+  - 维生素A 0% 钙 0% 维生素C 0% 铁 0%
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-093
+  name: 黄金茶
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 1
+  cook_time: 4min
+  cost: 约20元
+  method: 炖
+  ingredients:
+  - name: 杏仁露
+    amount: 1杯
+  - name: 椰浆
+    amount: ½杯
+  - name: 姜黄粉
+    amount: 1茶匙
+  - name: 绿色小豆蔻
+    amount: 2个
+  steps:
+  - 在炖锅中加入杏仁露、椰浆和绿豆蔻，搅拌均匀，直到煮沸。
+  - 加入姜黄粉混合均匀。
+  - 倒入就餐的杯子中享用。
+  - 卡路里 270 钠 480毫克 总脂肪 15克 钾 --毫克 饱和脂肪 4克 总碳水化合物 31克 多元不饱和脂肪 7克 膳食纤维 2克 单不饱和脂肪 4克
+    糖 19克 反式脂肪 0克 蛋白质 4克 胆固醇 55毫克
+  - 维生素A 0% 钙 8% 维生素C 0% 铁 20%
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-094
+  name: 生姜罗勒茶
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 2
+  cook_time: 10min
+  cost: 约20元
+  method: 炖
+  ingredients:
+  - name: 水
+    amount: 2杯
+  - name: 罗勒叶
+    amount: 1把
+  - name: 生姜
+    amount: 1茶匙，粉碎
+  - name: 姜黄粉
+    amount: 1大捏
+  - name: 柠檬汁
+    amount: 1茶匙
+  - name: 蜂蜜
+    amount: 1茶匙
+  steps:
+  - 把水和生姜、罗勒叶一起放在炖锅里，煮沸。
+  - 加入姜黄粉，煮几分钟。
+  - 加入柠檬汁和蜂蜜，搅拌均匀。
+  - 倒入就餐的杯子。
+  - 卡路里 224 钠 495毫克 总脂肪 6克 钾 0毫克 饱和脂肪 3克 总碳水化合物 33克 多元不饱和脂肪 1克 膳食纤维 3克 单不饱和脂肪 0克 糖
+    3克 反式脂肪 0克 蛋白质 10克 胆固醇 8毫克
+  - 维生素A 2% 钙 14% 维生素C 0% 铁 12%
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-095
+  name: 姜黄桂皮茶
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 2
+  cook_time: 15min
+  cost: 约20元
+  method: 炖
+  ingredients:
+  - name: 水
+    amount: 2.5杯
+  - name: 姜黄粉
+    amount: 1茶匙
+  - name: 蜂蜜
+    amount: 2茶匙
+  - name: 青柠檬
+    amount: 半个，榨汁
+  - name: 肉桂棒
+    amount: 1根
+  steps:
+  - 在炖锅中加入水、姜黄和肉桂，煮沸。
+  - 加入蜂蜜，搅拌均匀。
+  - 将茶汤滤入杯中，加入青柠汁搅拌。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-096
+  name: 柠檬草茶
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 2
+  cook_time: 5min
+  cost: 约20元
+  method: 炖
+  ingredients:
+  - name: 水
+    amount: 3杯
+  - name: 柠檬草
+    amount: 1茶匙
+  - name: 蜂蜜
+    amount: 2茶匙
+  - name: 绿色小豆蔻
+    amount: 2个
+  steps:
+  - 在炖锅中加入水、柠檬草和小豆蔻，煮沸至发出芳香味。
+  - 加入蜂蜜，搅拌均匀。
+  - 把茶汤滤入杯子中。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-097
+  name: 开心果抹茶
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 2
+  cook_time: 10min
+  cost: 约20元
+  method: 炖
+  ingredients:
+  - name: 抹茶粉
+    amount: 1茶匙
+  - name: 开心果
+    amount: ¼杯
+  - name: 牛奶
+    amount: 2杯
+  - name: 蜂蜜
+    amount: 2茶匙
+  steps:
+  - 在碗中加入抹茶粉和一些牛奶混合均匀。放在一边。
+  - 在炖锅中加入开心果，温热一下。
+  - 加入牛奶和抹茶混合物，搅拌均匀。
+  - 用手持式搅拌器搅拌所有东西。
+  - 加入蜂蜜。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-098
+  name: 丁香肉桂茶
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 2
+  cook_time: 10min
+  cost: 约20元
+  method: 炖
+  ingredients:
+  - name: 水
+    amount: 2.5杯
+  - name: 茶包
+    amount: 1个
+  - name: 丁香
+    amount: 7~8个
+  - name: 萨缇瓦
+    amount: 2滴
+  - name: 肉桂棒
+    amount: 1根
+  steps:
+  - 在炖锅中加入水、丁香、茶包和肉桂，然后煮沸。
+  - 把茶汤滤进杯子里，放入萨缇瓦搅拌。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-099
+  name: 橙茶
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 2
+  cook_time: 10min
+  cost: 约20元
+  method: 炖
+  ingredients:
+  - name: 水
+    amount: 2.5杯
+  - name: 蜂蜜
+    amount: 2茶匙
+  - name: 青柠汁
+    amount: 1茶匙
+  - name: 橙汁
+    amount: 1杯，鲜榨的
+  - name: 八角茴香
+    amount: 1角
+  - name: 薄荷叶
+    amount: 3~4片
+  - name: 肉桂棒
+    amount: 1根
+  steps:
+  - 在炖锅中加入水、八角、薄荷、橙汁和肉桂，略煮。
+  - 加入蜂蜜，搅拌均匀。
+  - 将茶汤滤入杯中即可上桌。
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例
+- id: hap-100
+  name: 椰子奶茶
+  scene:
+  - happy
+  tags:
+  - 家常菜
+  - 抗炎
+  servings: 1
+  cook_time: 5min
+  cost: 约20元
+  method: 炖
+  ingredients:
+  - name: 椰奶
+    amount: 1杯
+  - name: 茶包
+    amount: 1个
+  - name: 肉桂棒
+    amount: 1根
+  - name: 萨缇瓦
+    amount: 1~2滴
+  steps:
+  - 在炖锅中加入椰奶、茶包、肉桂棒和萨缇瓦。
+  - 把它们煮沸。
+  - 趁热上桌。
+  - '# 结语'
+  - 我想对你下载这本《抗炎食谱100例》表示感谢和祝贺。它将为你的健康生活提供100个超级简单和健康的食谱。我相信你一定很喜欢这本食谱的每一个菜谱，每一个菜谱都为你提供了你想要的味道。我希望你不仅喜欢书中的每一个菜谱，而且还能够与你的亲人分享它们。
+  - 再次感谢你，祝你好运！
+  source:
+    book: 抗炎食谱100例
+    file: 参考书籍/抗炎食谱100例 (Anti-Inflammatory Diet Cookbook Simple Recipes to Heal the
+      Immune System and Improving Health) (亚历克斯·巴拉克斯).md
+    chapter: 抗炎食谱100例

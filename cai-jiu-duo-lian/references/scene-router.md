@@ -1,0 +1,35 @@
+# 场景路由器
+
+## 6 大场景入口
+
+| 场景 ID | 展示名 | 关键词信号 | 优先索引文件 | 优先书籍 |
+|---------|--------|-----------|-------------|----------|
+| bento | 便当 | 便当、带饭、上班族、备餐 | bento.yaml | 食帖15、食帖18 |
+| light-meal | 轻食 | 轻食、沙拉、抗炎、减脂、清爽 | light-meal.yaml | 抗炎食谱100例、哇沙拉的教科书 |
+| seasonal | 时令 | 时令、节气、当季、应季、鲜味 | seasonal.yaml | 食帖的节气食桌 |
+| regional | 地方味 | 地方菜、家乡、川渝、粤菜… | regional.yaml | 食遍中国 |
+| health | 调理 | 备孕、孕期、营养、调理身体 | health.yaml | 海蒂怀孕大百科 |
+| happy | 快乐餐 | 解馋、小吃、甜点、饮品、轰趴 | happy.yaml | 跨书综合 |
+
+## 请求类型路由
+
+- 多个食材 → ingredient 模式 → 按食材 tag 过滤索引
+- 指定菜名/技法 → specific 模式 → 按 name/tags 精确匹配
+- 仅场景/心情 → craving 模式 → 按 scene 过滤索引
+
+## 反向过滤（禁止推荐）
+
+| 场景 | 禁止 |
+|------|------|
+| light-meal | 重油炸、高糖甜点 |
+| health | 高汞鱼、未熟蛋、酒精（孕期） |
+| seasonal | 反季强行推荐（无依据时） |
+
+## 扩展新场景
+
+新增第 N 类场景时 **必做**（详见 [`extension-checklist.md`](extension-checklist.md) §A）：
+
+1. 索引 yaml + 本书籍来源
+2. 本表 + `web` 场景 chip
+3. 新场景菜谱的 **插画 PNG 覆盖率**（`validate_illustration_coverage.py`）
+4. 至少 1 个推荐回归测试

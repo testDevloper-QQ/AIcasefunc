@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <ellipse cx="24" cy="26" rx="18" ry="16" fill="#C8E6C9" fill-opacity="0.35"/>
+  <!-- 炒锅 -->
+  <path d="M8 30 Q24 18 40 30" stroke="#5C4F42" stroke-width="1.8" fill="#FFECB3" fill-opacity="0.4"/>
+  <ellipse cx="24" cy="30" rx="14" ry="5" stroke="#5C4F42" stroke-width="1.6" fill="#FFF8E7" fill-opacity="0.5"/>
+  <!-- 白菜 -->
+  <path d="M16 28 Q18 14 22 16 Q20 22 24 26 Q22 16 26 14 Q30 18 28 28" stroke="#5C4F42" stroke-width="1.5" fill="#A5D6A7" fill-opacity="0.65"/>
+  <!-- 番茄 -->
+  <circle cx="32" cy="24" r="5" stroke="#5C4F42" stroke-width="1.4" fill="#FFAB91" fill-opacity="0.6"/>
+  <path d="M32 19 v-2 M30 18 l2-2 2 2" stroke="#5C4F42" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- 葱 -->
+  <path d="M12 22 Q14 18 16 22" stroke="#81C784" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+</svg>
