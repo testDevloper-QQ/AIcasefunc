@@ -17,6 +17,8 @@ if hasattr(sys.stdout, "reconfigure"):
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from chat_output import render_recommend_markdown  # noqa: E402
+from export_embedded_html import write_recommend_embedded_html  # noqa: E402
 from recommend_engine import recommend  # noqa: E402
 from skill_loader import get_skill_root  # noqa: E402
 
@@ -55,6 +57,38 @@ def main() -> None:
     parser.add_argument("--text", default="", help="补充说明")
     parser.add_argument("--skill-root", default="", help="Skill 根目录（默认自动解析）")
     parser.add_argument("--pretty", action="store_true", help="格式化 JSON 输出")
+    parser.add_argument(
+        "--markdown",
+        action="store_true",
+        help="输出对话 Markdown（须与 Step 4 相同用户参数）；默认 image-mode=present",
+    )
+    parser.add_argument(
+        "--image-mode",
+        choices=("present", "path", "http"),
+        default="present",
+        help="--markdown 时：present=文案+present_files 清单（WorkBuddy 默认）；"
+        "path/http=Markdown ![](…)（Cursor 等）",
+    )
+    parser.add_argument(
+        "--base-url",
+        default="http://127.0.0.1:8765",
+        help="--image-mode http 时的 Web 根地址",
+    )
+    parser.add_argument(
+        "--export-html",
+        action="store_true",
+        help="导出自包含 HTML（base64 内嵌图，WorkBuddy HTML 预览通道）",
+    )
+    parser.add_argument(
+        "--export-html-out",
+        default="",
+        help="--export-html 输出路径（默认 exports/workbuddy-preview.html）",
+    )
+    parser.add_argument(
+        "--export-html-no-ingredient-art",
+        action="store_true",
+        help="导出 HTML 时跳过食材小图以缩小体积",
+    )
     args = parser.parse_args()
 
     ingredients = _split_csv(args.ingredients)
@@ -77,6 +111,34 @@ def main() -> None:
     )
 
     payload = {"ok": True, "skillRoot": str(skill_root), **result}
+
+    if args.export_html:
+        out = (
+            Path(args.export_html_out)
+            if args.export_html_out
+            else (skill_root / "exports" / "workbuddy-preview.html")
+        )
+        stats = write_recommend_embedded_html(
+            payload,
+            skill_root,
+            out,
+            embed_images=True,
+            include_ingredient_art=not args.export_html_no_ingredient_art,
+        )
+        print(json.dumps(stats, ensure_ascii=False, indent=2))
+        return
+
+    if args.markdown:
+        print(
+            render_recommend_markdown(
+                payload,
+                skill_root,
+                image_mode=args.image_mode,
+                base_url=args.base_url,
+            )
+        )
+        return
+
     indent = 2 if args.pretty else None
     print(json.dumps(payload, ensure_ascii=False, indent=indent))
 

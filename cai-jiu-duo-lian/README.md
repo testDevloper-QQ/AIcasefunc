@@ -127,6 +127,16 @@ py -3 scripts/ensure_web_server.py --foreground
 python scripts/recommend_cli.py -i 鸡蛋,番茄 -s happy --servings 一人食 --pretty
 ```
 
+对话最终展示（补图后）：
+
+```bash
+python scripts/recommend_cli.py -i 鸡蛋,番茄 -s happy --servings 一人食 --markdown
+```
+
+- **WorkBuddy**（默认）：正文用文案；按输出末尾 `PRESENT_FILES` 块调用 **`present_files`** 展示图片（Markdown 本地路径不渲染）。见 `references/workbuddy-output-guide.md`。
+- **WorkBuddy HTML 预览**（破损图 / 跨端口）：`--export-html` 生成 base64 自包含 HTML，打开 `htmlPath`；勿把导出文件提交 Git。
+- **Cursor 等**：加 `--image-mode path` 或 `--image-mode http`。
+
 ### 推荐规则摘要
 
 | 规则 | 说明 |

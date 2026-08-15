@@ -166,7 +166,7 @@
 
 ## 参数汇总 → recommend_cli
 
-AskQuestion 全部完成后，组装 CLI（与网页 `POST /api/recommend` 字段一致）：
+AskQuestion 全部完成后，组装 CLI（与网页 `POST /api/recommend` 字段一致；**以下仅为映射示例，须替换为用户实际选项**）：
 
 ```bash
 python scripts/recommend_cli.py \
@@ -178,6 +178,21 @@ python scripts/recommend_cli.py \
   --text "赶时间" \
   --pretty
 ```
+
+Step 4.6 补图完成后，**用相同参数**加 `--markdown`（默认 `present`：文案 + `present_files` 清单；把 `--pretty` 换成 `--markdown`）：
+
+```bash
+python scripts/recommend_cli.py \
+  -i 番茄,鸡蛋 \
+  -c 折耳根 \
+  -s light-meal \
+  --taste 清淡 \
+  --servings 一人食 \
+  --text "赶时间" \
+  --markdown
+```
+
+WorkBuddy：正文贴文案，再按块内 `paths` 调 `present_files`。Cursor 内联则加 `--image-mode path`。
 
 | 网页字段 | CLI 参数 |
 |----------|----------|
@@ -194,7 +209,7 @@ python scripts/recommend_cli.py \
 2. **食材**：Q2 至少 1 项（chip 或 `-c` 自定义），与网页校验一致。
 3. **自定义食材**：选 `custom` 或 AskQuestion 的 Other 后，**必须**拿到具体名称再 recommend。
 4. **不要**把 5 轮合成 1 个 AskQuestion（选项过多难选）；保持与网页相同的 5 个区块心智。
-5. 表单收集完成后 → 进入 SKILL.md **Step 4 → 4.6 → 5** 完整链路（含补图后再 recommend）。
+5. 表单收集完成后 → 进入 SKILL.md **Step 4 → 4.6 → 5** 完整链路（含补图后再 recommend）；Step 5 的 `--markdown` **必须复用同一套用户参数**，不得写死其他食材。
 
 ## 维护
 

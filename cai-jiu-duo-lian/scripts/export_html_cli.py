@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Format recommend JSON as chat Markdown (+ present_files block for WorkBuddy)."""
+"""Export recommend result as self-contained HTML (base64 images) for WorkBuddy preview."""
 from __future__ import annotations
 
 import argparse
@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from chat_output import render_recommend_markdown  # noqa: E402
+from export_embedded_html import write_recommend_embedded_html  # noqa: E402
 from recommend_cli import _resolve_skill_root, _split_csv  # noqa: E402
 from recommend_engine import recommend  # noqa: E402
 
@@ -23,7 +23,7 @@ if hasattr(sys.stdout, "reconfigure"):
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="输出对话 Markdown；WorkBuddy 默认 present_files 清单"
+        description="导出自包含 HTML（base64 内嵌图，WorkBuddy 预览通道）"
     )
     parser.add_argument("--ingredients", "-i", default="")
     parser.add_argument("--custom", "-c", default="")
@@ -32,14 +32,22 @@ def main() -> int:
     parser.add_argument("--servings", default="")
     parser.add_argument("--text", default="")
     parser.add_argument("--skill-root", default="")
-    parser.add_argument("--from-json", default="", help="已有 recommend JSON 文件路径")
+    parser.add_argument("--from-json", default="", help="已有 recommend JSON")
     parser.add_argument(
-        "--image-mode",
-        choices=("present", "path", "http"),
-        default="present",
-        help="present=WorkBuddy（默认）；path/http=Markdown 内联（Cursor 等）",
+        "--out",
+        default="",
+        help="输出 HTML 路径（默认 skill/exports/workbuddy-preview.html）",
     )
-    parser.add_argument("--base-url", default="http://127.0.0.1:8765")
+    parser.add_argument(
+        "--no-embed",
+        action="store_true",
+        help="不内嵌 base64，改用 file://（一般不用于 WorkBuddy 预览）",
+    )
+    parser.add_argument(
+        "--no-ingredient-art",
+        action="store_true",
+        help="不嵌入食材小图，缩小体积",
+    )
     args = parser.parse_args()
 
     skill_root = _resolve_skill_root(args.skill_root or None)
@@ -65,13 +73,20 @@ def main() -> int:
             ),
         }
 
-    md = render_recommend_markdown(
+    out = Path(args.out) if args.out else (skill_root / "exports" / "workbuddy-preview.html")
+    stats = write_recommend_embedded_html(
         payload,
         skill_root,
-        image_mode=args.image_mode,
-        base_url=args.base_url,
+        out,
+        embed_images=not args.no_embed,
+        include_ingredient_art=not args.no_ingredient_art,
     )
-    print(md)
+    if stats.get("warnOverBytes"):
+        print(
+            f"[warn] HTML 约 {stats['bytes'] / (1024 * 1024):.1f} MB，建议 --no-ingredient-art 或只导出主推荐",
+            file=sys.stderr,
+        )
+    print(json.dumps(stats, ensure_ascii=False, indent=2))
     return 0
 
 

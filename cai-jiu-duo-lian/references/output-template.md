@@ -74,7 +74,10 @@
 
 字段变更时同步：`illustration_resolver.py`、`recipe_format.py`、`recommend_engine.py`、`web/app.js`、[`extension-checklist.md`](extension-checklist.md) §E。
 
-## WorkBuddy 对话（非 Web）
+## WorkBuddy / 对话宿主（非 Web）
 
-- 须内联 `![…](绝对路径.png)`，见 [`workbuddy-output-guide.md`](workbuddy-output-guide.md)
-- 生成器：`python scripts/format_chat_output_cli.py …`
+- **WorkBuddy 对话**：文案 + `present_files`（默认 `--markdown` = `--image-mode present`）
+- **WorkBuddy HTML 预览**：`--export-html`（base64 自包含，防跨端口破损图）
+- **Cursor 等**：`--markdown --image-mode path` 或 `http`
+- 详见 [`workbuddy-output-guide.md`](workbuddy-output-guide.md)
+- 生成器：`python scripts/recommend_cli.py … --markdown` 或 `--export-html`（参数须与用户输入一致）

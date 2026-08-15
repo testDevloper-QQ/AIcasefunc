@@ -12,6 +12,7 @@
 | 中国计量 + 膳食 QA | ≤60min、克/毫升、份量核验 | `measurement-cn.md`, `recipe_format.py` |
 | 手账叙事插画（Plan B） | Hero 菜品 + 步骤叙事 + 食材单项 | `illustration-style-bible.md`, `illustration_resolver.py` |
 | Agent CLI | 无需 Web 的 JSON 推荐 | `recommend_cli.py` |
+| 对话出图通道 | WorkBuddy=`present_files` / `html_embedded`；Cursor=path/http | `chat_output.py`, `export_embedded_html.py` |
 | 网页 PWA | 表单推荐 + 手账风卡片 | `web_server.py`, `web/app.js` |
 
 ## 网页视觉（v1.6）
@@ -55,4 +56,6 @@
 | 1.4.x | 2026-08-04 | 做法手账排版、step-layout |
 | 1.5.x | 2026-08-04 | compose 合成（**v1.6 起废弃主路径**）、规范体系 |
 | 1.6.0 | 2026-08-04 | **Plan B 插画库**、叙事 Hero/步骤、文档全面对齐 |
+| 1.10.7 | 2026-08-14 | WorkBuddy HTML 预览：`--export-html` base64 自包含导出 |
+| 1.10.6 | 2026-08-14 | WorkBuddy 默认 `present_files` 通道；清单层可复用到其他宿主 |
 | 1.7.0 | 2026-08-04 | **AI 出图 pipeline**、PNG 优先、每图 ≤3 备选 |

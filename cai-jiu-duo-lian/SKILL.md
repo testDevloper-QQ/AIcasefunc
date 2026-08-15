@@ -5,7 +5,7 @@ description: |
   从预建索引推荐可执行菜谱；中国计量、膳食指南份量、≤60分钟、默认快乐餐。
   支持网页在线推荐与 Git 远程 Skill。暖黄手账风 + 叙事插画（Plan B）。
 argument-hint: "[场景或食材，如：轻食 鸡蛋 番茄]"
-version: "1.10.4"
+version: "1.10.7"
 user-invocable: true
 ---
 
@@ -45,7 +45,7 @@ user-invocable: true
 
 ## Read these references when needed
 
-- [`references/workbuddy-output-guide.md`](references/workbuddy-output-guide.md) — **WorkBuddy 内联出图（必遵，非侧边栏）**
+- [`references/workbuddy-output-guide.md`](references/workbuddy-output-guide.md) — **WorkBuddy：`present_files` + 自包含 HTML 预览；多宿主通道**
 - [`references/capabilities.md`](references/capabilities.md) — 能力清单与版本
 - [`references/agent-illustration-guide.md`](references/agent-illustration-guide.md) — **Agent 内置出图（Cursor/WorkBuddy，必遵）**
 - [`references/illustration-style-bible.md`](references/illustration-style-bible.md) — 手账叙事插画风格（Plan B）
@@ -206,18 +206,40 @@ python scripts/recommend_cli.py -i 鸡蛋,番茄 -s happy --servings 一人食 -
 
 见 [`references/workbuddy-output-guide.md`](references/workbuddy-output-guide.md)：
 
-1. **禁止**只把 PNG 附在侧边栏；**必须**在回复正文用 `![描述](路径)` **内联嵌入**。
-2. **成品图**放在食材清单**上方**；**每步做法**在步骤文字**上方**放步骤图。
-3. **`/skill-assets/` 相对 URL 在 WorkBuddy 无效** → 用 PNG **绝对路径**，或 `--image-mode http`（须先启动 Web）。
-4. **`alternates[]` 备选 2 道菜**：每道须完整输出 Hero + 食材 + 步骤（不能只写菜名）。
+1. **WorkBuddy**：Markdown **不渲染** `![](本地路径)`。正文只出文案；配图须按 CLI 清单调用 **`present_files`**（顺序：Hero → 食材 → 步骤）。
+2. **禁止**只把 PNG 丢侧边栏附件、不调 `present_files`。
+3. **Cursor 等**：可用 `--image-mode path` 或 `--image-mode http`（Web 已启动）做 Markdown 内联。
+4. **`alternates[]`**：每道须完整文案 + 同一有序配图清单（不能只列菜名）。
 
-**推荐**：Step 4.6 完成后执行（参数与 recommend 一致）：
+**推荐（一条命令，Step 4.6 完成后；默认 WorkBuddy present）**：
+
+**硬规则**：`-i/-c/-s/--servings/--text` 必须与 **Step 3 AskQuestion 收集到的用户输入**一致，与 Step 4 / 4.6 历次 `recommend_cli` **完全相同**；**禁止**写死示例食材（如鸡、酸奶）。
 
 ```bash
-python scripts/format_chat_output_cli.py -i 鸡,酸奶 -s happy --servings 二人家庭
+python scripts/recommend_cli.py \
+  -i <用户食材，逗号分隔> \
+  -c <自定义食材，可选> \
+  -s <用户场景> \
+  --servings <用户份量> \
+  --text "<补充说明，可选>" \
+  --markdown
 ```
 
-将 CLI 输出的 Markdown **作为最终用户可见回复**（或同等结构手写）。
+Cursor 内联：末尾加 `--image-mode path`；Web 已启动可加 `--image-mode http`。
+
+也可分步：`format_chat_output_cli.py --from-json <Step4第二次recommend的JSON>`。
+
+将清单**上方** Markdown 作为用户可见文案；解析 `<!-- PRESENT_FILES … -->` 后 **`present_files(paths=…)`**（WorkBuddy 对话）。
+
+**WorkBuddy HTML 预览**（跨端口会拦 `8765` 图床时）：补图后用相同参数：
+
+```bash
+python scripts/recommend_cli.py \
+  -i <用户食材> -s <场景> --servings <份量> \
+  --export-html
+```
+
+打开打印的 `htmlPath`（base64 自包含）。体积大可加 `--export-html-no-ingredient-art`。详见 workbuddy-output-guide.md「html_embedded」。
 
 **对话输出视觉要求**（与网页一致的精神）：
 
